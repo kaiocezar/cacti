@@ -1,11 +1,15 @@
 package com.app.onlance;
 
+import Utils.UtilsConstants;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.widget.Toast;
 
 public class TimesPartidaActivity extends FragmentActivity implements
 		ActionBar.TabListener {
@@ -14,7 +18,7 @@ public class TimesPartidaActivity extends FragmentActivity implements
 	private TabsPagerAdapter mAdapter;
 	private ActionBar actionBar;
 	// Tab titles
-	private String[] tabs = { "Jogador", "Time" };
+	private String[] tabs = { "Basicos", "Avançado" };
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -72,4 +76,28 @@ public class TimesPartidaActivity extends FragmentActivity implements
 		// TODO Auto-generated method stub
 
 	}
+	
+	
+	public void proseguirConf(View view){
+		
+		JogadorFragment item1= (JogadorFragment) mAdapter.getItem(0);
+		TimeFragment item2= (TimeFragment) mAdapter.getItem(1);
+		
+		Intent intent = new Intent(this, DefinirTimesActivity.class);
+		
+		Bundle paramns = new Bundle();
+		
+		paramns.putString(UtilsConstants.QUANT_GOLS, item1.getSpinnerQuantGols().getSelectedItem().toString());
+		paramns.putString(UtilsConstants.QUANT_JOGADORES, item2.getSpinnerQuantJog().getSelectedItem().toString());
+		paramns.putString(UtilsConstants.TEMPO_PARTIDA, item1.getSpinnerQuantTemp().getSelectedItem().toString());
+		
+		
+		intent.putExtras(paramns);
+		startActivity(intent);
+
+		
+		
+		
+	}
+	
 }

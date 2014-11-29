@@ -2,15 +2,98 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#17df0d"
     android:orientation="vertical" >
+    
+          <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/quantJogadores_UPPER"
+        android:textColor="#9E9E9E"
+        android:textSize="18sp" />
+
+    <View
+        android:id="@+id/firstDivider"
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@+id/textView2"
+        android:background="#9E9E9E" />
 
     <TextView
-        android:layout_width="fill_parent"
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:gravity="center"
-        android:text="Design Movies Screen"
-        android:textSize="20dp" />
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/firstDivider"
+        android:layout_marginTop="10dp"
+        android:text="@string/por_equipe"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/hint1"
+        android:layout_width="264dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView1"
+        android:text="@string/por_equipe_hint"
+        android:textSize="14sp" />
+
+    <Spinner
+        android:id="@+id/quantJogSpnieer"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/firstDivider"
+        android:layout_marginTop="5dp" />
+
+
+    <TextView
+        android:id="@+id/outraConfig"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/quantJogSpnieer"
+        android:layout_marginTop="20dp"
+        android:text="@string/compartilhamento_UPPER"
+        android:textColor="#9E9E9E"
+        android:textSize="18sp" />
+
+    <View
+        android:id="@+id/thirdDivider"
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@+id/outraConfig"
+        android:background="#9E9E9E" />
+
+    <TextView
+        android:id="@+id/textFacebook"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/thirdDivider"
+        android:layout_marginTop="10dp"
+        android:text="@string/facebook" />
+
+    <TextView
+        android:id="@+id/hint4"
+        android:layout_width="264dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textFacebook"
+        android:text="@string/facebook_hint"
+        android:textSize="14sp" />
+
+    <ToggleButton
+        android:id="@+id/toggleButton1"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/thirdDivider"
+        android:layout_marginTop="12dp"
+        android:background="#F5F5F5"
+        android:checked="true"
+        android:textStyle="bold" />
+
+  
 
 </RelativeLayout>

@@ -95,7 +95,6 @@ public class DefinirTimesActivity extends Activity {
 		if(savedInstanceState !=null){
 			intent.putExtras(savedInstanceState);
 		}
-		
 		startActivity(intent);
 
 

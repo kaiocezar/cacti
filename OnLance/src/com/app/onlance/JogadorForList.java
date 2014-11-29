@@ -4,6 +4,12 @@ import java.io.Serializable;
 
 public class JogadorForList implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8433437776337558195L;
+	
+	
 	private String nome;
 	private String tipoTela;
 
