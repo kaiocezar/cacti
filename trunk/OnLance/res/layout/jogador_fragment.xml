@@ -2,18 +2,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp" >
 
     <TextView
         android:id="@+id/termino"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/hint1"
         android:layout_marginTop="20dp"
         android:text="@string/terminoPartida_UPPER"
         android:textColor="#9E9E9E"
-        android:textSize="18sp" />
+        android:textSize="22sp" />
 
     <View
         android:id="@+id/secondDivider"
@@ -29,7 +29,8 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/secondDivider"
         android:layout_marginTop="10dp"
-        android:text="@string/por_gol" />
+        android:text="@string/por_gol"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/hint2"
@@ -54,7 +55,8 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/hint2"
         android:layout_marginTop="15dp"
-        android:text="@string/por_tempo" />
+        android:text="@string/por_tempo"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/hint3"
@@ -71,8 +73,5 @@
         android:layout_height="64dp"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/quantGolSpnieer" />
-
-
-
 
 </RelativeLayout>
