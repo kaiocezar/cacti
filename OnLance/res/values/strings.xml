@@ -45,6 +45,12 @@
     <string name="facebook_app_id">300591123482638</string>
     <string name="time_fragment">Times</string><string name="jogador_fragment">Jogadores</string><string name="prosseguir_UPPER">PROSSEGUIR</string>
     
-    
+	<string name="hello">Hello World, DashBoardActivity!</string>
+    <string name="home">Nome do seu programa</string>
+    <string name="consulta">Consulta</string>
+    <string name="sobre">Sobre</string>
+    <string name="config">Config.</string>
+    <string name="venda">Vendas</string>
+    <string name="rodape">Mensagem de rodapé</string>    
 
 </resources>

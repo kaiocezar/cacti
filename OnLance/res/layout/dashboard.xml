@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/MainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+    <!-- Coluna 1 -->
+
+    <LinearLayout
+        android:id="@+id/Coluna1"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="0.5"
+        android:orientation="vertical" >
+
+        <!-- Posição [1,1] -->
+
+        <Button
+            android:id="@+id/Posicao11"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:onClick="onClickVenda"
+            android:text="Amigos"
+            android:background="@drawable/ShapeButtonDashboard" />
+
+        <!-- Posição [2,1] -->
+
+        <Button
+            android:id="@+id/Posicao21"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:onClick="OnClick"
+            android:text="Configuração" 
+            android:background="@drawable/ShapeButtonDashboard"/>
+    </LinearLayout>
+
+    <!-- Coluna 2 -->
+
+    <LinearLayout
+        android:id="@+id/Coluna2"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="0.5"
+        android:orientation="vertical" >
+
+        <!-- Posição [1,2] -->
+
+        <Button
+            android:id="@+id/Posicao12"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:onClick="OnClick"
+            android:text="Partida"
+            android:background="@drawable/ShapeButtonDashboard"/>
+
+        <!-- Posição [2,2] -->
+
+        <Button
+            android:id="@+id/Posicao22"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:onClick="OnClick"
+            android:text="Time"
+            android:background="@drawable/ShapeButtonDashboard" />
+    </LinearLayout>
+
+</LinearLayout>
