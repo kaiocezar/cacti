@@ -37,7 +37,7 @@ public class JogadorFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		rootView = inflater.inflate(R.layout.jogador_fragment, container, false);
+		rootView = inflater.inflate(R.layout.config_basica_fragment, container, false);
 		
 		init();
 		return rootView;

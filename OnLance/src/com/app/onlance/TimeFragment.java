@@ -22,7 +22,7 @@ public class TimeFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		rootView = inflater.inflate(R.layout.time_fragment, container, false);
+		rootView = inflater.inflate(R.layout.config_avancada_fragment, container, false);
 		
 		
 		init();

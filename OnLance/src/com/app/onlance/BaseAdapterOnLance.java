@@ -6,11 +6,8 @@ import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -60,11 +57,11 @@ public class BaseAdapterOnLance extends BaseAdapter {
 		LinearLayout lay = (LinearLayout) viewLine.findViewById(R.id.content);
 
 		if (jogador.getTipoTela().equals("0")) {
-			lay.setBackgroundColor(Color.GRAY);
+			lay.setBackgroundColor(Color.parseColor("#9E9E9E")); // gray
 		} else if (jogador.getTipoTela().equals("1")) {
-			lay.setBackgroundColor(Color.parseColor("#FF9800")); //orange
+			lay.setBackgroundColor(Color.parseColor("#F44336")); // red
 		} else {
-			lay.setBackgroundColor(Color.parseColor("#2196F3")); //blue
+			lay.setBackgroundColor(Color.parseColor("#2196F3")); // blue
 		}
 		return viewLine;
 	}
