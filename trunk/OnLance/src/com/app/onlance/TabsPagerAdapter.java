@@ -6,6 +6,9 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 public class TabsPagerAdapter extends FragmentPagerAdapter {
 
+	JogadorFragment jogarFrag;
+	TimeFragment timeFrag;
+	
 	public TabsPagerAdapter(FragmentManager fm) {
 		super(fm);
 	}
@@ -15,11 +18,19 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
 
 		switch (index) {
 		case 0:
-			// Top Rated fragment activity
-			return new JogadorFragment();
+			
+			if(jogarFrag == null){
+				jogarFrag = new JogadorFragment();
+			}
+			
+			return jogarFrag;
 		case 1:
-			// Games fragment activity
-			return new TimeFragment();
+			
+			if(timeFrag == null){
+				timeFrag = new TimeFragment();
+			}
+			
+			return timeFrag;
 		}
 
 		return null;

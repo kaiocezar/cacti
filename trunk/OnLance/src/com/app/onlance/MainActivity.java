@@ -25,8 +25,6 @@ import com.facebook.widget.LoginButton;
 public class MainActivity extends Activity {
 
 	UiLifecycleHelper uiHelper;
-//	private boolean reauth = false;
-//	private static final String KEY = "reauth";
 	
 	private Session.StatusCallback callback = new StatusCallback() {
 
