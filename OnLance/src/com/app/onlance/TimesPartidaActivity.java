@@ -18,7 +18,7 @@ public class TimesPartidaActivity extends FragmentActivity implements
 	private TabsPagerAdapter mAdapter;
 	private ActionBar actionBar;
 	// Tab titles
-	private String[] tabs = { "Basicos", "Avançado" };
+	private String[] tabs = { "Básico", "Avançado" };
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
