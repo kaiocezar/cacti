@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp" >
+
+    <TextView
+        android:id="@+id/termino"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/terminoPartida_UPPER"
+        android:textColor="#9E9E9E"
+        android:textSize="18sp" />
+
+    <View
+        android:id="@+id/secondDivider"
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@+id/termino"
+        android:background="#9E9E9E" />
+
+    <CheckBox
+        android:id="@+id/checkBoxGol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/secondDivider"
+        android:layout_marginTop="10dp"
+        android:text="@string/por_gol"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/hint2"
+        android:layout_width="264dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/checkBoxGol"
+        android:text="@string/por_gol_hint"
+        android:textSize="14sp" />
+
+    <Spinner
+        android:id="@+id/quantGolSpnieer"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/secondDivider" />
+
+    <CheckBox
+        android:id="@+id/checkBoxTempo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/hint2"
+        android:layout_marginTop="15dp"
+        android:text="@string/por_tempo"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/hint3"
+        android:layout_width="264dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/checkBoxTempo"
+        android:text="@string/por_tempo_hint"
+        android:textSize="14sp" />
+
+    <Spinner
+        android:id="@+id/quantTempoSpnieer"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/quantGolSpnieer" />
+
+</RelativeLayout>
