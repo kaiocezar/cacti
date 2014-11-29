@@ -23,6 +23,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class DefinirTimesActivity extends Activity {
 
@@ -67,19 +68,20 @@ public class DefinirTimesActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
+				
 				LinearLayout lay = (LinearLayout) arg1.findViewById(R.id.content);
-
+				TextView text = (TextView) arg1.findViewById(R.id.textPartida);
+				
 				JogadorForList joga = jogadores.get(arg2);
 				if (joga.getTipoTela().equals("0")) {
-
-					lay.setBackgroundColor(Color.RED);
+					lay.setBackgroundColor(Color.parseColor("#FF9800")); //orange
 					joga.setTipoTela("1");
 
 				} else if (joga.getTipoTela().equals("1")) {
-					lay.setBackgroundColor(Color.BLUE);
+					lay.setBackgroundColor(Color.parseColor("#2196F3")); //blue
 					joga.setTipoTela("2");
 				} else {
-					lay.setBackgroundColor(Color.WHITE);
+					lay.setBackgroundColor(Color.GRAY);
 					joga.setTipoTela("0");
 				}
 
@@ -95,6 +97,7 @@ public class DefinirTimesActivity extends Activity {
 		if(savedInstanceState !=null){
 			intent.putExtras(savedInstanceState);
 		}
+		
 		startActivity(intent);
 
 
