@@ -29,9 +29,10 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="20dp"
-        android:background="#FFFFFF"
+        android:background="@color/azul"
         android:gravity="center"
         android:text="@string/placar_0"
+        android:textColor="@color/branco"
         android:textSize="45sp" />
 
     <View
@@ -50,9 +51,10 @@
         android:layout_alignBottom="@+id/placar2"
         android:layout_alignParentLeft="true"
         android:layout_marginTop="20dp"
-        android:background="#FFFFFF"
+        android:background="@color/orange"
         android:gravity="center"
         android:text="@string/placar_0"
+        android:textColor="@color/branco"
         android:textSize="45sp" />
 
     <LinearLayout
@@ -92,34 +94,17 @@
         android:background="#9E9E9E" />
 
     <Button
-        android:id="@+id/cartaoAmarelo"
-        android:layout_width="50dp"
-        android:layout_height="60dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/secondDivider"
-        android:layout_marginTop="15dp"
-        android:background="@color/amarelo" />
-
-    <Button
         android:id="@+id/gol"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_below="@+id/secondDivider"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:background="@drawable/gol"
-        android:text="@string/gol"
         android:onClick="clickGol"
-        android:textColor="@android:color/black" />
-
-    <Button
-        android:id="@+id/cartaoVermelho"
-        android:layout_width="50dp"
-        android:layout_height="60dp"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/secondDivider"
-        android:layout_marginTop="15dp"
-        android:background="@color/vermelho" />
+        android:text="@string/gol"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
 
     <View
         android:id="@+id/thirdDivider"
