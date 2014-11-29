@@ -25,20 +25,20 @@ import android.widget.Toast;
 
 public class PartidaActivity extends Activity {
 	private static final String limite = "00:20";
-	
+
 	Chronometer cronometro;
 	private long milliseconds;
 	private boolean isStart;
 	private boolean isGol = false;
-	
+
 	List<String> jogadores1;
 	List<String> jogadores2;
-	ListView listViewJogadores1; 
-	ListView listViewJogadores2; 
-	
+	ListView listViewJogadores1;
+	ListView listViewJogadores2;
+
 	TextView placar1;
 	TextView placar2;
-	
+
 	Button gol;
 
 	@Override
@@ -48,14 +48,14 @@ public class PartidaActivity extends Activity {
 		init();
 		bind();
 	}
-	
-	public void init(){
-		
+
+	public void init() {
+
 		jogadores1 = new ArrayList<String>();
 		jogadores2 = new ArrayList<String>();
 		milliseconds = 0;
 		isStart = true;
-		
+
 		jogadores1.add("Geyson");
 		jogadores1.add("Kaio");
 		jogadores1.add("Zé Carlos");
@@ -76,124 +76,130 @@ public class PartidaActivity extends Activity {
 
 		listViewJogadores1.setAdapter(adapter);
 		listViewJogadores2.setAdapter(adapter2);
-		
+
 		cronometro = (Chronometer) findViewById(R.id.chronometer1);
 		gol = (Button) findViewById(R.id.gol);
 		placar1 = (TextView) findViewById(R.id.placar1);
 		placar2 = (TextView) findViewById(R.id.placar2);
 	}
-	
-	
-	public void bind(){
-		
-		cronometro.setOnChronometerTickListener(new OnChronometerTickListener() {
 
-			@Override
-			public void onChronometerTick(Chronometer arg0) {
+	public void bind() {
 
-				String valorCronometro = arg0.getText().toString();
-				if (valorCronometro.equals(limite)) {
-					Toast.makeText(PartidaActivity.this, "fim",
-							Toast.LENGTH_LONG).show();
-					cronometro.stop();
-					milliseconds = 0;
-					isStart = true;
-				}
-			}
-		});
-		
+		cronometro
+				.setOnChronometerTickListener(new OnChronometerTickListener() {
+
+					@Override
+					public void onChronometerTick(Chronometer arg0) {
+
+						String valorCronometro = arg0.getText().toString();
+						if (valorCronometro.equals(limite)) {
+							Toast.makeText(PartidaActivity.this, "fim",
+									Toast.LENGTH_LONG).show();
+							cronometro.stop();
+							milliseconds = 0;
+							isStart = true;
+						}
+					}
+				});
+
 		listViewJogadores1.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
-				
-				if(isGol){
-					Integer gol = Integer.parseInt(placar1.getText().toString());
+
+				if (isGol) {
+					Integer gol = Integer
+							.parseInt(placar1.getText().toString());
 					gol++;
 					placar1.setText(gol.toString());
 					modificarGol();
-					
+
 					shareContent(jogadores1.get(arg2));
 				}
-				
+
 			}
 		});
-		
+
 		listViewJogadores2.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
-				
-				if(isGol){
-					Integer gol = Integer.parseInt(placar2.getText().toString());
+
+				if (isGol) {
+					Integer gol = Integer
+							.parseInt(placar2.getText().toString());
 					gol++;
 					placar2.setText(gol.toString());
 					modificarGol();
 					shareContent(jogadores2.get(arg2));
 				}
-				
+
 			}
 		});
-		
-		
+
 	}
-	
-	public void clickGol(View view){
+
+	public void clickGol(View view) {
 		modificarGol();
 	}
-	
-	public void modificarGol(){
-		if(isGol){
+
+	public void modificarGol() {
+		if (isGol) {
 			gol.setBackgroundResource(R.drawable.gol);
 			isGol = false;
-		}else{
-			Toast.makeText(this, "Click no jogardor para marcar o gol", Toast.LENGTH_LONG).show();
+		} else {
+			Toast.makeText(this, "Selecione o jogador que marcou o GOL",
+					Toast.LENGTH_SHORT).show();
 			gol.setBackgroundResource(R.drawable.gol_ativo);
 			isGol = true;
 		}
-		
+
 	}
 
 	public void start(View view) {
-		if(isStart){
+		if (isStart) {
 			cronometro.setBase(SystemClock.elapsedRealtime() - milliseconds);
 			cronometro.start();
 			isStart = false;
-		}else{
-			 milliseconds = SystemClock.elapsedRealtime() -cronometro.getBase();
-			 cronometro.stop();
-			 isStart = true;
+		} else {
+			milliseconds = SystemClock.elapsedRealtime() - cronometro.getBase();
+			cronometro.stop();
+			isStart = true;
 		}
 	}
-	
-	
-	public void shareContent(String nome){
-		if(UtilsMetodos.getInscace().isConectado() && UtilsMetodos.getInscace().validarUsuario(this)){
+
+	public void shareContent(String nome) {
+		if (UtilsMetodos.getInscace().isConectado()
+				&& UtilsMetodos.getInscace().validarUsuario(this)) {
 
 			Session session = Session.getActiveSession();
 			Bundle paramns = new Bundle();
 			paramns.putString("name", "Gollllll");
-			paramns.putString("caption", "Baixe agora o OnLance");
-			paramns.putString("description", "Numa jogada ensaiada "+ nome+ "faz um gol maginifico");
+			paramns.putString("caption", "Baixe agora o ONLance");
+			paramns.putString("description", "Numa jogada espetacular, " + nome
+					+ " faz um gol magnífico!");
 			paramns.putString("link", "http://google.com.br");
-			paramns.putString("picture", "http://www.informatoz.com/imagens/ico_cobertura/bola.png");
-
+			paramns.putString("picture",
+					"http://www.informatoz.com/imagens/ico_cobertura/bola.png");
 
 			Request.Callback call = new Request.Callback() {
 
 				@Override
 				public void onCompleted(Response response) {
-					if(response.getError() == null){
-						Toast.makeText(PartidaActivity.this, "Sucesso", Toast.LENGTH_LONG).show();
-					}else{
-						Toast.makeText(PartidaActivity.this, "Falha", Toast.LENGTH_LONG).show();
+					if (response.getError() == null) {
+						Toast.makeText(PartidaActivity.this, "Sucesso",
+								Toast.LENGTH_LONG).show();
+					} else {
+						Toast.makeText(PartidaActivity.this, "Falha",
+								Toast.LENGTH_LONG).show();
 					}
 				}
 			};
 
-			Request re = new Request(session,"/me/feed",paramns,HttpMethod.POST,call);
+			Request re = new Request(session, "/me/feed", paramns,
+					HttpMethod.POST, call);
 			re.executeAsync();
 		}
 
