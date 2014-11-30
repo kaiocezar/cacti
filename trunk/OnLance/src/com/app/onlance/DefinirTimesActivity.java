@@ -38,10 +38,9 @@ public class DefinirTimesActivity extends Activity {
 
 		jogadores = new ArrayList<JogadorForList>();
 
-		carregarListJogadores();
-		// if(UtilsMetodos.getInscace().isConectado()){
-		// getMyFriends(Session.getActiveSession());
-		// }
+		if (UtilsMetodos.getInscace().isConectado()) {
+			getMyFriends(Session.getActiveSession());
+		}
 
 	}
 
@@ -52,7 +51,7 @@ public class DefinirTimesActivity extends Activity {
 
 	public void carregarListJogadores() {
 
-		if (jogadores.size() == 0) {
+		if (true) {
 			for (int i = 0; i < 20; i++) {
 				JogadorForList mapa = new JogadorForList();
 				mapa.setNome("kaio" + i);
@@ -183,13 +182,12 @@ public class DefinirTimesActivity extends Activity {
 							Log.i("Script", "NUmero de amigos " + users.size());
 
 							for (GraphUser amigos : users) {
-
 								JogadorForList mapa = new JogadorForList();
 								mapa.setNome(amigos.getName());
 								mapa.setTipoTela("0");
 								jogadores.add(mapa);
 							}
-
+							carregarListJogadores();
 						}
 
 						Log.i("Script", "Response" + response);
