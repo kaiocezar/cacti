@@ -1,20 +1,9 @@
 package com.app.onlance;
 
-import java.util.List;
-
-import com.facebook.Request;
-import com.facebook.Response;
-import com.facebook.Session;
-import com.facebook.SessionState;
-import com.facebook.UiLifecycleHelper;
-import com.facebook.model.GraphUser;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 public class Dashboard extends Activity {
 
@@ -35,7 +24,8 @@ public class Dashboard extends Activity {
 	}
 
 	public void onClickConfig(View view) {
-
+		Intent intent = new Intent(this, ConfigGeralActivity.class);
+		startActivity(intent);
 	}
 
 	public void onClickPartida(View view) {
