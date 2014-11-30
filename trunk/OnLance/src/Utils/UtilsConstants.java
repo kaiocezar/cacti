@@ -17,6 +17,10 @@ public class UtilsConstants {
 	public final static String TERMINO = "Término";
 	public final static String TIME1= "TIME1";
 	public final static String TIME2= "TIME2";
+	public final static String CARTAO= "CARTAO";
+	public final static String CARTAO_MSG= "CARTAO_MSG";
+	public final static String CARTAO_AMARALE= "Cartão Amarelo";
+	public final static String CARTAO_VERMELHO= "Cartão Vermelho";
 	public final static String PLACAR_TIME1= "PLACARTIME1";
 	public final static String PLACAR_TIME2= "PLACARTIME2";
 	
