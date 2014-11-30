@@ -1,6 +1,7 @@
 package com.app.onlance;
 
 import Utils.UtilsConstants;
+import Utils.UtilsInformation;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.FragmentTransaction;
@@ -85,19 +86,12 @@ public class TimesPartidaActivity extends FragmentActivity implements
 		
 		Intent intent = new Intent(this, DefinirTimesActivity.class);
 		
-		Bundle paramns = new Bundle();
+		UtilsInformation.getInscace().setGol(item1.getSpinnerQuantGols().getSelectedItem().toString());
+		UtilsInformation.getInscace().setTime(item1.getSpinnerQuantTemp().getSelectedItem().toString());
+		UtilsInformation.getInscace().setPlay(item2.getSpinnerQuantJog().getSelectedItem().toString());
 		
-		paramns.putString(UtilsConstants.QUANT_GOLS, item1.getSpinnerQuantGols().getSelectedItem().toString());
-		paramns.putString(UtilsConstants.QUANT_JOGADORES, item2.getSpinnerQuantJog().getSelectedItem().toString());
-		paramns.putString(UtilsConstants.TEMPO_PARTIDA, item1.getSpinnerQuantTemp().getSelectedItem().toString());
-		
-		
-		intent.putExtras(paramns);
 		startActivity(intent);
 
-		
-		
-		
 	}
 	
 }

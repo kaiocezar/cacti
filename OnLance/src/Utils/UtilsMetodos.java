@@ -3,6 +3,8 @@ package Utils;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Context;
+import android.widget.Toast;
 
 import com.facebook.Session;
 import com.facebook.Session.NewPermissionsRequest;
@@ -69,6 +71,10 @@ public class UtilsMetodos {
 
 
 		return retorno;
+	}
+	
+	public void toast(Context context,String valor){
+		Toast.makeText(context,valor,Toast.LENGTH_LONG);
 	}
  
 
