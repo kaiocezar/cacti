@@ -67,5 +67,6 @@
     <string name="configuracao">Configurações</string>
     <string name="partida">Partidas</string>
     <string name="time">Times</string>
+    <string name="estatistica">Estatística</string>
 
 </resources>
