@@ -25,10 +25,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
-                android:background="#2196F3"
+                android:background="#445FFF"
                 android:paddingTop="110dp"
                 android:text="@string/estatistica"
-                android:textColor="#000000"
+                android:textColor="#FFFFFF"
                 android:textStyle="bold" />
 
             <ImageView
@@ -51,11 +51,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
-                android:background="#9C27B0"
+                android:background="#A9FFC6"
                 android:onClick="onClickConfig"
                 android:paddingTop="110dp"
                 android:text="@string/configuracao"
-                android:textColor="#000000"
+                android:textColor="#FFFFFF"
                 android:textStyle="bold" />
 
             <ImageView
@@ -88,11 +88,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
-                android:background="#F44336"
+                android:background="#FF2B26"
                 android:onClick="onClickPartida"
                 android:paddingTop="110dp"
                 android:text="@string/partida"
-                android:textColor="#000000"
+                android:textColor="#FFFFFF"
                 android:textStyle="bold" />
 
             <ImageView
@@ -115,13 +115,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
-                android:background="#FFEB3B"
+                android:background="#E8AF0C"
                 android:onClick="onClickTime"
-                android:text="@string/time"
                 android:paddingTop="110dp"
-                android:textColor="#000000"
+                android:text="@string/time"
+                android:textColor="#FFFFFF"
                 android:textStyle="bold" />
-            
+
             <ImageView
                 android:id="@+id/Time"
                 android:layout_width="wrap_content"

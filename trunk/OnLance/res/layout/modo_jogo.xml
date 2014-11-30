@@ -14,6 +14,7 @@
         android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"
         android:layout_weight="0.33"
+        android:drawableLeft="@drawable/amistoso"
         android:onClick="proximaTela"
         android:shadowColor="#000000"
         android:text="@string/amistoso_UPPER" />
@@ -28,6 +29,7 @@
         android:layout_marginRight="5dp"
         android:layout_marginTop="2dp"
         android:layout_weight="0.33"
+        android:drawableLeft="@drawable/copa"
         android:onClick="proximaTela"
         android:text="@string/copa_UPPER" />
 
@@ -40,6 +42,7 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_weight="0.33"
+        android:drawableLeft="@drawable/pontos_corridos"
         android:onClick="proximaTela"
         android:text="@string/pontosCorrido_UPPER" />
 
