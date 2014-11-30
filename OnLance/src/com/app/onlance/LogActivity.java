@@ -43,10 +43,15 @@ public class LogActivity extends Activity {
 				descricao = "Time Vermelho "+  map.get(UtilsConstants.PLACAR_TIME1) +
 						" X " + map.get(UtilsConstants.PLACAR_TIME2) + "Time Azul"; 
 				
-			}else{
+			}else if(evento.equals(UtilsConstants.CARTAO)){
+				descricao = "O jogador "+ map.get(UtilsConstants.JOGADOR) + " recebeu um "+
+						map.get(UtilsConstants.CARTAO_MSG) ;
 				
-				descricao = map.get(UtilsConstants.PLACAR_TIME1) + " Para o Time 1 "
-				+ map.get(UtilsConstants.PLACAR_TIME2) + " Para o Time 2";
+			}
+			else{
+				
+				descricao = map.get(UtilsConstants.PLACAR_TIME1) + " Para o Time Vermelho "
+				+ map.get(UtilsConstants.PLACAR_TIME2) + " Para o Time Azul";
 				
 			}
 			
@@ -67,7 +72,6 @@ public class LogActivity extends Activity {
 		int layout = R.layout.log_layout;
 		
 		ListView lv = (ListView)findViewById(R.id.listLog);
-		
 		lv.setAdapter(new SimpleAdapter(this, hasParaLayout, layout, from, to));
 		
 	}

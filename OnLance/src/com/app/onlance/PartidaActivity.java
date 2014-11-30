@@ -303,7 +303,7 @@ public class PartidaActivity extends Activity implements OnItemClickListener,
 			
 			String valorCronometro = cronometro.getText().toString();
 			Map<String,String> dados = new HashMap<String,String>();
-			dados.put(UtilsConstants.EVENTO, "Inicio");
+			dados.put(UtilsConstants.EVENTO, UtilsConstants.INICIO);
 			dados.put(UtilsConstants.TEMPO, valorCronometro);
 			dados.put(UtilsConstants.PLACAR_TIME1, String.valueOf(placarTime1));
 			dados.put(UtilsConstants.PLACAR_TIME2, String.valueOf(placarTime2));
@@ -375,11 +375,29 @@ public class PartidaActivity extends Activity implements OnItemClickListener,
 
 		switch (item){ 
 		
+		
 		case 0:
+
+			String valorCronometro = cronometro.getText().toString();
+			Map<String,String> dados = new HashMap<String,String>();
+			dados.put(UtilsConstants.EVENTO, UtilsConstants.CARTAO);
+			dados.put(UtilsConstants.CARTAO_MSG, UtilsConstants.CARTAO_AMARALE);
+			dados.put(UtilsConstants.TEMPO, valorCronometro);
+			dados.put(UtilsConstants.JOGADOR, nomeParaEvento);
+			
+			UtilsInformation.getInscace().addHistorico(dados);
 			
 			break;
 		case 1:
+
+			String valorCronometro2 = cronometro.getText().toString();
+			Map<String,String> dados2 = new HashMap<String,String>();
+			dados2.put(UtilsConstants.EVENTO, UtilsConstants.CARTAO);
+			dados2.put(UtilsConstants.CARTAO_MSG, UtilsConstants.CARTAO_VERMELHO);
+			dados2.put(UtilsConstants.TEMPO, valorCronometro2);
+			dados2.put(UtilsConstants.JOGADOR, nomeParaEvento);
 			
+			UtilsInformation.getInscace().addHistorico(dados2);
 			break;
 		}
 		
