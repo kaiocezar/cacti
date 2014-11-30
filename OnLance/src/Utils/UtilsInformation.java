@@ -2,6 +2,7 @@ package Utils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.app.onlance.JogadorForList;
 
@@ -14,9 +15,11 @@ public class UtilsInformation {
 	private String gol;
 	private List<JogadorForList> time1;
 	private List<JogadorForList> time2;
-	
+	private List<Map> listaHistorico;
+
+
 	public static UtilsInformation getInscace(){
-		
+
 		if(utils == null){
 			utils = new UtilsInformation();
 		}
@@ -49,34 +52,34 @@ public class UtilsInformation {
 	}
 
 	public void addTime1(JogadorForList jogador){
-		
+
 		if(time1 == null){
 			time1 = new ArrayList<JogadorForList>();
 		}
 		time1.add(jogador);
 	}
-	
+
 	public void addTime2(JogadorForList jogador){
-		
+
 		if(time2 == null){
 			time2 = new ArrayList<JogadorForList>();
 		}
 		time2.add(jogador);
 	}
-	
+
 	public List<JogadorForList> getTime1(){
 		return time1;
 	}
 	public List<JogadorForList> getTime2(){
 		return time2;
 	}
-	
+
 	public void cleanList1(){
-		
+
 		if(time1 != null){
 			time1.clear();
 		}
-		
+
 	}
 	public void cleanList2(){
 		if(time2 != null){
@@ -86,5 +89,21 @@ public class UtilsInformation {
 	public void cleanListAll(){
 		cleanList1();
 		cleanList2();
+	}
+
+	public List<Map> getListaHistorico() {
+		return listaHistorico;
+	}
+
+	public void setListaHistorico(List<Map> listaHistorico) {
+		this.listaHistorico = listaHistorico;
+	}
+
+	public void addHistorico(Map dados){
+		if(listaHistorico == null){
+			listaHistorico = new ArrayList<Map>();
+		}
+		
+		listaHistorico.add(dados);
 	}
 }

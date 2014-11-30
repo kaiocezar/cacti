@@ -1,14 +1,18 @@
 package com.app.onlance;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import Utils.UtilsConstants;
 import Utils.UtilsInformation;
 import Utils.UtilsMetodos;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -48,6 +52,8 @@ public class PartidaActivity extends Activity implements OnItemClickListener,
 
 	TextView placar1;
 	TextView placar2;
+	
+	String nomeParaEvento;
 
 	Button gol;
 	private AlertDialog alertDialog;
@@ -112,7 +118,7 @@ public class PartidaActivity extends Activity implements OnItemClickListener,
 					public void onChronometerTick(Chronometer arg0) {
 
 						String valorCronometro = arg0.getText().toString();
-						if (valorCronometro.equals(limite) || isFinishFromGol()) {
+						if (valorCronometro.equals(limite)) {
 							fim();
 						}
 					}
@@ -131,9 +137,12 @@ public class PartidaActivity extends Activity implements OnItemClickListener,
 					gol++;
 					placar1.setText(gol.toString());
 					modificarGol();
-
+					
+					
+					historicoGol(jogadores1.get(arg2), UtilsConstants.TIME1);
 					shareContent(jogadores1.get(arg2));
-					fim();
+					
+					isFinishFromGol();
 				}
 
 			}
@@ -144,9 +153,10 @@ public class PartidaActivity extends Activity implements OnItemClickListener,
 
 					@Override
 					public boolean onItemLongClick(AdapterView<?> arg0,
-							View arg1, int arg2, long arg3) {
+							View arg1, int positionList, long arg3) {
 
 						alertDialog.show();
+						nomeParaEvento =  jogadores1.get(positionList);
 						return false;
 					}
 
@@ -164,6 +174,7 @@ public class PartidaActivity extends Activity implements OnItemClickListener,
 					gol++;
 					placar2.setText(gol.toString());
 					modificarGol();
+					historicoGol(jogadores2.get(arg2), UtilsConstants.TIME2);
 					shareContent(jogadores2.get(arg2));
 					fim();
 				}
@@ -176,9 +187,10 @@ public class PartidaActivity extends Activity implements OnItemClickListener,
 
 					@Override
 					public boolean onItemLongClick(AdapterView<?> arg0,
-							View arg1, int arg2, long arg3) {
+							View arg1, int positionList, long arg3) {
 
 						alertDialog.show();
+						nomeParaEvento =  jogadores2.get(positionList);
 						return false;
 					}
 
@@ -199,27 +211,63 @@ public class PartidaActivity extends Activity implements OnItemClickListener,
 	private void fim() {
 
 		Utils.UtilsMetodos.getInscace().toast(PartidaActivity.this, "fim");
+		String valorCronometro = cronometro.getText().toString();
 		cronometro.stop();
 		milliseconds = 0;
 		isStart = true;
+		
+		int placarTime1 = Integer.parseInt(placar1.getText().toString());
+		int placarTime2 = Integer.parseInt(placar2.getText().toString());
+		
+		
+		Map<String,String> dados = new HashMap<String,String>();
+		dados.put(UtilsConstants.EVENTO, UtilsConstants.TERMINO);
+		dados.put(UtilsConstants.TEMPO, valorCronometro);
+		dados.put(UtilsConstants.PLACAR_TIME1, String.valueOf(placarTime1));
+		dados.put(UtilsConstants.PLACAR_TIME2, String.valueOf(placarTime2));
+		
+		UtilsInformation.getInscace().addHistorico(dados);
+		
 		MediaPlayer media = MediaPlayer.create(
 				PartidaActivity.this.getApplicationContext(),
 				R.raw.apitodefutebol);
+		
 		media.start();
+		
+		proximaTela();
+		
+	}
+	
+	private void proximaTela() {
+		Intent intent = new Intent(this, LogActivity.class);
+
+		startActivity(intent);
+		
 	}
 
-	private boolean isFinishFromGol() {
+	public void historicoGol(String nome,String time){
+	
+		String valorCronometro = cronometro.getText().toString();
+		Map<String,String> dados = new HashMap<String,String>();
+		dados.put(UtilsConstants.EVENTO, UtilsConstants.GOL);
+		dados.put(UtilsConstants.TEMPO, valorCronometro);
+		dados.put(time, nome);
+		
+		UtilsInformation.getInscace().addHistorico(dados);
+	}
 
-		boolean retono = false;
+	private void isFinishFromGol() {
+		
 		int gol = Integer.parseInt(UtilsInformation.getInscace().getGol());
 		int placarTime1 = Integer.parseInt(placar1.getText().toString());
 		int placarTime2 = Integer.parseInt(placar2.getText().toString());
-
-		if (gol == placarTime1 || gol == placarTime2) {
-			retono = true;
+		
+		
+		if(gol == placarTime1 || gol == placarTime2 ){
+			fim();
 		}
-
-		return retono;
+		
+		
 	}
 
 	public void clickGol(View view) {
@@ -232,6 +280,7 @@ public class PartidaActivity extends Activity implements OnItemClickListener,
 		if (isGol) {
 			gol.setBackgroundResource(R.drawable.gol);
 			isGol = false;
+			
 		} else {
 			Toast.makeText(this, "Selecione o jogador que marcou o GOL",
 					Toast.LENGTH_SHORT).show();
@@ -243,6 +292,24 @@ public class PartidaActivity extends Activity implements OnItemClickListener,
 
 	public void start(View view) {
 		if (isStart) {
+			
+			MediaPlayer media = MediaPlayer.create(
+					PartidaActivity.this.getApplicationContext(),
+					R.raw.apitodefutebol);
+			media.start();
+			
+			int placarTime1 = Integer.parseInt(placar1.getText().toString());
+			int placarTime2 = Integer.parseInt(placar2.getText().toString());
+			
+			String valorCronometro = cronometro.getText().toString();
+			Map<String,String> dados = new HashMap<String,String>();
+			dados.put(UtilsConstants.EVENTO, "Inicio");
+			dados.put(UtilsConstants.TEMPO, valorCronometro);
+			dados.put(UtilsConstants.PLACAR_TIME1, String.valueOf(placarTime1));
+			dados.put(UtilsConstants.PLACAR_TIME2, String.valueOf(placarTime2));
+			
+			UtilsInformation.getInscace().addHistorico(dados);
+			
 			cronometro.setBase(SystemClock.elapsedRealtime() - milliseconds);
 			cronometro.start();
 			Button b = (Button) findViewById(R.id.playPartida);
@@ -251,6 +318,11 @@ public class PartidaActivity extends Activity implements OnItemClickListener,
 			c.setVisibility(View.VISIBLE);
 			isStart = false;
 		} else {
+			
+			MediaPlayer media = MediaPlayer.create(
+					PartidaActivity.this.getApplicationContext(),
+					R.raw.apitodefutebol);
+			media.start();
 			milliseconds = SystemClock.elapsedRealtime() - cronometro.getBase();
 			cronometro.stop();
 			isStart = true;
@@ -299,7 +371,17 @@ public class PartidaActivity extends Activity implements OnItemClickListener,
 	}
 
 	@Override
-	public void onClick(DialogInterface arg0, int arg1) {
+	public void onClick(DialogInterface arg0, int item) {
 
+		switch (item){ 
+		
+		case 0:
+			
+			break;
+		case 1:
+			
+			break;
+		}
+		
 	}
 }
