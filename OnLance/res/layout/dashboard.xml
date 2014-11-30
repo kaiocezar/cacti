@@ -25,9 +25,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
-                android:background="#00E676"
+                android:background="#2196F3"
                 android:paddingTop="110dp"
-                android:text="@string/amigos"
+                android:text="@string/estatistica"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold" />
 
@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:src="@drawable/amigo" />
+                android:src="@drawable/estatistica" />
         </RelativeLayout>
 
         <!-- Posição [2,1] -->
@@ -51,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
-                android:background="#66BB6A"
+                android:background="#4CAF50"
                 android:onClick="onClickConfig"
                 android:paddingTop="110dp"
                 android:text="@string/configuracao"
@@ -88,7 +88,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
-                android:background="#00C853"
+                android:background="#F44336"
                 android:onClick="onClickPartida"
                 android:paddingTop="110dp"
                 android:text="@string/partida"
@@ -115,7 +115,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
-                android:background="#43A047"
+                android:background="#FFEB3B"
                 android:onClick="onClickTime"
                 android:text="@string/time"
                 android:paddingTop="110dp"
