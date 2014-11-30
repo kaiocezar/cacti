@@ -1,6 +1,5 @@
 package com.app.onlance;
 
-import Utils.UtilsConstants;
 import Utils.UtilsInformation;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
@@ -10,7 +9,6 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.widget.Toast;
 
 public class TimesPartidaActivity extends FragmentActivity implements
 		ActionBar.TabListener {
@@ -29,6 +27,7 @@ public class TimesPartidaActivity extends FragmentActivity implements
 		// Initilization
 		viewPager = (ViewPager) findViewById(R.id.pager);
 		actionBar = getActionBar();
+		actionBar.setTitle(R.string.amistoso_UPPER);
 		mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
 
 		viewPager.setAdapter(mAdapter);
@@ -77,21 +76,23 @@ public class TimesPartidaActivity extends FragmentActivity implements
 		// TODO Auto-generated method stub
 
 	}
-	
-	
-	public void proseguirConf(View view){
-		
-		JogadorFragment item1= (JogadorFragment) mAdapter.getItem(0);
-		TimeFragment item2= (TimeFragment) mAdapter.getItem(1);
-		
+
+	public void proseguirConf(View view) {
+
+		JogadorFragment item1 = (JogadorFragment) mAdapter.getItem(0);
+		TimeFragment item2 = (TimeFragment) mAdapter.getItem(1);
+
 		Intent intent = new Intent(this, DefinirTimesActivity.class);
-		
-		UtilsInformation.getInscace().setGol(item1.getSpinnerQuantGols().getSelectedItem().toString());
-		UtilsInformation.getInscace().setTime(item1.getSpinnerQuantTemp().getSelectedItem().toString());
-		UtilsInformation.getInscace().setPlay(item2.getSpinnerQuantJog().getSelectedItem().toString());
-		
+
+		UtilsInformation.getInscace().setGol(
+				item1.getSpinnerQuantGols().getSelectedItem().toString());
+		UtilsInformation.getInscace().setTime(
+				item1.getSpinnerQuantTemp().getSelectedItem().toString());
+		UtilsInformation.getInscace().setPlay(
+				item2.getSpinnerQuantJog().getSelectedItem().toString());
+
 		startActivity(intent);
 
 	}
-	
+
 }
