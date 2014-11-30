@@ -28,7 +28,7 @@
                 android:background="#2196F3"
                 android:paddingTop="110dp"
                 android:text="@string/estatistica"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textStyle="bold" />
 
             <ImageView
@@ -51,11 +51,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
-                android:background="#4CAF50"
+                android:background="#9C27B0"
                 android:onClick="onClickConfig"
                 android:paddingTop="110dp"
                 android:text="@string/configuracao"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textStyle="bold" />
 
             <ImageView
@@ -92,7 +92,7 @@
                 android:onClick="onClickPartida"
                 android:paddingTop="110dp"
                 android:text="@string/partida"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textStyle="bold" />
 
             <ImageView
@@ -119,7 +119,7 @@
                 android:onClick="onClickTime"
                 android:text="@string/time"
                 android:paddingTop="110dp"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textStyle="bold" />
             
             <ImageView
