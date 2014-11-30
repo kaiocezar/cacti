@@ -1,7 +1,18 @@
 package com.app.onlance;
 
+import java.util.List;
+
+import com.facebook.Request;
+import com.facebook.Response;
+import com.facebook.Session;
+import com.facebook.SessionState;
+import com.facebook.UiLifecycleHelper;
+import com.facebook.model.GraphUser;
+
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -12,33 +23,23 @@ public class Dashboard extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.dashboard);
+
 	}
 
-	public void onClickVenda(View v) {
-		trace("Venda");
+	public void onClickAmigo(View view) {
+		
 	}
 
-	public void onClickConsulta(View v) {
-		trace("Consulta");
+	public void onClickTime(View view) {
+
 	}
 
-	public void onClickConfig(View v) {
-		trace("Configurações");
+	public void onClickConfig(View view) {
+
 	}
 
-	public void onClickSobre(View v) {
-		trace("Sobre");
-	}
-
-	public void onClickHome(View v) {
-		trace("Home");
-	}
-
-	public void toast(String msg) {
-		Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
-	}
-
-	private void trace(String msg) {
-		toast(msg);
+	public void onClickPartida(View view) {
+		Intent intent = new Intent(this, ModoJogoActivity.class);
+		startActivity(intent);
 	}
 }

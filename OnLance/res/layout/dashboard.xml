@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/MainLayout"
-    android:layout_width="match_parent"
+    android:layout_width="fill_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal" >
 
@@ -21,9 +20,9 @@
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_weight="0.5"
-            android:onClick="onClickVenda"
-            android:text="Amigos"
-            android:background="@drawable/ShapeButtonDashboard" />
+            android:background="#66BB6A"
+            android:onClick="onClickAmigo"
+            android:text="Amigos" />
 
         <!-- Posição [2,1] -->
 
@@ -32,9 +31,9 @@
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_weight="0.5"
-            android:onClick="OnClick"
-            android:text="Configuração" 
-            android:background="@drawable/ShapeButtonDashboard"/>
+            android:background="#66BB6A"
+            android:onClick="onClickConfig"
+            android:text="Configuração" />
     </LinearLayout>
 
     <!-- Coluna 2 -->
@@ -53,9 +52,9 @@
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_weight="0.5"
-            android:onClick="OnClick"
-            android:text="Partida"
-            android:background="@drawable/ShapeButtonDashboard"/>
+            android:background="#66BB6A"
+            android:onClick="onClickPartida"
+            android:text="Partida" />
 
         <!-- Posição [2,2] -->
 
@@ -64,9 +63,9 @@
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_weight="0.5"
-            android:onClick="OnClick"
-            android:text="Time"
-            android:background="@drawable/ShapeButtonDashboard" />
+            android:background="#66BB6A"
+            android:onClick="onClickTime"
+            android:text="Time" />
     </LinearLayout>
 
 </LinearLayout>
