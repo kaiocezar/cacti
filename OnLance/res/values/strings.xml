@@ -62,5 +62,10 @@
     <string name="config">Config.</string>
     <string name="venda">Vendas</string>
     <string name="rodape">Mensagem de rodapé</string>
+    <string name="amigos">Amigos</string>
+    <string name="times">Times</string>
+    <string name="configuracao">Configurações</string>
+    <string name="partida">Partidas</string>
+    <string name="time">Times</string>
 
 </resources>
