@@ -33,7 +33,7 @@
     <style name="ActionBar.Solid.Example" parent="@android:style/Widget.Holo.Light.ActionBar.Solid">
 
         <!-- <item name="android:background">@drawable/imagem_action_bar</item> -->
-        <item name="android:background">#388E3C</item>
+        <item name="android:background">@drawable/shape_button_dashboard</item>
         <item name="android:titleTextStyle">@style/ActionBarTitle</item>
     </style>
 
