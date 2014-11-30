@@ -11,6 +11,7 @@ import com.facebook.Session;
 import Utils.UtilsInformation;
 import Utils.UtilsMetodos;
 import android.app.Activity;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.View;
@@ -62,15 +63,19 @@ public class PartidaActivity extends Activity {
 			limite = UtilsInformation.getInscace().getTime() +":00";
 		}
 		
-		jogadores1.add("Geyson");
-		jogadores1.add("Kaio");
-		jogadores1.add("Zé Carlos");
-		jogadores1.add("João Vitor");
+		List<JogadorForList> lista1 = UtilsInformation.getInscace().getTime1();
+		List<JogadorForList> lista2 = UtilsInformation.getInscace().getTime2();
+		
+		
+		for (JogadorForList jogadorForList : lista1) {
+			jogadores1.add(jogadorForList.getNome());
+		}
+		
+		
+		for (JogadorForList jogadorForList : lista2) {
+			jogadores2.add(jogadorForList.getNome());
+		}
 
-		jogadores2.add("Helton");
-		jogadores2.add("3xato");
-		jogadores2.add("Natan");
-		jogadores2.add("Tertius");
 
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, jogadores1);
@@ -105,6 +110,9 @@ public class PartidaActivity extends Activity {
 					cronometro.stop();
 					milliseconds = 0;
 					isStart = true;
+					MediaPlayer media = MediaPlayer.create(PartidaActivity.this.getApplicationContext(),
+							R.raw.apitodefutebol);
+					media.start();
 				}
 			}
 		});

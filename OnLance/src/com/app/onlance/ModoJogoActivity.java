@@ -13,9 +13,6 @@ public class ModoJogoActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.modo_jogo);
 
-		MediaPlayer media = MediaPlayer.create(this.getApplicationContext(),
-				R.raw.apitodefutebol);
-		media.start();
 	}
 
 	public void proximaTela(View view) {
