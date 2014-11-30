@@ -26,35 +26,18 @@
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
                 android:background="#00E676"
-                android:paddingTop="90dp"
-                android:text="Amigos"
+                android:paddingTop="110dp"
+                android:text="@string/amigos"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold" />
 
             <ImageView
-                android:id="@+id/main_icon_content_image_view"
+                android:id="@+id/amigos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:src="@drawable/friendship" />
+                android:src="@drawable/amigo" />
         </RelativeLayout>
-        <!--
-        <Button
-                android:id="@+id/Posicao11"
-                android:layout_width="fill_parent"
-                android:layout_height="0dp"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_weight="0.5"
-                android:background="#00E676"
-                android:drawableTop="@drawable/friendship"
-                android:gravity="center_vertical|center_horizontal"
-                android:onClick="onClickAmigo"
-                android:text="Amigos" 
-                android:layout_centerInParent="true"
-                android:paddingTop="90dp"/>
-        -->
-
 
         <!-- Posição [2,1] -->
 
@@ -70,8 +53,8 @@
                 android:layout_centerInParent="true"
                 android:background="#66BB6A"
                 android:onClick="onClickConfig"
-                android:paddingTop="90dp"
-                android:text="Configuração"
+                android:paddingTop="110dp"
+                android:text="@string/configuracao"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold" />
 
@@ -80,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:src="@drawable/friendship" />
+                android:src="@drawable/config" />
         </RelativeLayout>
     </LinearLayout>
 
@@ -107,8 +90,8 @@
                 android:layout_centerInParent="true"
                 android:background="#00C853"
                 android:onClick="onClickPartida"
-                android:paddingTop="90dp"
-                android:text="Partida"
+                android:paddingTop="110dp"
+                android:text="@string/partida"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold" />
 
@@ -117,7 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:src="@drawable/friendship" />
+                android:src="@drawable/partida" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -134,8 +117,8 @@
                 android:layout_centerInParent="true"
                 android:background="#43A047"
                 android:onClick="onClickTime"
-                android:text="Time"
-                android:paddingTop="90dp"
+                android:text="@string/time"
+                android:paddingTop="110dp"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold" />
             
@@ -144,7 +127,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:src="@drawable/friendship" />
+                android:src="@drawable/time" />
         </RelativeLayout>
     </LinearLayout>
 
