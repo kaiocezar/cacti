@@ -35,6 +35,7 @@
     <string name="por_tempo_hint">Escolha o tempo máximo em minutos!</string>
     <string name="senha">Senha</string>
     <string name="entrar">Entrar</string>
+    <string name="menu_principal_UPPER">MENU PRINCIPAL</string>
     <string name="entrar_UPPER">ENTRAR</string>
     <string name="esqueceu_senha">Esqueceu sua senha?</string>
     <string name="faca_cadastro">Faça seu cadastro!</string>
@@ -48,16 +49,13 @@
     <string name="time_fragment">Times</string>
     <string name="jogador_fragment">Jogadores</string>
     <string name="prosseguir_UPPER">PROSSEGUIR</string>
-	<string name="log_partida_UPPER">LOG DA PARTIDA</string>
-    <string name="time_fragment">Times</string><string name="jogador_fragment">Jogadores</string><string name="prosseguir_UPPER">PROSSEGUIR</string>
-    
-	<string name="hello">Hello World, DashBoardActivity!</string>
+    <string name="log_partida_UPPER">LOG DA PARTIDA</string>
+    <string name="hello">Hello World, DashBoardActivity!</string>
     <string name="home">Nome do seu programa</string>
     <string name="consulta">Consulta</string>
     <string name="sobre">Sobre</string>
     <string name="config">Config.</string>
     <string name="venda">Vendas</string>
-    <string name="rodape">Mensagem de rodapé</string>    
+    <string name="rodape">Mensagem de rodapé</string>
 
-    
 </resources>
