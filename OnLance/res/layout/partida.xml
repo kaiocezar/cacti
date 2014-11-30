@@ -6,20 +6,21 @@
     android:paddingRight="16dp" >
 
     <Chronometer
-        android:id="@+id/chronometer1"
+        android:id="@+id/chronometerPartida"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/placar1"
         android:layout_centerHorizontal="true"
-        android:textSize="40sp" />
+        android:textSize="40sp"
+        android:visibility="invisible" />
 
     <Button
-        android:id="@+id/button1"
-        android:layout_width="120dp"
-        android:layout_height="60dp"
-        android:layout_alignBottom="@+id/placar1"
+        android:id="@+id/playPartida"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_above="@+id/times"
         android:layout_centerHorizontal="true"
-        android:background="#00FFFFFF"
+        android:background="@drawable/ic_play_circle_fill_grey600_48dp"
         android:onClick="start" />
 
     <TextView
