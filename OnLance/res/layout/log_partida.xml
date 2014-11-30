@@ -20,24 +20,25 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="#9E9E9E"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp" />
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp" />
 
     <ListView
         android:id="@+id/listLog"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_weight="1"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp" >
+        android:background="@color/gray300"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp" >
     </ListView>
 
     <Button
         android:id="@+id/button1"
         android:layout_width="fill_parent"
         android:layout_height="70dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:background="@color/green"
         android:onClick="irParaMenuPrincipal"
         android:text="@string/menu_principal_UPPER"
