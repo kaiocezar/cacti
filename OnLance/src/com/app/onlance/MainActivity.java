@@ -34,6 +34,9 @@ public class MainActivity extends Activity {
 			onSessionStateChaged(session, state, exception);
 		}
 	};
+	
+	
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,14 +49,18 @@ public class MainActivity extends Activity {
 		uiHelper = new UiLifecycleHelper(this, callback);
 		uiHelper.onCreate(savedInstanceState);
 
-		if (UtilsMetodos.getInscace().isConectado()
-				&& UtilsMetodos.getInscace().validarUsuario(this)) {
-			proximaTelaEvent();
-		}
+		validarEntrada();
 
 		// if(savedInstanceState != null){
 		// reauth = savedInstanceState.getBoolean(KEY, false);
 		// }
+	}
+
+	private void validarEntrada() {
+		if (UtilsMetodos.getInscace().isConectado()
+				&& UtilsMetodos.getInscace().validarUsuario(this)) {
+			proximaTelaEvent();
+		}
 	}
 
 	@Override
@@ -64,6 +71,8 @@ public class MainActivity extends Activity {
 		if (session != null && (session.isOpened() || session.isClosed())) {
 			onSessionStateChaged(session, session.getState(), null);
 		}
+		
+		validarEntrada();
 
 		uiHelper.onResume();
 	}
