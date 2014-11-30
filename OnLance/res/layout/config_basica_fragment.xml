@@ -55,6 +55,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/hint2"
         android:layout_marginTop="15dp"
+        android:checked="true"
         android:text="@string/por_tempo"
         android:textSize="18sp" />
 

@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class TimeFragment extends Fragment {
+public class ConfigAvancadaFragment extends Fragment {
 
 	String[] quantJogadores = new String[] { "04", "05", "06", "07", "08", "09",
 			"10", "11", "12" };
