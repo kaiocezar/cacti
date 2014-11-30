@@ -21,15 +21,15 @@ import com.facebook.UiLifecycleHelper;
 import com.facebook.model.GraphUser;
 import com.facebook.widget.LoginButton;
 
-
 public class MainActivity extends Activity {
 
 	UiLifecycleHelper uiHelper;
-	
+
 	private Session.StatusCallback callback = new StatusCallback() {
 
 		@Override
-		public void call(Session session, SessionState state, Exception exception) {
+		public void call(Session session, SessionState state,
+				Exception exception) {
 
 			onSessionStateChaged(session, state, exception);
 		}
@@ -46,35 +46,34 @@ public class MainActivity extends Activity {
 		uiHelper = new UiLifecycleHelper(this, callback);
 		uiHelper.onCreate(savedInstanceState);
 
-		if(UtilsMetodos.getInscace().isConectado() && UtilsMetodos.getInscace().validarUsuario(this)){
+		if (UtilsMetodos.getInscace().isConectado()
+				&& UtilsMetodos.getInscace().validarUsuario(this)) {
 			proximaTelaEvent();
 		}
-		
-//		if(savedInstanceState != null){
-//			reauth = savedInstanceState.getBoolean(KEY, false);
-//		}
-	}
 
+		// if(savedInstanceState != null){
+		// reauth = savedInstanceState.getBoolean(KEY, false);
+		// }
+	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
 
 		Session session = Session.getActiveSession();
-		if(session != null && (session.isOpened() || session.isClosed())){
+		if (session != null && (session.isOpened() || session.isClosed())) {
 			onSessionStateChaged(session, session.getState(), null);
 		}
 
-
 		uiHelper.onResume();
 	}
-
 
 	@Override
 	protected void onPause() {
 		super.onPause();
 		uiHelper.onPause();
 	}
+
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
@@ -84,7 +83,7 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
-//		outState.putBoolean(KEY, reauth);
+		// outState.putBoolean(KEY, reauth);
 		uiHelper.onSaveInstanceState(outState);
 	}
 
@@ -94,19 +93,18 @@ public class MainActivity extends Activity {
 		uiHelper.onActivityResult(requestCode, resultCode, data);
 	}
 
+	public void onSessionStateChaged(final Session session, SessionState state,
+			Exception exception) {
 
+		if (session != null && session.isOpened()) {
 
-	public void onSessionStateChaged(final Session session, SessionState state, Exception exception){
-
-		if(session != null && session.isOpened()){
-			
 			Log.i("Script", "Usuario conectado");
 			Request.newMeRequest(session, new Request.GraphUserCallback() {
 
 				@Override
 				public void onCompleted(GraphUser user, Response response) {
 
-					if(user != null){
+					if (user != null) {
 						Log.i("Script", "Nome" + user.getName());
 						Log.i("Script", "NomeFirst" + user.getFirstName());
 						Log.i("Script", "Email" + user.getProperty("email"));
@@ -118,42 +116,44 @@ public class MainActivity extends Activity {
 				}
 			}).executeAsync();
 
-		}else{
+		} else {
 			Log.i("Script", "Usuario Não conectado");
 		}
 
 	}
 
-	public void getMyFriends(Session session){
-		Request.newMyFriendsRequest(session, new Request.GraphUserListCallback() {
+	public void getMyFriends(Session session) {
+		Request.newMyFriendsRequest(session,
+				new Request.GraphUserListCallback() {
 
-			@Override
-			public void onCompleted(List<GraphUser> users, Response response) {
-				if(users != null){
-					Log.i("Script", "NUmero de amigos" + users.size());
-				}
+					@Override
+					public void onCompleted(List<GraphUser> users,
+							Response response) {
+						if (users != null) {
+							Log.i("Script", "NUmero de amigos" + users.size());
+						}
 
-				Log.i("Script", "Response" + response);
-			}
-		}).executeAsync();
+						Log.i("Script", "Response" + response);
+					}
+				}).executeAsync();
 	}
 
-	public void proximaTela(View view){
-		
-//		shareContent();
-		
+	public void proximaTela(View view) {
+
+		// shareContent();
+
 		proximaTelaEvent();
 	}
 
-	public void proximaTelaEvent(){
-		Intent intent =  new Intent(this, ModoJogoActivity.class);
+	public void proximaTelaEvent() {
+		Intent intent = new Intent(this, Dashboard.class);
 
 		startActivity(intent);
 	}
 
-
-	public void shareContent(){
-		if(UtilsMetodos.getInscace().isConectado() && UtilsMetodos.getInscace().validarUsuario(this)){
+	public void shareContent() {
+		if (UtilsMetodos.getInscace().isConectado()
+				&& UtilsMetodos.getInscace().validarUsuario(this)) {
 
 			Session session = Session.getActiveSession();
 			Bundle paramns = new Bundle();
@@ -161,29 +161,28 @@ public class MainActivity extends Activity {
 			paramns.putString("caption", "Teste SubTitulo");
 			paramns.putString("description", "Teste descrição");
 			paramns.putString("link", "http://google.com.br");
-			paramns.putString("picture", "http://www.informatoz.com/imagens/ico_cobertura/bola.png");
-
+			paramns.putString("picture",
+					"http://www.informatoz.com/imagens/ico_cobertura/bola.png");
 
 			Request.Callback call = new Request.Callback() {
 
 				@Override
 				public void onCompleted(Response response) {
-					if(response.getError() == null){
-						Toast.makeText(MainActivity.this, "Sucesso", Toast.LENGTH_LONG).show();
-					}else{
-						Toast.makeText(MainActivity.this, "Falha", Toast.LENGTH_LONG).show();
+					if (response.getError() == null) {
+						Toast.makeText(MainActivity.this, "Sucesso",
+								Toast.LENGTH_LONG).show();
+					} else {
+						Toast.makeText(MainActivity.this, "Falha",
+								Toast.LENGTH_LONG).show();
 					}
 				}
 			};
 
-			Request re = new Request(session,"/me/feed",paramns,HttpMethod.POST,call);
+			Request re = new Request(session, "/me/feed", paramns,
+					HttpMethod.POST, call);
 			re.executeAsync();
 		}
 
 	}
-
-
-	
-	
 
 }
