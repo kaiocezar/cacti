@@ -28,22 +28,22 @@ import android.widget.Toast;
 
 public class PartidaActivity extends Activity {
 	private static String limite = "00:20";
-
+	
 	private ActionBar actionBar;
-
+	
 	Chronometer cronometro;
 	private long milliseconds;
 	private boolean isStart;
 	private boolean isGol = false;
-
+	
 	List<String> jogadores1;
 	List<String> jogadores2;
-	ListView listViewJogadores1;
-	ListView listViewJogadores2;
-
+	ListView listViewJogadores1; 
+	ListView listViewJogadores2; 
+	
 	TextView placar1;
 	TextView placar2;
-
+	
 	Button gol;
 
 	@Override
@@ -57,18 +57,18 @@ public class PartidaActivity extends Activity {
 		init();
 		bind();
 	}
-
-	public void init() {
-
+	
+	public void init(){
+		
 		jogadores1 = new ArrayList<String>();
 		jogadores2 = new ArrayList<String>();
 		milliseconds = 0;
 		isStart = true;
-
-		if (UtilsInformation.getInscace().getTime() != null) {
-			limite = UtilsInformation.getInscace().getTime() + ":00";
+		
+		if(UtilsInformation.getInscace().getTime() != null){
+			limite = UtilsInformation.getInscace().getTime() +":00";
 		}
-
+		
 		List<JogadorForList> lista1 = UtilsInformation.getInscace().getTime1();
 		List<JogadorForList> lista2 = UtilsInformation.getInscace().getTime2();
 		
@@ -93,104 +93,132 @@ public class PartidaActivity extends Activity {
 
 		listViewJogadores1.setAdapter(adapter);
 		listViewJogadores2.setAdapter(adapter2);
-
+		
 		cronometro = (Chronometer) findViewById(R.id.chronometer1);
 		gol = (Button) findViewById(R.id.gol);
 		placar1 = (TextView) findViewById(R.id.placar1);
 		placar2 = (TextView) findViewById(R.id.placar2);
 	}
-
-	public void bind() {
-
+	
+	
+	public void bind(){
+		
 		cronometro
 				.setOnChronometerTickListener(new OnChronometerTickListener() {
 
-					@Override
-					public void onChronometerTick(Chronometer arg0) {
+			@Override
+			public void onChronometerTick(Chronometer arg0) {
 
-						String valorCronometro = arg0.getText().toString();
-						if (valorCronometro.equals(limite)) {
-							Toast.makeText(PartidaActivity.this, "fim",
-									Toast.LENGTH_LONG).show();
-							cronometro.stop();
-							milliseconds = 0;
-							isStart = true;
-					MediaPlayer media = MediaPlayer.create(PartidaActivity.this.getApplicationContext(),
-							R.raw.apitodefutebol);
-					media.start();
-						}
-					}
-				});
+				String valorCronometro = arg0.getText().toString();
+				if (valorCronometro.equals(limite) || isFinishFromGol()) {
+					fim();
+				}
+			}
 
+		});
+		
+		
+		
 		listViewJogadores1.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
-
-				if (isGol) {
+				
+				if(isGol){
 					Integer gol = Integer
 							.parseInt(placar1.getText().toString());
 					gol++;
 					placar1.setText(gol.toString());
 					modificarGol();
-
+					
 					shareContent(jogadores1.get(arg2));
+					fim();
 				}
-
+				
 			}
 		});
-
+		
 		listViewJogadores2.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
-
-				if (isGol) {
+				
+				if(isGol){
 					Integer gol = Integer
 							.parseInt(placar2.getText().toString());
 					gol++;
 					placar2.setText(gol.toString());
 					modificarGol();
 					shareContent(jogadores2.get(arg2));
+					fim();
 				}
-
+				
 			}
 		});
-
+		
+		
 	}
-
-	public void clickGol(View view) {
+	
+	private void fim() {
+		
+		Utils.UtilsMetodos.getInscace().toast(PartidaActivity.this, "fim");
+		cronometro.stop();
+		milliseconds = 0;
+		isStart = true;
+		MediaPlayer media = MediaPlayer.create(PartidaActivity.this.getApplicationContext(),
+				R.raw.apitodefutebol);
+		media.start();
+	}
+	
+	private boolean isFinishFromGol() {
+		
+		boolean retono = false;
+		int gol = Integer.parseInt(UtilsInformation.getInscace().getGol());
+		int placarTime1 = Integer.parseInt(placar1.getText().toString());
+		int placarTime2 = Integer.parseInt(placar2.getText().toString());
+		
+		
+		if(gol == placarTime1 || gol == placarTime2 ){
+			retono = true;
+		}
+		
+		
+		return retono;
+	}
+	
+	public void clickGol(View view){
 		modificarGol();
 	}
-
-	public void modificarGol() {
-		if (isGol) {
+	
+	public void modificarGol(){
+		if(isGol){
 			gol.setBackgroundResource(R.drawable.gol);
 			isGol = false;
-		} else {
+		}else{
 			Toast.makeText(this, "Selecione o jogador que marcou o GOL",
 					Toast.LENGTH_SHORT).show();
 			gol.setBackgroundResource(R.drawable.gol_ativo);
 			isGol = true;
 		}
-
+		
 	}
 
 	public void start(View view) {
-		if (isStart) {
+		if(isStart){
 			cronometro.setBase(SystemClock.elapsedRealtime() - milliseconds);
 			cronometro.start();
 			isStart = false;
-		} else {
-			milliseconds = SystemClock.elapsedRealtime() - cronometro.getBase();
-			cronometro.stop();
-			isStart = true;
+		}else{
+			 milliseconds = SystemClock.elapsedRealtime() -cronometro.getBase();
+			 cronometro.stop();
+			 isStart = true;
 		}
 	}
-
-	public void shareContent(String nome) {
+	
+	
+	public void shareContent(String nome){
 		if (UtilsMetodos.getInscace().isConectado()
 				&& UtilsMetodos.getInscace().validarUsuario(this)) {
 
@@ -208,10 +236,10 @@ public class PartidaActivity extends Activity {
 
 				@Override
 				public void onCompleted(Response response) {
-					if (response.getError() == null) {
+					if(response.getError() == null){
 						Toast.makeText(PartidaActivity.this, "Sucesso",
 								Toast.LENGTH_LONG).show();
-					} else {
+					}else{
 						Toast.makeText(PartidaActivity.this, "Falha",
 								Toast.LENGTH_LONG).show();
 					}
