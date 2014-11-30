@@ -12,6 +12,7 @@
     <string name="copa">Copa</string>
     <string name="copa_UPPER">COPA</string>
     <string name="selecao_times">Seleção de Times</string>
+    <string name="selecao_jogadores_UPPER">SELEÇÃO DE JOGADORES</string>
     <string name="por_equipe">Por Equipe</string>
     <string name="por_equipe_hint">Não esqueça, goleiro também é um jogador!</string>
     <string name="amistoso">Amistoso</string>
@@ -27,6 +28,7 @@
     <string name="placar_0">0</string>
     <string name="plus">+</string>
     <string name="ou">ou</string>
+    <string name="partida_UPPER">PARTIDA</string>
     <string name="por_gol">Por Gol</string>
     <string name="por_gol_hint">Vence quem fizer o(s) gol(s) primeiro!</string>
     <string name="por_tempo">Por Tempo</string>
@@ -43,6 +45,10 @@
     <string name="compartilhamento_UPPER">COMPARTILHAMENTO</string>
     <string name="prosseguir">Prosseguir</string>
     <string name="facebook_app_id">300591123482638</string>
+    <string name="time_fragment">Times</string>
+    <string name="jogador_fragment">Jogadores</string>
+    <string name="prosseguir_UPPER">PROSSEGUIR</string>
+	<string name="log_partida_UPPER">LOG DA PARTIDA</string>
     <string name="time_fragment">Times</string><string name="jogador_fragment">Jogadores</string><string name="prosseguir_UPPER">PROSSEGUIR</string>
     
 	<string name="hello">Hello World, DashBoardActivity!</string>
@@ -53,4 +59,5 @@
     <string name="venda">Vendas</string>
     <string name="rodape">Mensagem de rodapé</string>    
 
+    
 </resources>
