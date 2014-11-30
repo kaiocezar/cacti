@@ -45,6 +45,11 @@ public class DefinirTimesActivity extends Activity {
 
 	}
 
+	public void showLog(View view) {
+		Intent intent = new Intent(this, LogActivity.class);
+		startActivity(intent);
+	}
+
 	public void carregarListJogadores() {
 
 		if (jogadores.size() == 0) {
