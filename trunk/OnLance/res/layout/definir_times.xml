@@ -26,7 +26,6 @@
         android:text="@string/plus"
         android:textColor="#FFFFFF"
         android:textSize="25sp"
-        android:onClick="showLog"
         android:textStyle="bold" />
 
     <Button

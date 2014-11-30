@@ -76,14 +76,14 @@ public class DefinirTimesActivity extends Activity {
 
 				JogadorForList joga = jogadores.get(arg2);
 				if (joga.getTipoTela().equals("0")) {
-					lay.setBackgroundColor(Color.parseColor("#F44336")); // red
+					lay.setBackgroundColor(Color.parseColor("#EF9A9A")); // red
 					joga.setTipoTela("1");
 
 				} else if (joga.getTipoTela().equals("1")) {
-					lay.setBackgroundColor(Color.parseColor("#2196F3")); // blue
+					lay.setBackgroundColor(Color.parseColor("#90CAF9")); // blue
 					joga.setTipoTela("2");
 				} else {
-					lay.setBackgroundColor(Color.parseColor("#9E9E9E")); // gray
+					lay.setBackgroundColor(Color.parseColor("#BDBDBD")); // gray
 					joga.setTipoTela("0");
 				}
 
@@ -163,7 +163,7 @@ public class DefinirTimesActivity extends Activity {
 		}
 
 		if (quatTime1 != quatTime2) {
-			UtilsMetodos.getInscace().toast(this, "O time não esta balanciado");
+			UtilsMetodos.getInscace().toast(this, "O time não está balanceado");
 			retorno = false;
 		}
 
