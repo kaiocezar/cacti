@@ -73,8 +73,8 @@ public class UtilsMetodos {
 		return retorno;
 	}
 	
-	public void toast(Context context,String valor){
-		Toast.makeText(context,valor,Toast.LENGTH_LONG);
+	public void toast(final Context context,final String valor){
+		Toast.makeText(context,valor,Toast.LENGTH_LONG).show();;
 	}
  
 

@@ -25,6 +25,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class DefinirTimesActivity extends Activity {
 
@@ -38,15 +39,15 @@ public class DefinirTimesActivity extends Activity {
 		jogadores = new ArrayList<JogadorForList>();
 
 		carregarListJogadores();
-		// if(UtilsMetodos.getInscace().isConectado()){
-		// getMyFriends(Session.getActiveSession());
-		// }
+		//		if(UtilsMetodos.getInscace().isConectado()){
+		//			getMyFriends(Session.getActiveSession());
+		//		}
 
 	}
 
-	public void carregarListJogadores() {
+	public void carregarListJogadores(){
 
-		if (jogadores.size() == 0) {
+		if(jogadores.size() == 0){
 			for (int i = 0; i < 20; i++) {
 				JogadorForList mapa = new JogadorForList();
 				mapa.setNome("kaio" + i);
@@ -75,7 +76,7 @@ public class DefinirTimesActivity extends Activity {
 					joga.setTipoTela("1");
 
 				} else if (joga.getTipoTela().equals("1")) {
-					lay.setBackgroundColor(Color.parseColor("#2196F3")); // blue
+					lay.setBackgroundColor(Color.parseColor("#2196F3")); //blue
 					joga.setTipoTela("2");
 				} else {
 					lay.setBackgroundColor(Color.parseColor("#9E9E9E")); // gray
@@ -86,47 +87,62 @@ public class DefinirTimesActivity extends Activity {
 		});
 	}
 
-	public void prosseguir(View view) {
+	public void prosseguir(View view){
 
-		if (validarTime()) {
+		if(validarTime()){
 
-			Intent intent = new Intent(this, PartidaActivity.class);
-
-			startActivity(intent);
+		Intent intent = new Intent(this, PartidaActivity.class);
+		UtilsInformation.getInscace().cleanListAll();
+		extractTime();
+		startActivity(intent);
 		}
 	}
 
-	private boolean validarTime() {
+	private void extractTime() {
+		for (JogadorForList jogador : jogadores) {
+
+			if(jogador.getTipoTela().equals("1")){
+				UtilsInformation.getInscace().addTime1(jogador);
+			}else if(jogador.getTipoTela().equals("2")){
+				UtilsInformation.getInscace().addTime2(jogador);
+			} 
+		}
+		
+	}
+
+	private boolean  validarTime() {
 
 		return jogadores.size() > 0 && isJoogadoresValid()
 				&& isQuantTimeValid();
-
+		
 	}
-
-	private boolean isQuantTimeValid() {
+	
+	private boolean isQuantTimeValid(){
 		boolean retorno = true;
-
-		int quantTime = Integer.parseInt(UtilsInformation.getInscace()
-				.getTime());
+		
+		int quantJogTime = Integer.parseInt(UtilsInformation.getInscace()
+				.getPlay());
 		int quantTimeValido = 0;
-
-		for (JogadorForList jogador : jogadores) {
-			if (jogador.getTipoTela().equals("1")) {
+		
+		for(JogadorForList jogador : jogadores) {
+			if(jogador.getTipoTela().equals("1")){
 				quantTimeValido++;
 			}
 		}
-
-		if (quantTimeValido != quantTime) {
+		
+		
+		if(quantTimeValido != quantJogTime){
+			
 			UtilsMetodos
 					.getInscace()
 					.toast(this,
 							"A quantidade de jogadores difere da quantidade configurada");
 			retorno = false;
 		}
-
+		
+		
 		return retorno;
 	}
-
 	private boolean isJoogadoresValid() {
 
 		boolean retorno = true;
@@ -134,50 +150,48 @@ public class DefinirTimesActivity extends Activity {
 		int quatTime1 = 0;
 		int quatTime2 = 0;
 
-		if (jogadores.size() > 0) {
 			for (JogadorForList jogador : jogadores) {
 
-				if (jogador.getTipoTela().equals("1")) {
+				if(jogador.getTipoTela().equals("1")){
 					quatTime1++;
-				} else if (jogador.getTipoTela().equals("2")) {
+				}else if(jogador.getTipoTela().equals("2")){
 					quatTime2++;
-				}
+				} 
 			}
 
-			if (quatTime1 != quatTime2) {
+			if(quatTime1 != quatTime2){
 				UtilsMetodos.getInscace().toast(this,
 						"O time não esta balanciado");
 				retorno = false;
 			}
-		}
 
 		return retorno;
 	}
 
-	public void getMyFriends(Session session) {
+	public void getMyFriends(Session session){
 		Request.newMyFriendsRequest(session,
 				new Request.GraphUserListCallback() {
 
-					@Override
+			@Override
 					public void onCompleted(List<GraphUser> users,
 							Response response) {
 						if (response.getError() == null & users != null
 								&& users.size() > 0) {
-							Log.i("Script", "NUmero de amigos " + users.size());
+					Log.i("Script", "NUmero de amigos " + users.size());
 
-							for (GraphUser amigos : users) {
+					for(GraphUser amigos: users){
 
-								JogadorForList mapa = new JogadorForList();
-								mapa.setNome(amigos.getName());
-								mapa.setTipoTela("0");
-								jogadores.add(mapa);
-							}
-
-						}
-
-						Log.i("Script", "Response" + response);
+						JogadorForList mapa = new JogadorForList();
+						mapa.setNome(amigos.getName());
+						mapa.setTipoTela("0");
+						jogadores.add(mapa);
 					}
-				}).executeAsync();
+
+				}
+
+				Log.i("Script", "Response" + response);
+			}
+		}).executeAsync();
 	}
 
 }
