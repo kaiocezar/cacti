@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp" >
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="SOBRE"
+        android:textColor="#9E9E9E"
+        android:textSize="18sp" />
+
+    <View
+        android:id="@+id/firstDivider"
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@+id/textView2"
+        android:background="#9E9E9E" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/firstDivider"
+        android:layout_marginTop="10dp"
+        android:text="Versão"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/hint1"
+        android:layout_width="264dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView1"
+        android:text="0.7.0.44"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/hint1"
+        android:layout_marginTop="10dp"
+        android:text="Desenvolvimento"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/hint2"
+        android:layout_width="264dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView3"
+        android:text="Criado em 2 dias de CodeCup!"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/configOutros"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/hint2"
+        android:layout_marginTop="20dp"
+        android:text="OUTROS"
+        android:textColor="#9E9E9E"
+        android:textSize="18sp" />
+
+    <View
+        android:id="@+id/secondDivider"
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@+id/configOutros"
+        android:background="#9E9E9E" />
+
+    <TextView
+        android:id="@+id/configSair"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/secondDivider"
+        android:layout_marginTop="10dp"
+        android:text="Sair"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/hint3"
+        android:layout_width="264dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/configSair"
+        android:text="Vá, mas volte!"
+        android:textSize="14sp" />
+
+</RelativeLayout>
