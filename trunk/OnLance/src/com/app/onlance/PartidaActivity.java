@@ -176,7 +176,7 @@ public class PartidaActivity extends Activity implements OnItemClickListener,
 					modificarGol();
 					historicoGol(jogadores2.get(arg2), UtilsConstants.TIME2);
 					shareContent(jogadores2.get(arg2));
-					fim();
+					isFinishFromGol();
 				}
 
 			}
