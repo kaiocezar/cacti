@@ -230,7 +230,9 @@ public class PartidaActivity extends Activity implements OnItemClickListener, On
 	}
 	
 	public void clickGol(View view){
+		if(!isStart){
 		modificarGol();
+		}
 	}
 	
 	public void modificarGol(){
