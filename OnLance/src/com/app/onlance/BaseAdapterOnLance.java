@@ -57,11 +57,11 @@ public class BaseAdapterOnLance extends BaseAdapter {
 		LinearLayout lay = (LinearLayout) viewLine.findViewById(R.id.content);
 
 		if (jogador.getTipoTela().equals("0")) {
-			lay.setBackgroundColor(Color.parseColor("#9E9E9E")); // gray
+			lay.setBackgroundColor(Color.parseColor("#BDBDBD")); // gray
 		} else if (jogador.getTipoTela().equals("1")) {
-			lay.setBackgroundColor(Color.parseColor("#F44336")); // red
+			lay.setBackgroundColor(Color.parseColor("#EF9A9A")); // red
 		} else {
-			lay.setBackgroundColor(Color.parseColor("#2196F3")); // blue
+			lay.setBackgroundColor(Color.parseColor("#90CAF9")); // blue
 		}
 		return viewLine;
 	}
