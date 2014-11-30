@@ -9,6 +9,7 @@ import com.facebook.Session;
 import com.facebook.model.GraphUser;
 
 import Utils.UtilsConstants;
+import Utils.UtilsInformation;
 import Utils.UtilsMetodos;
 import android.app.Activity;
 import android.content.Intent;
@@ -28,7 +29,6 @@ import android.widget.TextView;
 public class DefinirTimesActivity extends Activity {
 
 	List<JogadorForList> jogadores;
-	Bundle savedInstanceState;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,19 +36,16 @@ public class DefinirTimesActivity extends Activity {
 		setContentView(R.layout.definir_times);
 
 		jogadores = new ArrayList<JogadorForList>();
-		
-		
-		this.savedInstanceState = getIntent().getExtras();
-		
-		
-		if(UtilsMetodos.getInscace().isConectado()){
-			getMyFriends(Session.getActiveSession());
-		}
+
+		carregarListJogadores();
+		//		if(UtilsMetodos.getInscace().isConectado()){
+		//			getMyFriends(Session.getActiveSession());
+		//		}
 
 	}
-	
+
 	public void carregarListJogadores(){
-		
+
 		if(jogadores.size() == 0){
 			for (int i = 0; i < 20; i++) {
 				JogadorForList mapa = new JogadorForList();
@@ -68,10 +65,9 @@ public class DefinirTimesActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
-				
 				LinearLayout lay = (LinearLayout) arg1.findViewById(R.id.content);
 				TextView text = (TextView) arg1.findViewById(R.id.textPartida);
-				
+
 				JogadorForList joga = jogadores.get(arg2);
 				if (joga.getTipoTela().equals("0")) {
 					lay.setBackgroundColor(Color.parseColor("#FF9800")); //orange
@@ -89,18 +85,68 @@ public class DefinirTimesActivity extends Activity {
 		});
 	}
 
-
 	public void prosseguir(View view){
 
+		if(validarTime()){
+
 		Intent intent = new Intent(this, PartidaActivity.class);
+
+		startActivity(intent);
+		}
+	}
+
+	private boolean  validarTime() {
+
+		return jogadores.size() > 0 && isJoogadoresValid() && isQuantTimeValid();
 		
-		if(savedInstanceState !=null){
-			intent.putExtras(savedInstanceState);
+	}
+	
+	private boolean isQuantTimeValid(){
+		boolean retorno = true;
+		
+		
+		int quantTime = Integer.parseInt(UtilsInformation.getInscace().getTime());
+		int quantTimeValido = 0;
+		
+		for(JogadorForList jogador : jogadores) {
+			if(jogador.getTipoTela().equals("1")){
+				quantTimeValido++;
+			}
 		}
 		
-		startActivity(intent);
+		
+		if(quantTimeValido != quantTime){
+			UtilsMetodos.getInscace().toast(this, "A quantidade de jogadores difere da quantidade configurada");
+			retorno = false;
+		}
+		
+		
+		return retorno;
+	}
+	private boolean isJoogadoresValid() {
 
+		boolean retorno = true;
 
+		int quatTime1 = 0;
+		int quatTime2 = 0;
+
+		if(jogadores.size() > 0){
+			for (JogadorForList jogador : jogadores) {
+
+				if(jogador.getTipoTela().equals("1")){
+					quatTime1++;
+				}else if(jogador.getTipoTela().equals("2")){
+					quatTime2++;
+				} 
+			}
+
+			if(quatTime1 != quatTime2){
+				UtilsMetodos.getInscace().toast(this, "O time não esta balanciado");
+				retorno = false;
+			}
+		}
+
+		return retorno;
 	}
 
 	public void getMyFriends(Session session){
@@ -110,16 +156,15 @@ public class DefinirTimesActivity extends Activity {
 			public void onCompleted(List<GraphUser> users, Response response) {
 				if(response.getError() == null & users != null && users.size() > 0){
 					Log.i("Script", "NUmero de amigos " + users.size());
-					
+
 					for(GraphUser amigos: users){
-						
+
 						JogadorForList mapa = new JogadorForList();
 						mapa.setNome(amigos.getName());
 						mapa.setTipoTela("0");
 						jogadores.add(mapa);
 					}
-					carregarListJogadores();
-					
+
 				}
 
 				Log.i("Script", "Response" + response);
