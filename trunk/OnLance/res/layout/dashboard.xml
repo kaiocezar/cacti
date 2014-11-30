@@ -15,25 +15,73 @@
 
         <!-- Posição [1,1] -->
 
-        <Button
-            android:id="@+id/Posicao11"
+        <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5"
-            android:background="#66BB6A"
-            android:onClick="onClickAmigo"
-            android:text="Amigos" />
+            android:layout_height="fill_parent"
+            android:layout_weight="1" >
+
+            <Button
+                android:id="@+id/posicao11"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:background="#00E676"
+                android:paddingTop="90dp"
+                android:text="Amigos"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/main_icon_content_image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/friendship" />
+        </RelativeLayout>
+        <!--
+        <Button
+                android:id="@+id/Posicao11"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_weight="0.5"
+                android:background="#00E676"
+                android:drawableTop="@drawable/friendship"
+                android:gravity="center_vertical|center_horizontal"
+                android:onClick="onClickAmigo"
+                android:text="Amigos" 
+                android:layout_centerInParent="true"
+                android:paddingTop="90dp"/>
+        -->
+
 
         <!-- Posição [2,1] -->
 
-        <Button
-            android:id="@+id/Posicao21"
+        <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5"
-            android:background="#66BB6A"
-            android:onClick="onClickConfig"
-            android:text="Configuração" />
+            android:layout_height="fill_parent"
+            android:layout_weight="1" >
+
+            <Button
+                android:id="@+id/Posicao21"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:background="#66BB6A"
+                android:onClick="onClickConfig"
+                android:paddingTop="90dp"
+                android:text="Configuração"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/ConfigImg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/friendship" />
+        </RelativeLayout>
     </LinearLayout>
 
     <!-- Coluna 2 -->
@@ -47,25 +95,57 @@
 
         <!-- Posição [1,2] -->
 
-        <Button
-            android:id="@+id/Posicao12"
+        <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5"
-            android:background="#66BB6A"
-            android:onClick="onClickPartida"
-            android:text="Partida" />
+            android:layout_height="fill_parent"
+            android:layout_weight="1" >
 
-        <!-- Posição [2,2] -->
+            <Button
+                android:id="@+id/Posicao12"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:background="#00C853"
+                android:onClick="onClickPartida"
+                android:paddingTop="90dp"
+                android:text="Partida"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/Posicao22"
+            <ImageView
+                android:id="@+id/Partida"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/friendship" />
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5"
-            android:background="#66BB6A"
-            android:onClick="onClickTime"
-            android:text="Time" />
+            android:layout_height="fill_parent"
+            android:layout_weight="1" >
+
+            <!-- Posição [2,2] -->
+
+            <Button
+                android:id="@+id/Posicao22"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:background="#43A047"
+                android:onClick="onClickTime"
+                android:text="Time"
+                android:paddingTop="90dp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
+            
+            <ImageView
+                android:id="@+id/Time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/friendship" />
+        </RelativeLayout>
     </LinearLayout>
 
 </LinearLayout>
