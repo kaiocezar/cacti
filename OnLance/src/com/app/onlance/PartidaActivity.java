@@ -12,12 +12,16 @@ import Utils.UtilsInformation;
 import Utils.UtilsMetodos;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Chronometer;
@@ -26,7 +30,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class PartidaActivity extends Activity {
+public class PartidaActivity extends Activity implements OnItemClickListener, OnClickListener{
 	private static String limite = "00:20";
 	
 	private ActionBar actionBar;
@@ -35,6 +39,7 @@ public class PartidaActivity extends Activity {
 	private long milliseconds;
 	private boolean isStart;
 	private boolean isGol = false;
+	
 	
 	List<String> jogadores1;
 	List<String> jogadores2;
@@ -45,6 +50,7 @@ public class PartidaActivity extends Activity {
 	TextView placar2;
 	
 	Button gol;
+	private AlertDialog alertDialog;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,13 +59,13 @@ public class PartidaActivity extends Activity {
 
 		actionBar = getActionBar();
 		actionBar.setTitle(R.string.partida_UPPER);
-
+		
 		init();
 		bind();
 	}
 	
 	public void init(){
-		
+		this.alertDialog = criaAlertDialog();
 		jogadores1 = new ArrayList<String>();
 		jogadores2 = new ArrayList<String>();
 		milliseconds = 0;
@@ -139,6 +145,19 @@ public class PartidaActivity extends Activity {
 			}
 		});
 		
+		listViewJogadores1.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+			@Override
+			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+					int arg2, long arg3) {
+				
+				alertDialog.show();
+				return false;
+			}
+			
+			
+		});
+		
 		listViewJogadores2.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -158,7 +177,29 @@ public class PartidaActivity extends Activity {
 			}
 		});
 		
+		listViewJogadores2.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+			@Override
+			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+					int arg2, long arg3) {
+				
+				alertDialog.show();
+				return false;
+			}
+			
+			
+		});
 		
+	}
+	
+	private AlertDialog criaAlertDialog() {
+		final CharSequence[] items = 
+			{ getString(R.string.cartao_amarelo), 
+				getString(R.string.cartao_vermelho)};
+		
+	AlertDialog.Builder builder = new AlertDialog.Builder(this); 
+	builder.setTitle(R.string.opcoes); builder.setItems(items, this);
+	return builder.create();
 	}
 	
 	private void fim() {
@@ -251,5 +292,18 @@ public class PartidaActivity extends Activity {
 			re.executeAsync();
 		}
 
+	}
+
+	@Override
+	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onClick(DialogInterface arg0, int arg1) {
+		
+		
+		
 	}
 }

@@ -10,6 +10,9 @@
     <string name="campeonato_UPPER">CAMPEONATO</string>
     <string name="configuracao_partida">Configuração da Partida</string>
     <string name="copa">Copa</string>
+    <string name="opcoes">Opções</string>
+    <string name="cartao_vermelho">Cartão Vermelho</string>
+    <string name="cartao_amarelo">Cartão Amarelo</string>
     <string name="gols_default">02</string>
     <string name="tempo_default">10</string>
     <string name="copa_UPPER">COPA</string>
