@@ -6,8 +6,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 public class TabsPagerAdapter extends FragmentPagerAdapter {
 
-	JogadorFragment jogarFrag;
-	TimeFragment timeFrag;
+	ConfigBasicaFragment jogarFrag;
+	ConfigAvancadaFragment timeFrag;
 	
 	public TabsPagerAdapter(FragmentManager fm) {
 		super(fm);
@@ -20,14 +20,14 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
 		case 0:
 			
 			if(jogarFrag == null){
-				jogarFrag = new JogadorFragment();
+				jogarFrag = new ConfigBasicaFragment();
 			}
 			
 			return jogarFrag;
 		case 1:
 			
 			if(timeFrag == null){
-				timeFrag = new TimeFragment();
+				timeFrag = new ConfigAvancadaFragment();
 			}
 			
 			return timeFrag;

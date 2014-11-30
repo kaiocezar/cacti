@@ -79,8 +79,8 @@ public class TimesPartidaActivity extends FragmentActivity implements
 
 	public void proseguirConf(View view) {
 
-		JogadorFragment item1 = (JogadorFragment) mAdapter.getItem(0);
-		TimeFragment item2 = (TimeFragment) mAdapter.getItem(1);
+		ConfigBasicaFragment item1 = (ConfigBasicaFragment) mAdapter.getItem(0);
+		ConfigAvancadaFragment item2 = (ConfigAvancadaFragment) mAdapter.getItem(1);
 
 		Intent intent = new Intent(this, DefinirTimesActivity.class);
 
