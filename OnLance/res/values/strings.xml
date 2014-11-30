@@ -10,6 +10,8 @@
     <string name="campeonato_UPPER">CAMPEONATO</string>
     <string name="configuracao_partida">Configuração da Partida</string>
     <string name="copa">Copa</string>
+    <string name="gols_default">02</string>
+    <string name="tempo_default">10</string>
     <string name="copa_UPPER">COPA</string>
     <string name="selecao_times">Seleção de Times</string>
     <string name="selecao_jogadores_UPPER">SELEÇÃO DE JOGADORES</string>
