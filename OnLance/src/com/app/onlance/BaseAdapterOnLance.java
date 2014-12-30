@@ -2,12 +2,15 @@ package com.app.onlance;
 
 import java.util.List;
 
+import Utils.UtilsMetodos;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -40,7 +43,7 @@ public class BaseAdapterOnLance extends BaseAdapter {
 	@Override
 	public View getView(int position, View view, ViewGroup viewGrup) {
 
-		JogadorForList jogador = jogadores.get(position);
+		final JogadorForList jogador = jogadores.get(position);
 		View viewLine;
 		if (view == null) {
 			LayoutInflater inflate = (LayoutInflater) contexto
@@ -53,8 +56,32 @@ public class BaseAdapterOnLance extends BaseAdapter {
 
 		TextView text = (TextView) viewLine.findViewById(R.id.textPartida);
 		text.setText(jogador.getNome());
+		
+		ImageView img1 = (ImageView) viewLine.findViewById(R.id.imageView1);
+		ImageView img2 = (ImageView) viewLine.findViewById(R.id.imageView2);
+		final LinearLayout lay = (LinearLayout) viewLine.findViewById(R.id.content);
+		
+		
+		img2.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				lay.setBackgroundColor(Color.parseColor("#90CAF9")); // blue
+				jogador.setTipoTela("2");
+				UtilsMetodos.getInscace().toast(contexto, "clico na 2");
+			}
+		});
+		
+		img1.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				jogador.setTipoTela("1");
+				lay.setBackgroundColor(Color.parseColor("#EF9A9A")); // red
+			}
+		});
 
-		LinearLayout lay = (LinearLayout) viewLine.findViewById(R.id.content);
+	
 
 		if (jogador.getTipoTela().equals("0")) {
 			lay.setBackgroundColor(Color.parseColor("#BDBDBD")); // gray

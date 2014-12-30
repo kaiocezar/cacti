@@ -72,20 +72,22 @@ public class DefinirTimesActivity extends Activity {
 					long arg3) {
 				LinearLayout lay = (LinearLayout) arg1
 						.findViewById(R.id.content);
-				TextView text = (TextView) arg1.findViewById(R.id.textPartida);
-
+				
+				
 				JogadorForList joga = jogadores.get(arg2);
-				if (joga.getTipoTela().equals("0")) {
-					lay.setBackgroundColor(Color.parseColor("#EF9A9A")); // red
-					joga.setTipoTela("1");
-
-				} else if (joga.getTipoTela().equals("1")) {
-					lay.setBackgroundColor(Color.parseColor("#90CAF9")); // blue
-					joga.setTipoTela("2");
-				} else {
-					lay.setBackgroundColor(Color.parseColor("#BDBDBD")); // gray
-					joga.setTipoTela("0");
-				}
+				lay.setBackgroundColor(Color.parseColor("#BDBDBD")); // gray
+				joga.setTipoTela("0");
+//				if (joga.getTipoTela().equals("0")) {
+//					lay.setBackgroundColor(Color.parseColor("#EF9A9A")); // red
+//					joga.setTipoTela("1");
+//
+//				} else if (joga.getTipoTela().equals("1")) {
+//					lay.setBackgroundColor(Color.parseColor("#90CAF9")); // blue
+//					joga.setTipoTela("2");
+//				} else {
+//					lay.setBackgroundColor(Color.parseColor("#BDBDBD")); // gray
+//					joga.setTipoTela("0");
+//				}
 
 			}
 		});
