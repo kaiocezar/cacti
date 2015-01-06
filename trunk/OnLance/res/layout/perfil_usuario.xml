@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent" 
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    android:paddingTop="10dp">
+
+    <FrameLayout
+        android:id="@+id/frameLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_alignParentRight="true"
+        android:background="@color/green700" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/amigo" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/frameLayout1"
+        android:paddingTop="10dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="Nome do Usuário"
+        android:textColor="#404040"
+        android:textSize="30sp" />
+
+    <FrameLayout
+        android:id="@+id/frameLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp">
+        
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="|"/>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@+id/textView2"
+            android:layout_gravity="left"
+            android:text="18 Amigos"/>
+         
+         <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@+id/textView2"
+            android:layout_gravity="right"
+            android:text="5 Peladas"/>
+        
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/editar"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="14dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/editar"
+        android:onClick="clickGol"
+        android:text="Editar"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
+
+</RelativeLayout>
