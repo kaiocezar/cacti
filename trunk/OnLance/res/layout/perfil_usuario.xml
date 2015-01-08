@@ -10,7 +10,7 @@
         android:id="@+id/frameLayout1"
         android:layout_width="match_parent"
         android:layout_height="130dp"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentRight="true"	
         android:background="@color/green700" >
 
         <ImageView
