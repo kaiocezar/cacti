@@ -11,9 +11,17 @@
     <string name="configuracao_partida">Configuração da Partida</string>
     <string name="copa">Copa</string>
     <string name="opcoes">Opções</string>
+    <string name="gratuito">É gratuito e sempre será.</string>
+    <string name="escolher_senha">Escolher senha</string>
+    <string name="confirmar_senha">Confirmar Senha</string>
     <string name="cartao_vermelho">Cartão Vermelho</string>
+    <string name="criar_conta">Criar uma conta</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="cadastrar_UPPER">CADASTRAR</string>
+    <string name="criar_conta_UPPER">CRIAR CONTA</string>
     <string name="cartao_amarelo">Cartão Amarelo</string>
     <string name="gols_default">02</string>
+    <string name="email">Email</string>
     <string name="tempo_default">10</string>
     <string name="copa_UPPER">COPA</string>
     <string name="selecao_times">Seleção de Times</string>

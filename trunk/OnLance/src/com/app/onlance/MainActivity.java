@@ -34,9 +34,6 @@ public class MainActivity extends Activity {
 			onSessionStateChaged(session, state, exception);
 		}
 	};
-	
-	
-	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +68,7 @@ public class MainActivity extends Activity {
 		if (session != null && (session.isOpened() || session.isClosed())) {
 			onSessionStateChaged(session, session.getState(), null);
 		}
-		
+
 		validarEntrada();
 
 		uiHelper.onResume();
@@ -156,6 +153,12 @@ public class MainActivity extends Activity {
 
 	public void proximaTelaEvent() {
 		Intent intent = new Intent(this, Dashboard.class);
+
+		startActivity(intent);
+	}
+
+	public void proximaTelaCadastro(View view) {
+		Intent intent = new Intent(this, CadastroJogadorActivity.class);
 
 		startActivity(intent);
 	}
