@@ -4,13 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    android:orientation="vertical"
-    android:gravity="center" >
+    android:gravity="center"
+    android:orientation="vertical" >
 
     <com.facebook.widget.LoginButton
+        xmlns:fb="http://schemas.android.com/apk/res-auto"
         android:id="@+id/login_face"
         android:layout_width="match_parent"
-        android:layout_height="75dp" />
+        android:layout_height="75dp"
+        fb:login_text="Entrar com o Facebook" />
 
     <TextView
         android:id="@+id/ou"
@@ -27,7 +29,7 @@
         android:id="@+id/nome_usuario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/nome_usuario"
+        android:hint="@string/email"
         android:inputType="textPersonName" >
 
         <requestFocus />
@@ -54,11 +56,24 @@
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/cadastrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:clickable="true"
+        android:onClick="proximaTelaCadastro"
+        android:text="@string/criar_conta"
+        android:textColor="#9E9E9E"
+        android:textSize="20sp" />
+
+    <TextView
         android:id="@+id/esqueceu_senha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="25dp"
+        android:clickable="true"
         android:text="@string/esqueceu_senha"
         android:textColor="#9E9E9E"
         android:textSize="15sp" />

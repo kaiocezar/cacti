@@ -36,6 +36,8 @@
         </activity>
         <activity android:name=".Dashboard" >
         </activity>
+        <activity android:name=".CadastroJogadorActivity" >
+        </activity>
         <activity android:name=".LogActivity" >
         </activity>
         <activity android:name=".ConfigGeralActivity" >
