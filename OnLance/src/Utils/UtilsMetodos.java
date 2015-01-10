@@ -75,7 +75,6 @@ public class UtilsMetodos {
 
 	public void toast(final Context context, final String valor) {
 		Toast.makeText(context, valor, Toast.LENGTH_LONG).show();
-		;
 	}
 
 }

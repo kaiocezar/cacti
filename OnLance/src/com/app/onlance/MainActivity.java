@@ -48,9 +48,6 @@ public class MainActivity extends Activity {
 
 		validarEntrada();
 
-		// if(savedInstanceState != null){
-		// reauth = savedInstanceState.getBoolean(KEY, false);
-		// }
 	}
 
 	private void validarEntrada() {
