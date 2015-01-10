@@ -4,21 +4,21 @@ import java.util.List;
 
 public class GrupoFacade {
 
-	private int id;
+	private Integer id;
 	
 	private String nome;
 	
 	private String descricao;
 	
-	private List<ParticipaFacade> participa;
+	private List<Integer> participa;
 	
-	private List<EventoFacade> evento;
+	private List<Integer> evento;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -38,20 +38,21 @@ public class GrupoFacade {
 		this.descricao = descricao;
 	}
 
-	public List<ParticipaFacade> getParticipa() {
+	public List<Integer> getParticipa() {
 		return participa;
 	}
 
-	public void setParticipa(List<ParticipaFacade> participa) {
+	public void setParticipa(List<Integer> participa) {
 		this.participa = participa;
 	}
 
-	public List<EventoFacade> getEvento() {
+	public List<Integer> getEvento() {
 		return evento;
 	}
 
-	public void setEvento(List<EventoFacade> evento) {
+	public void setEvento(List<Integer> evento) {
 		this.evento = evento;
 	}
+
 	
 }

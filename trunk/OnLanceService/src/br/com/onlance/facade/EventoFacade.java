@@ -5,7 +5,7 @@ import java.util.List;
 
 public class EventoFacade {
 
-	private int id;
+	private Integer id;
 
 	private String local;
 
@@ -13,17 +13,9 @@ public class EventoFacade {
 
 	private Date data;
 	
-	private List<GrupoFacade> grupo;
+	private List<Integer> grupo;
 
-	private List<JogadorFacade> jogador;
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
+	private List<Integer> jogador;
 
 	public String getLocal() {
 		return local;
@@ -49,19 +41,28 @@ public class EventoFacade {
 		this.data = data;
 	}
 
-	public List<GrupoFacade> getGrupo() {
+	public List<Integer> getGrupo() {
 		return grupo;
 	}
 
-	public void setGrupo(List<GrupoFacade> grupo) {
+	public void setGrupo(List<Integer> grupo) {
 		this.grupo = grupo;
 	}
 
-	public List<JogadorFacade> getJogador() {
+	public List<Integer> getJogador() {
 		return jogador;
 	}
 
-	public void setJogador(List<JogadorFacade> jogador) {
+	public void setJogador(List<Integer> jogador) {
 		this.jogador = jogador;
-	}	
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
 }
