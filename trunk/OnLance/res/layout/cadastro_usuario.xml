@@ -51,7 +51,7 @@
         android:layout_height="75dp"
         android:layout_marginTop="5dp"
         android:background="#4CAF50"
-        android:onClick="proximaTela"
+        android:onClick="cadastrar"
         android:text="@string/criar_conta_UPPER"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
@@ -65,6 +65,7 @@
         android:layout_margin="20dp"
         android:gravity="center"
         android:textColor="#9E9E9E"
-        android:textSize="15sp" />
+        android:textSize="15sp" 
+        android:text="@string/termos_condicoes"/>
 
 </LinearLayout>

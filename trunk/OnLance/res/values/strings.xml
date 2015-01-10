@@ -76,5 +76,7 @@
     <string name="partida">Partidas</string>
     <string name="time">Times</string>
     <string name="estatistica">Estatísticas</string>
+    <string name="termos_condicoes">Ao continuar, você também aceita as <u><b>Condições de serviço</b></u>, a <u><b>Política de privacidade</b></u> e as <u><b>Condições de serviço</b></u> para celular do Olho no Lance.</string>
+    <string name="servidor_desenvolvimento">http://192.168.25.11:8081/OnLanceService/service</string>
 
 </resources>
