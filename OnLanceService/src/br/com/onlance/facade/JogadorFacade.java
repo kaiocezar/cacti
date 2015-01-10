@@ -4,7 +4,11 @@ import java.util.List;
 
 public class JogadorFacade {
 
-	private int id;
+	public JogadorFacade(){
+		historico = new HistoricoFacade();
+	}
+	
+	private Integer id;
 
 	private String login;
 
@@ -18,15 +22,15 @@ public class JogadorFacade {
 
 	private HistoricoFacade historico;
 
-	private List<ParticipaFacade> participa;
+	private List<Integer> participa;
 	
-	private List<EventoFacade> evento;
+	private List<Integer> evento;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -78,20 +82,20 @@ public class JogadorFacade {
 		this.historico = historico;
 	}
 
-	public List<ParticipaFacade> getParticipa() {
+	public List<Integer> getParticipa() {
 		return participa;
 	}
 
-	public void setParticipa(List<ParticipaFacade> participa) {
+	public void setParticipa(List<Integer> participa) {
 		this.participa = participa;
 	}
 
-	public List<EventoFacade> getEvento() {
+	public List<Integer> getEvento() {
 		return evento;
 	}
 
-	public void setEvento(List<EventoFacade> evento) {
+	public void setEvento(List<Integer> evento) {
 		this.evento = evento;
 	}
-	
+
 }

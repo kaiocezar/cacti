@@ -2,6 +2,7 @@ package br.com.onlance.service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.servlet.ServletException;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -12,12 +13,14 @@ import org.hibernate.Transaction;
 import br.com.onlance.bean.Endereco;
 import br.com.onlance.bean.Jogador;
 import br.com.onlance.bean.Pessoa;
+import br.com.onlance.dao.DaoImp;
+import br.com.onlance.facade.JogadorFacade;
 import br.com.onlance.utils.HibernateUtils;
 import br.com.onlance.utils.JPAUtil;
 
 import com.google.gson.Gson;
 
-@Path("/kaio")
+@Path("/service")
 public class ServiceFactory {
 
 
@@ -44,52 +47,47 @@ public class ServiceFactory {
 	@Path("/persistOrMerge/Jogador/{jogador}")
 	public String getJogador(@PathParam("jogador") String parametro) {
 		
-		
-		// inicia a transação antes de processar o request
-		EntityManager em = JPAUtil.getEntityManager();
-		Jogador res = null;
-		EntityTransaction tx = em.getTransaction(); 
-		try { tx.begin();
-		
-		
 		Gson g = new Gson();
-		
-		res = g.fromJson(parametro,Jogador.class);
-		if(res != null){
-			
-			if(res.getId() == 0){
-				em.persist(res);
-			}else{
-				em.merge(res);
-				
-			}
-			
-		}
-		tx.commit(); 
-		} catch (Exception e){ 
-			// ou em caso de erro faz o rollback 
-			if(tx != null && tx.isActive()){ tx.rollback(); } }
-
-		finally { 
-			em.close(); 
-		}
+		JogadorFacade joga = g.fromJson(parametro, JogadorFacade.class);
 		
 		
-		return res.getNome();
+		JogadorFacade retorno = DaoImp.getInstance().persistOrMerge(joga);
+		
+		
+		
+		return g.toJson(retorno);
 		
 		
 	}
 	
 	@GET
 	@Path("/idade")
-	public String getIdade() {
+	public String getIdade() throws ServletException {
 
 		
 		Session session = HibernateUtils.openSession();
-		Transaction tras = session.beginTransaction();
+		Transaction tras = null;
+		Jogador jogar = null;
 		
-		Jogador jogar = (Jogador) session.get(Jogador.class, 1);
-		tras.commit();
+		try {
+
+			tras = session.beginTransaction();
+			
+			jogar = (Jogador) session.get(Jogador.class, 1);
+			tras.commit();
+			
+			
+		} catch (Throwable t) {
+			try {
+				if (tras.isActive()) {
+					tras.rollback();
+				}
+			} catch (Throwable ex) {
+				ex.printStackTrace();
+			}
+
+			throw new ServletException(t);
+		}
 		
 		
 		return jogar.getEmail();

@@ -3,44 +3,45 @@ package br.com.onlance.facade;
 
 public class ParticipaFacade {
 
-	private int id;
+	private Integer id;
 	
-	private JogadorFacade jogador;
+	private String jogador;
 
-	private GrupoFacade grupo;
+	private String grupo;
 
-	private HistoricoFacade historico;
+	private String historico;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public JogadorFacade getJogador() {
+	public String getJogador() {
 		return jogador;
 	}
 
-	public void setJogador(JogadorFacade jogador) {
+	public void setJogador(String jogador) {
 		this.jogador = jogador;
 	}
 
-	public GrupoFacade getGrupo() {
+	public String getGrupo() {
 		return grupo;
 	}
 
-	public void setGrupo(GrupoFacade grupo) {
+	public void setGrupo(String grupo) {
 		this.grupo = grupo;
 	}
 
-	public HistoricoFacade getHistorico() {
+	public String getHistorico() {
 		return historico;
 	}
 
-	public void setHistorico(HistoricoFacade historico) {
+	public void setHistorico(String historico) {
 		this.historico = historico;
 	}
+
 	
 }
