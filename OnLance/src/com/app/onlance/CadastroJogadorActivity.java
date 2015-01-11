@@ -6,18 +6,20 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
-import com.app.facade.JogadorFacade;
-import com.google.gson.Gson;
-
+import Utils.Mask;
 import android.app.Activity;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import com.app.facade.JogadorFacade;
+import com.google.gson.Gson;
 
 public class CadastroJogadorActivity extends Activity {
 
@@ -26,9 +28,11 @@ public class CadastroJogadorActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.cadastro_usuario);
 
+		EditText textPhone = (EditText) findViewById(R.id.textPhone);
+		textPhone.addTextChangedListener(Mask.insert("(##)####-#####", textPhone));
+		
 		TelephonyManager tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
 		String number = tm.getLine1Number();
-
 	}
 
 	public void cadastrar(View view) {

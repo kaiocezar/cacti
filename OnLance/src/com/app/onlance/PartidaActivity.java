@@ -335,7 +335,7 @@ public class PartidaActivity extends Activity implements OnItemClickListener,
 
 			Session session = Session.getActiveSession();
 			Bundle paramns = new Bundle();
-			paramns.putString("name", "Gollllll");
+			paramns.putString("name", "Gooooool");
 			paramns.putString("caption", "Baixe agora o ONLance");
 			paramns.putString("description", "Numa jogada espetacular, " + nome
 					+ " faz um gol magnífico!");

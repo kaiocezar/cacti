@@ -4,7 +4,6 @@ import Utils.UtilsInformation;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -28,14 +27,16 @@ public class TimesPartidaActivity extends FragmentActivity implements
 		// Initilization
 		viewPager = (ViewPager) findViewById(R.id.pager);
 		actionBar = getActionBar();
-		actionBar.setTitle(R.string.amistoso_UPPER);
+		actionBar.setTitle(R.string.ajustes_partida_UPPER);
+
 		mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
 
 		viewPager.setAdapter(mAdapter);
 		actionBar.setHomeButtonEnabled(false);
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-		actionBar.setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.green700)));
-		
+		actionBar.setStackedBackgroundDrawable(new ColorDrawable(getResources()
+				.getColor(R.color.green700)));
+
 		// Adding Tabs
 		for (String tab_name : tabs) {
 			actionBar.addTab(actionBar.newTab().setText(tab_name)
@@ -82,9 +83,10 @@ public class TimesPartidaActivity extends FragmentActivity implements
 	public void proseguirConf(View view) {
 
 		ConfigBasicaFragment item1 = (ConfigBasicaFragment) mAdapter.getItem(0);
-		ConfigAvancadaFragment item2 = (ConfigAvancadaFragment) mAdapter.getItem(1);
+		ConfigAvancadaFragment item2 = (ConfigAvancadaFragment) mAdapter
+				.getItem(1);
 
-		Intent intent = new Intent(this, DefinirTimesActivity.class);
+		// Intent intent = new Intent(this, DefinirTimesActivity.class);
 
 		UtilsInformation.getInscace().setGol(
 				item1.getSpinnerQuantGols().getSelectedItem().toString());
@@ -93,8 +95,7 @@ public class TimesPartidaActivity extends FragmentActivity implements
 		UtilsInformation.getInscace().setPlay(
 				item2.getSpinnerQuantJog().getSelectedItem().toString());
 
-		startActivity(intent);
-
+		finish();
 	}
 
 }
