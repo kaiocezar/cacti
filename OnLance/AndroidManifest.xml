@@ -43,6 +43,8 @@
         </activity>
         <activity android:name=".ConfigGeralActivity" >
         </activity>
+        <activity android:name=".AmigosGruposActivity" >
+        </activity>
         <activity android:name="com.facebook.LoginActivity" >
         </activity>
 

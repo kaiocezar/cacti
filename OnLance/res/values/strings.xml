@@ -11,6 +11,8 @@
     <string name="configuracao_partida">Configuração da Partida</string>
     <string name="copa">Copa</string>
     <string name="opcoes">Opções</string>
+    <string name="comunidade">Comunidade</string>
+    <string name="comunidade_UPPER">COMUNIDADE</string>
     <string name="gratuito">É gratuito e sempre será.</string>
     <string name="escolher_senha">Escolher senha</string>
     <string name="confirmar_senha">Confirmar Senha</string>
