@@ -11,12 +11,14 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.facebook.Request;
 import com.facebook.Response;
@@ -27,6 +29,31 @@ public class DefinirTimesActivity extends Activity {
 
 	List<JogadorForList> jogadores;
 	private ActionBar actionBar;
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	    // Inflate the menu items for use in the action bar
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.definir_times_actions, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		
+		switch (item.getItemId()) {
+		case R.id.action_config_partida:
+			openConfigPartida();
+			return true;
+		}
+		
+		return super.onOptionsItemSelected(item);
+	}
+
+	private void openConfigPartida() {
+		Intent intent = new Intent(this, TimesPartidaActivity.class);
+		startActivityForResult(intent, 1);
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

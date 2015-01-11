@@ -15,7 +15,7 @@ public class ModoJogoActivity extends Activity {
 	}
 
 	public void proximaTela(View view) {
-		Intent intent = new Intent(this, TimesPartidaActivity.class);
+		Intent intent = new Intent(this, DefinirTimesActivity.class);
 		startActivity(intent);
 	}
 

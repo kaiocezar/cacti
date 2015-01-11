@@ -9,8 +9,11 @@
     <string name="campeonato">Campeonato</string>
     <string name="campeonato_UPPER">CAMPEONATO</string>
     <string name="configuracao_partida">Configuração da Partida</string>
+    <string name="ajustes_partida_UPPER">AJUSTES DA PARTIDA</string>
     <string name="copa">Copa</string>
     <string name="opcoes">Opções</string>
+    <string name="salvar">Salvar</string>
+    <string name="salvar_UPPER">SALVAR</string>
     <string name="comunidade">Comunidade</string>
     <string name="comunidade_UPPER">COMUNIDADE</string>
     <string name="gratuito">É gratuito e sempre será.</string>

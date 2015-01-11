@@ -23,7 +23,7 @@
             android:layout_weight="0.1"
             android:background="#4CAF50"
             android:onClick="proseguirConf"
-            android:text="@string/prosseguir_UPPER"
+            android:text="@string/salvar_UPPER"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:textSize="20sp"
