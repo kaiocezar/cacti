@@ -15,8 +15,9 @@ public class Dashboard extends Activity {
 
 	}
 
-	public void onClickAmigo(View view) {
-		
+	public void onClickComunidade(View view) {
+		Intent intent = new Intent(this, AmigosGruposActivity.class);
+		startActivity(intent);
 	}
 
 	public void onClickTime(View view) {

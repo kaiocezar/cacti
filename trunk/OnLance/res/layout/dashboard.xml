@@ -116,9 +116,9 @@
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
                 android:background="#E8AF0C"
-                android:onClick="onClickTime"
+                android:onClick="onClickComunidade"
                 android:paddingTop="110dp"
-                android:text="@string/time"
+                android:text="@string/comunidade"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold" />
 
