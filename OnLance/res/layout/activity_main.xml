@@ -25,10 +25,10 @@
         android:textSize="15sp" />
 
     <EditText
-        android:id="@+id/nome_usuario"
+        android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/email"
+        android:hint="@string/email_ou_login"
         android:inputType="textPersonName" >
 
         <requestFocus />
@@ -47,7 +47,6 @@
         android:layout_height="75dp"
         android:layout_marginTop="5dp"
         android:background="#4CAF50"
-        android:onClick="proximaTela"
         android:text="@string/entrar_UPPER"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"

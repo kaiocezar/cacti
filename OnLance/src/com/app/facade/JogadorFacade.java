@@ -16,6 +16,10 @@ public class JogadorFacade {
 
 	private String fone;
 
+	public JogadorFacade(){
+		historico = new HistoricoFacade();
+	}
+	
 	private HistoricoFacade historico;
 
 	private List<Integer> participa;
