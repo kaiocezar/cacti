@@ -25,7 +25,7 @@ public class UtilsMetodos {
 		return utils;
 	}
 
-	public boolean isConectado() {
+	public boolean isConectadoFacebook() {
 		boolean retorno = false;
 
 		Session session = Session.getActiveSession();
