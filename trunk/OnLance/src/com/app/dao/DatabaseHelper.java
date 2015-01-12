@@ -12,12 +12,13 @@ import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
-public class SQLiteManager extends OrmLiteSqliteOpenHelper {
+public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
-	private static final String NOME_BD = "localhost";
+	private static final String NOME_BD = "onlance";
 	private static final int VERSAO_BD = 1;
+	private static DatabaseHelper dh;
 
-	public SQLiteManager(Context ctx) {
+	public DatabaseHelper(Context ctx) {
 		super(ctx, NOME_BD, null, VERSAO_BD);
 	}
 
@@ -49,8 +50,17 @@ public class SQLiteManager extends OrmLiteSqliteOpenHelper {
 		}
 	}
 
+	public static DatabaseHelper getBdInstance(Context context) {
+
+		if (dh == null) {
+			dh = new DatabaseHelper(context.getApplicationContext());
+		}
+		return dh;
+	}
+
 	@Override
 	public void close() {
+
 		super.close();
 	}
 
