@@ -8,7 +8,6 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/ou"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
@@ -19,7 +18,7 @@
         android:textSize="25sp" />
 
     <EditText
-        android:id="@+id/textPhone"
+        android:id="@+id/number_phone_cadastro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -27,7 +26,7 @@
         android:inputType="phone" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/email_cadastro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -38,7 +37,7 @@
     </EditText>
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/senha_cadastro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -46,7 +45,7 @@
         android:inputType="textPassword" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/confirmar_senha_cadastro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -54,7 +53,7 @@
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/entrar"
+        android:id="@+id/criar_conta_cadastro"
         android:layout_width="match_parent"
         android:layout_height="75dp"
         android:layout_marginTop="5dp"
