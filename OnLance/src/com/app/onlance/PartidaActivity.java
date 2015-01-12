@@ -330,7 +330,7 @@ public class PartidaActivity extends Activity implements OnItemClickListener,
 	}
 
 	public void shareContent(String nome) {
-		if (UtilsMetodos.getInscace().isConectado()
+		if (UtilsMetodos.getInscace().isConectadoFacebook()
 				&& UtilsMetodos.getInscace().validarUsuario(this)) {
 
 			Session session = Session.getActiveSession();

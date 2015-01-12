@@ -65,7 +65,7 @@ public class DefinirTimesActivity extends Activity {
 
 		jogadores = new ArrayList<JogadorForList>();
 
-		if (UtilsMetodos.getInscace().isConectado()) {
+		if (UtilsMetodos.getInscace().isConectadoFacebook()) {
 			getMyFriends(Session.getActiveSession());
 		}
 

@@ -51,7 +51,7 @@ public class MainActivity extends Activity {
 	}
 
 	private void validarEntrada() {
-		if (UtilsMetodos.getInscace().isConectado()
+		if (UtilsMetodos.getInscace().isConectadoFacebook()
 				&& UtilsMetodos.getInscace().validarUsuario(this)) {
 			proximaTelaEvent();
 		}
@@ -161,7 +161,7 @@ public class MainActivity extends Activity {
 	}
 
 	public void shareContent() {
-		if (UtilsMetodos.getInscace().isConectado()
+		if (UtilsMetodos.getInscace().isConectadoFacebook()
 				&& UtilsMetodos.getInscace().validarUsuario(this)) {
 
 			Session session = Session.getActiveSession();
