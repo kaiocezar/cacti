@@ -7,10 +7,12 @@ import java.util.Map;
 
 import Utils.ConnectionDetector;
 import Utils.UtilsMetodos;
+import Utils.UtilsServidor;
 import android.content.Context;
 
 import com.app.dao.DatabaseHelper;
 import com.app.dao.JogadorDao;
+import com.app.facade.JogadorFacade;
 import com.app.onlance.R;
 import com.app.vo.Jogador;
 
@@ -26,12 +28,30 @@ public class JogadorBo {
 
 	public void save(Jogador jogador) throws SQLException {
 		if (ConnectionDetector.getInstance(context).isConnectingToInternet()) {
-			if (jogador.getEmail().matches("\\w+@\\w+\\.\\w{2,3}\\.\\w{2,3}")) {
-				if (findByEmail(jogador.getEmail()) == null) {
+//			if (jogador.getEmail().matches("\\w+@\\w+\\.\\w{2,3}\\.\\w{2,3}")) {
+				if (!UtilsServidor.getInstace(
+						context.getString(R.string.servidor_desenvolvimento))
+						.findByEmail(jogador.getEmail())) {
+
+					JogadorFacade jogadorF = new JogadorFacade();
+					jogadorF.setEmail(jogador.getEmail());
+					jogadorF.setFone(jogador.getNumeroTelefone());
+					jogadorF.setLogin(jogador.getEmail());
+					jogadorF.setNome(jogador.getNome());
+					jogadorF.setSenha(jogador.getSenha());
+
+					jogadorF = UtilsServidor
+							.getInstace(
+									context.getString(R.string.servidor_desenvolvimento))
+							.persistOrMerge(jogadorF);
+
+					jogador.setId(jogadorF.getId());
+
 					dh = DatabaseHelper.getBdInstance(context); // Recupera a
 																// instancia do
 																// BD
 					jogadorDao = new JogadorDao(dh.getConnectionSource());
+					
 					int result = jogadorDao.create(jogador);
 					if (result == 1) {
 
@@ -45,9 +65,9 @@ public class JogadorBo {
 					// já existe aquele email Salvo facade Recebe o Id e
 					// persiste localmente
 				}
-			} else {
-
-			}
+//			} else {
+//					//Exception de Validacao
+//			}
 		} else {
 			UtilsMetodos.getInscace().toast(context,
 					context.getString(R.string.msg_falha_conexao_com_internet));

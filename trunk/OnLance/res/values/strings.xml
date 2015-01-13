@@ -83,7 +83,7 @@
     <string name="time">Times</string>
     <string name="estatistica">Estatísticas</string>
     <string name="termos_condicoes">Ao continuar, você também aceita as <u><b>Condições de serviço</b></u>, a <u><b>Política de privacidade</b></u> e as <u><b>Condições de serviço</b></u> para celular do Olho no Lance.</string>
-    <string name="servidor_desenvolvimento">http://192.168.25.11:8081/OnLanceService/service</string>
+    <string name="servidor_desenvolvimento">http://172.22.65.248:8081/OnLanceService/service</string>
 	<string name="condicoes_servicos">Ao continuar, você também aceita as &lt;u>&lt;b>Condições de serviço&lt;/b>&lt;/u>, a &lt;u>&lt;b>Política de privacidade&lt;/b>&lt;/u> e as &lt;u>&lt;b>Condições de serviço&lt;/b>&lt;/u> para celular do Olho no Lance.</string>
     <string name="msg_salvar_jogador">Jogador cadastrado realizado com sucesso!</string>
     <string name="msg_email_invalido">E-mail inválido!</string>

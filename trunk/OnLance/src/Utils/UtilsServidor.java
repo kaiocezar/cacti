@@ -28,7 +28,8 @@ public class UtilsServidor {
 		return servidor;
 	}
 
-	public boolean validarUsuario(final String login, final String senha) {
+	public boolean validarUsuario(final String login, final String senha,
+			final String email) {
 		boolean retorno = false;
 		Thread thread = new Thread(new Runnable() {
 			@Override
@@ -38,6 +39,60 @@ public class UtilsServidor {
 					JogadorFacade joga = new JogadorFacade();
 					joga.setLogin(login);
 					joga.setSenha(senha);
+					joga.setEmail(email);
+
+					Gson g = new Gson();
+					String url = serverOnlance
+							+ "/validar/Jogador/"
+							+ java.net.URLEncoder.encode(g.toJson(joga),
+									"UTF-8");
+
+					HttpClient httpclient = new DefaultHttpClient();
+					HttpResponse httpResponse = null;
+					httpResponse = httpclient.execute(new HttpGet(url));
+
+					// receive response as inputStream
+					InputStream inputStream = httpResponse.getEntity()
+							.getContent();
+
+					String result = null;
+					// convert inputstream to string
+					if (inputStream != null) {
+						result = UtilsMetodos.getInscace()
+								.convertInputStreamToString(inputStream);
+						jogador = g.fromJson(result, JogadorFacade.class);
+
+					}
+
+				} catch (Exception e) {
+					e.printStackTrace();
+					jogador = new JogadorFacade();
+				}
+			}
+		});
+
+		thread.start();
+
+		while (jogador == null) {
+
+		}
+
+		if (jogador.getId() != null) {
+			retorno = true;
+		}
+
+		return retorno;
+	}
+	
+	public boolean findByEmail(final String email) {
+		boolean retorno = false;
+		Thread thread = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				try {
+
+					JogadorFacade joga = new JogadorFacade();
+					joga.setEmail(email);
 
 					Gson g = new Gson();
 					String url = serverOnlance
@@ -107,8 +162,7 @@ public class UtilsServidor {
 					if (inputStream != null) {
 						result = UtilsMetodos.getInscace()
 								.convertInputStreamToString(inputStream);
-						jogador = g.fromJson(result,
-								JogadorFacade.class);
+						jogador = g.fromJson(result, JogadorFacade.class);
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -121,7 +175,7 @@ public class UtilsServidor {
 		while (jogador == null) {
 
 		}
-		
+
 		facade.setId(jogador.getId());
 
 		return facade;

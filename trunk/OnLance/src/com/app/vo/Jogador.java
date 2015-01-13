@@ -6,8 +6,8 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable(tableName = "jogador")
 public class Jogador {
 
-	@DatabaseField(id = true, generatedId = true, columnName = "id")
-	private Long id;
+	@DatabaseField(id = true, columnName = "id")
+	private Integer id;
 
 	@DatabaseField(columnName = "nome", canBeNull = false)
 	private String nome;
@@ -42,11 +42,11 @@ public class Jogador {
 	public Jogador() {
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
