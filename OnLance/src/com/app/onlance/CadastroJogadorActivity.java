@@ -1,7 +1,8 @@
 package com.app.onlance;
 
+import java.sql.SQLException;
+
 import android.app.Activity;
-import android.content.ContentValues;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
@@ -22,6 +23,7 @@ public class CadastroJogadorActivity extends Activity {
 	EditText numTelefoneEditText;
 	TextView termo_uso;
 	JogadorBo bo;
+	Jogador jogador;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +31,7 @@ public class CadastroJogadorActivity extends Activity {
 		setContentView(R.layout.cadastro_usuario);
 
 		// Recuperação dos Widgets
-		btnCriarConta = (Button) findViewById(R.id.entrar);
+		btnCriarConta = (Button) findViewById(R.id.criar_conta_cadastro);
 		emailEditText = (EditText) findViewById(R.id.email_cadastro);
 		senhaEditText = (EditText) findViewById(R.id.senha_cadastro);
 		confirmarSenhaEditText = (EditText) findViewById(R.id.confirmar_senha_cadastro);
@@ -39,23 +41,31 @@ public class CadastroJogadorActivity extends Activity {
 				.setText(Html
 						.fromHtml("Ao continuar, você também aceita as <u><b>Condições de serviço</b></u>, a <u><b>Política de privacidade</b></u> e as <u><b>Condições de serviço</b></u> para celular do Olho no Lance."));
 
-		if (senhaEditText.toString().equals(
-				confirmarSenhaEditText.getText().toString())) {
-			Jogador jogador = new Jogador();
-			jogador.setEmail(emailEditText.getText().toString());
-			jogador.setNome(emailEditText.getText().toString().split("@")[0]);
-			jogador.setSenha(senhaEditText.getText().toString());
-			jogador.setNumeroTelefone(numTelefoneEditText.getText().toString());
-			bo = new JogadorBo(this);
-		} else {
-			// Lancar exceção
-		}
-
 		// Listeners
 		OnClickListener oclBtnCriarConta = new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//Instancia o Controller ou chama o Bo
+				try {
+
+					jogador = new Jogador();
+					if (senhaEditText.getText().toString().equals(
+							confirmarSenhaEditText.getText().toString())) {
+						jogador.setEmail(emailEditText.getText().toString());
+						jogador.setNome(emailEditText.getText().toString()
+								.split("@")[0]);
+						jogador.setSenha(senhaEditText.getText().toString());
+						jogador.setNumeroTelefone(numTelefoneEditText.getText()
+								.toString());
+						bo = new JogadorBo(CadastroJogadorActivity.this);
+						new JogadorBo(CadastroJogadorActivity.this)
+								.save(jogador);
+					} else {
+						// Lancar exceção
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				onDestroy();
 			}
 		};
