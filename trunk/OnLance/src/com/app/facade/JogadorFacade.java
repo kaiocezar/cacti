@@ -98,4 +98,9 @@ public class JogadorFacade {
 		this.evento = evento;
 	}
 
+	public void setQtdCartaoAmarelo(int i) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

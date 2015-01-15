@@ -6,37 +6,37 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable(tableName = "jogador")
 public class Jogador {
 
-	@DatabaseField(id = true, columnName = "id")
+	@DatabaseField(id = true)
 	private Integer id;
 
-	@DatabaseField(columnName = "nome", canBeNull = false)
+	@DatabaseField
 	private String nome;
 
-	@DatabaseField(columnName = "senha", canBeNull = false)
+	@DatabaseField
 	private String senha;
 
-	@DatabaseField(columnName = "email", canBeNull = false)
+	@DatabaseField
 	private String email;
 
-	@DatabaseField(columnName = "foto", canBeNull = true)
-	private byte[] foto;
+	//@DatabaseField(columnName = "foto", canBeNull = true)
+	//private byte[] foto;
 
-	@DatabaseField(columnName = "foto", canBeNull = false)
+	@DatabaseField
 	private String numeroTelefone;
 
-	@DatabaseField(columnName = "qtdGol", canBeNull = true)
+	@DatabaseField
 	private int qtdGol;
 
-	@DatabaseField(columnName = "qtdCartaoVermelho", canBeNull = true)
+	@DatabaseField
 	private int qtdCartaoVermelho;
 
-	@DatabaseField(columnName = "qtdCartaoAmarelo", canBeNull = true)
+	@DatabaseField
 	private int qtdCartaoAmarelo;
 
-	@DatabaseField(columnName = "qtdVitoria", canBeNull = true)
+	@DatabaseField
 	private int qtdVitoria;
 
-	@DatabaseField(columnName = "qtdJogo", canBeNull = true)
+	@DatabaseField
 	private int qtdJogo;
 
 	public Jogador() {
@@ -74,13 +74,13 @@ public class Jogador {
 		this.email = email;
 	}
 
-	public byte[] getFoto() {
+	/*public byte[] getFoto() {
 		return foto;
 	}
 
 	public void setFoto(byte[] foto) {
 		this.foto = foto;
-	}
+	}*/
 
 	public String getNumeroTelefone() {
 		return numeroTelefone;

@@ -16,14 +16,14 @@ import com.app.vo.Jogador;
 
 public class CadastroJogadorActivity extends Activity {
 
-	Button btnCriarConta;
-	EditText emailEditText;
-	EditText senhaEditText;
-	EditText confirmarSenhaEditText;
-	EditText numTelefoneEditText;
-	TextView termo_uso;
-	JogadorBo bo;
-	Jogador jogador;
+	private Button btnCriarConta;
+	private EditText emailEditText;
+	private EditText senhaEditText;
+	private EditText confirmarSenhaEditText;
+	private EditText numTelefoneEditText;
+	private TextView termo_uso;
+	private JogadorBo bo;
+	private Jogador jogador;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +48,10 @@ public class CadastroJogadorActivity extends Activity {
 				try {
 
 					jogador = new Jogador();
-					if (senhaEditText.getText().toString().equals(
-							confirmarSenhaEditText.getText().toString())) {
+					if (senhaEditText
+							.getText()
+							.toString()
+							.equals(confirmarSenhaEditText.getText().toString())) {
 						jogador.setEmail(emailEditText.getText().toString());
 						jogador.setNome(emailEditText.getText().toString()
 								.split("@")[0]);
@@ -57,13 +59,11 @@ public class CadastroJogadorActivity extends Activity {
 						jogador.setNumeroTelefone(numTelefoneEditText.getText()
 								.toString());
 						bo = new JogadorBo(CadastroJogadorActivity.this);
-						new JogadorBo(CadastroJogadorActivity.this)
-								.save(jogador);
+						bo.save(jogador);
 					} else {
 						// Lancar exceção
 					}
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				onDestroy();

@@ -17,8 +17,17 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	private static final String NOME_BD = "onlance";
 	private static final int VERSAO_BD = 1;
 	private static DatabaseHelper dh;
+	private static Context context;
 
-	public DatabaseHelper(Context ctx) {
+	public static DatabaseHelper getInstance(Context contextParameter) {
+		context = contextParameter;
+		if (dh == null) {
+			dh = new DatabaseHelper(context);
+		}
+		return dh;
+	}
+	
+	private DatabaseHelper(Context ctx) {
 		super(ctx, NOME_BD, null, VERSAO_BD);
 	}
 
@@ -27,8 +36,8 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 		// Método para Criação do DB
 		try {
 			TableUtils.createTable(cs, Jogador.class);
-			TableUtils.createTable(cs, Grupo.class);
-			TableUtils.createTable(cs, Evento.class);
+			//TableUtils.createTable(cs, Grupo.class);
+			//TableUtils.createTable(cs, Evento.class);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -41,8 +50,8 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 		// Método para Atualização do Esquema do DB
 		try {
 			TableUtils.dropTable(cs, Jogador.class, true);
-			TableUtils.dropTable(cs, Grupo.class, true);
-			TableUtils.dropTable(cs, Evento.class, true);
+			//TableUtils.dropTable(cs, Grupo.class, true);
+			//TableUtils.dropTable(cs, Evento.class, true);
 			onCreate(db, cs);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -50,17 +59,8 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 		}
 	}
 
-	public static DatabaseHelper getBdInstance(Context context) {
-
-		if (dh == null) {
-			dh = new DatabaseHelper(context.getApplicationContext());
-		}
-		return dh;
-	}
-
 	@Override
 	public void close() {
-
 		super.close();
 	}
 

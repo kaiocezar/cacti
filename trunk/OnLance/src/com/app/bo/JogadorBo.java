@@ -28,46 +28,51 @@ public class JogadorBo {
 
 	public void save(Jogador jogador) throws SQLException {
 		if (ConnectionDetector.getInstance(context).isConnectingToInternet()) {
-//			if (jogador.getEmail().matches("\\w+@\\w+\\.\\w{2,3}\\.\\w{2,3}")) {
-				if (!UtilsServidor.getInstace(
+			/*
+			 * if (jogador .getEmail() .matches(
+			 * "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$;"
+			 * )) {
+			 */
+			if (!UtilsServidor.getInstace(
+					context.getString(R.string.servidor_desenvolvimento))
+					.findByEmail(jogador.getEmail())) {
+
+				JogadorFacade jogadorF = new JogadorFacade();
+				jogadorF.setEmail(jogador.getEmail());
+				jogadorF.setNome(jogador.getNome());
+				jogadorF.setSenha(jogador.getSenha());
+				jogadorF.setQtdCartaoAmarelo(0);
+				// jogadorF.setQtdCartaoVermelho(0);
+				// jogadorF.setQtdGol(0);
+				// jogadorF.setQtdJogos(0);
+				// jogadorF.setQtdVitoria(0);
+
+				jogadorF = UtilsServidor.getInstace(
 						context.getString(R.string.servidor_desenvolvimento))
-						.findByEmail(jogador.getEmail())) {
+						.persistOrMerge(jogadorF);
+				jogador.setId(jogadorF.getId());
 
-					JogadorFacade jogadorF = new JogadorFacade();
-					jogadorF.setEmail(jogador.getEmail());
-					jogadorF.setFone(jogador.getNumeroTelefone());
-					jogadorF.setLogin(jogador.getEmail());
-					jogadorF.setNome(jogador.getNome());
-					jogadorF.setSenha(jogador.getSenha());
+				dh = DatabaseHelper.getInstance(context);
+				jogadorDao = new JogadorDao(dh.getConnectionSource());
 
-					jogadorF = UtilsServidor
-							.getInstace(
-									context.getString(R.string.servidor_desenvolvimento))
-							.persistOrMerge(jogadorF);
+				int result = jogadorDao.create(jogador);
+				if (result == 1) {
 
-					jogador.setId(jogadorF.getId());
-
-					dh = DatabaseHelper.getBdInstance(context); // Recupera a
-																// instancia do
-																// BD
-					jogadorDao = new JogadorDao(dh.getConnectionSource());
+					UtilsMetodos.getInscace().toast(context,
+							context.getString(R.string.msg_salvar_jogador));
 					
-					int result = jogadorDao.create(jogador);
-					if (result == 1) {
-
-						UtilsMetodos.getInscace().toast(context,
-								context.getString(R.string.msg_salvar_jogador));
-					} else {
-						throw new SQLException();
-					}
 				} else {
-					// Valida campos Intacio um Jogador Facade Procuro no Bd se
-					// já existe aquele email Salvo facade Recebe o Id e
-					// persiste localmente
+					throw new SQLException();
 				}
-//			} else {
-//					//Exception de Validacao
-//			}
+
+			} else { // Valida campos Intacio um Jogador Facade Procuro no
+						// Bd se
+				// já existe aquele email Salvo facade Recebe o Id e //
+				// persiste localmente
+			}
+			/*
+			 * } else { // Exxception de Validacao // }
+			 */
 		} else {
 			UtilsMetodos.getInscace().toast(context,
 					context.getString(R.string.msg_falha_conexao_com_internet));
@@ -75,34 +80,124 @@ public class JogadorBo {
 	}
 
 	public void remove(Jogador jogador) throws SQLException {
-		dh = DatabaseHelper.getBdInstance(context); // Recupera a instancia do
-													// BD
-		jogadorDao = new JogadorDao(dh.getConnectionSource());
-		jogadorDao.delete(jogador);
+		if (ConnectionDetector.getInstance(context).isConnectingToInternet()) {
+			if (!UtilsServidor.getInstace(
+					context.getString(R.string.servidor_desenvolvimento))
+					.findByEmail(jogador.getEmail())) {
+
+				JogadorFacade jogadorF = new JogadorFacade();
+				jogadorF.setEmail(jogador.getEmail());
+				jogadorF.setNome(jogador.getNome());
+				jogadorF.setSenha(jogador.getSenha());
+				// jogadorF.setQtdCartaoAmarelo(jogador.getQtdCartaoAmarelo());
+				// jogadorF.setQtdCartaoVermelho(jogador.getQtdCartaoVermelho());
+				// jogadorF.setQtdGol(jogador.getQtdGol());
+				// jogadorF.setQtdJogos(jogador.getQtdJogos());
+				// jogadorF.setQtdVitoria(jogador.getQtdVitoria());
+
+				/*
+				 * jogadorF = UtilsServidor.getInstace(
+				 * context.getString(R.string.servidor_desenvolvimento)) Kaio tu
+				 * tem que fazer o remove .persistOrMerge(jogadorF);
+				 */
+
+				dh = DatabaseHelper.getInstance(context);
+				jogadorDao = new JogadorDao(dh.getConnectionSource());
+				int result = jogadorDao.delete(jogador);
+				if (result == 1) {
+					
+					UtilsMetodos.getInscace().toast(context,
+							context.getString(R.string.msg_deletar_jogador));
+					
+				} else {
+					throw new SQLException();
+				}
+			} else {
+
+			}
+		} else {
+
+		}
 	}
 
 	public Jogador findByEmail(String email) throws SQLException {
-		dh = DatabaseHelper.getBdInstance(context); // Recupera a instancia do
-													// BD
-		jogadorDao = new JogadorDao(dh.getConnectionSource());
-		Map<String, Object> values = new HashMap<String, Object>();
-		values.put("email", email + " - ANDROID CLASS");
-		return (Jogador) jogadorDao.queryForFieldValues(values);
+		Jogador jogador = null;
+		if (ConnectionDetector.getInstance(context).isConnectingToInternet()) {
+			
+			dh = DatabaseHelper.getInstance(context); 
+			jogadorDao = new JogadorDao(dh.getConnectionSource());
+			Map<String, Object> values = new HashMap<String, Object>();
+			values.put("email", email + " - ANDROID CLASS");
+			jogador = (Jogador) jogadorDao.queryForFieldValues(values);
+			
+		} else {
+			
+		}
+		return jogador;
 	}
 
 	public void update(Jogador jogador) throws SQLException {
-		dh = DatabaseHelper.getBdInstance(context); // Recupera a instancia do
-													// BD
-		jogadorDao = new JogadorDao(dh.getConnectionSource());
-		jogadorDao.update(jogador);
+		if (ConnectionDetector.getInstance(context).isConnectingToInternet()) {
+			if (!UtilsServidor.getInstace(
+					context.getString(R.string.servidor_desenvolvimento))
+					.findByEmail(jogador.getEmail())) {
+
+				JogadorFacade jogadorF = new JogadorFacade();
+				jogadorF.setEmail(jogador.getEmail());
+				jogadorF.setNome(jogador.getNome());
+				jogadorF.setSenha(jogador.getSenha());
+				// jogadorF.setQtdCartaoAmarelo(jogador.getQtdCartaoAmarelo());
+				// jogadorF.setQtdCartaoVermelho(jogador.getQtdCartaoVermelho());
+				// jogadorF.setQtdGol(jogador.getQtdGol());
+				// jogadorF.setQtdJogos(jogador.getQtdJogos());
+				// jogadorF.setQtdVitoria(jogador.getQtdVitoria());
+
+				jogadorF = UtilsServidor.getInstace(
+						context.getString(R.string.servidor_desenvolvimento))
+						.persistOrMerge(jogadorF);
+
+				dh = DatabaseHelper
+						.getInstance(context.getApplicationContext());
+
+				jogadorDao = new JogadorDao(dh.getConnectionSource());
+				int result = jogadorDao.update(jogador);
+				if (result == 1) {
+
+					UtilsMetodos.getInscace().toast(context,
+							context.getString(R.string.msg_atualizar_jogador));
+					
+				} else {
+					throw new SQLException();
+				}
+			} else {
+
+			}
+		} else {
+
+		}
 	}
 
 	public List<Jogador> getAll() throws SQLException {
-		return jogadorDao.queryForAll();
+		List<Jogador> allJogador = null;
+		if (ConnectionDetector.getInstance(context).isConnectingToInternet()) {
+			
+			allJogador = jogadorDao.queryForAll();
+			
+		}
+		return allJogador;
 	}
 
-	// Fecha conexão com o banco
+	public void validarJogador(Jogador jogador) {
+		if (ConnectionDetector.getInstance(context).isConnectingToInternet()) {
+			if (!UtilsServidor.getInstace(
+					context.getString(R.string.servidor_desenvolvimento))
+					.findByEmail(jogador.getEmail())) {
+
+			}
+		}
+	}
+
 	public void closeDb() {
-		dh.close();
+		dh = null;
 	}
 }
