@@ -14,7 +14,7 @@ import com.j256.ormlite.table.TableUtils;
 
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
-	private static final String NOME_BD = "onlance";
+	private static final String NOME_BD = "onlance_producao";
 	private static final int VERSAO_BD = 1;
 	private static DatabaseHelper dh;
 	private static Context context;
