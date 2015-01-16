@@ -52,6 +52,8 @@ public class JogadorBo {
 						.persistOrMerge(jogadorF);
 				jogador.setId(jogadorF.getId());
 
+				jogador.setId(jogadorF.getId());
+				
 				dh = DatabaseHelper.getInstance(context);
 				jogadorDao = new JogadorDao(dh.getConnectionSource());
 
