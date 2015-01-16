@@ -1,5 +1,8 @@
 
-package com.app.onlance;
+package com.app.adapter;
+
+import com.app.onlance.ConfigAvancadaFragment;
+import com.app.onlance.ConfigBasicaFragment;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

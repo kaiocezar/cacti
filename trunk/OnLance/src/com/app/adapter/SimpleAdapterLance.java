@@ -1,7 +1,10 @@
-package com.app.onlance;
+package com.app.adapter;
 
 import java.util.List;
 import java.util.Map;
+
+import com.app.onlance.R;
+import com.app.onlance.R.id;
 
 import android.content.Context;
 import android.graphics.Color;
