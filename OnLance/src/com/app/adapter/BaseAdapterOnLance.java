@@ -1,6 +1,11 @@
-package com.app.onlance;
+package com.app.adapter;
 
 import java.util.List;
+
+import com.app.onlance.JogadorForList;
+import com.app.onlance.R;
+import com.app.onlance.R.id;
+import com.app.onlance.R.layout;
 
 import Utils.UtilsMetodos;
 import android.content.Context;

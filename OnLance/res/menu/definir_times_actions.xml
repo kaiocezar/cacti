@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/action_config_partida"
-        android:icon="@drawable/config"
+        android:icon="@drawable/config_action"
         android:showAsAction="ifRoom"
         android:title="@string/config"/>
 

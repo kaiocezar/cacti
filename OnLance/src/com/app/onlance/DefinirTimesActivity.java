@@ -20,6 +20,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
+import com.app.adapter.BaseAdapterOnLance;
 import com.facebook.Request;
 import com.facebook.Response;
 import com.facebook.Session;

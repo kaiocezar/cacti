@@ -1,5 +1,7 @@
 package com.app.onlance;
 
+import com.app.adapter.TabsPagerAdapter;
+
 import Utils.UtilsInformation;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
