@@ -14,7 +14,7 @@
         android:background="@color/green700" >
 
         <ImageView
-            android:id="@+id/imageView1"
+            android:id="@+id/imageView_usuario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -22,7 +22,7 @@
     </FrameLayout>
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/textView_usuario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/frameLayout1"
@@ -37,39 +37,39 @@
         android:id="@+id/frameLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/textView_usuario"
         android:paddingLeft="50dp"
         android:paddingRight="50dp"
         android:paddingTop="20dp"
         android:paddingBottom="20dp">
         
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textView_espaco"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="|"/>
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/textView_amigos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="@+id/textView2"
+            android:layout_marginRight="@+id/textView_espaco"
             android:layout_gravity="left"
             android:text="18 Amigos"/>
          
          <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/textView_peladas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@+id/textView2"
+            android:layout_marginLeft="@+id/textView_espaco"
             android:layout_gravity="right"
             android:text="5 Peladas"/>
         
     </FrameLayout>
 
     <Button
-        android:id="@+id/editar"
+        android:id="@+id/button_editar"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_alignParentBottom="true"
