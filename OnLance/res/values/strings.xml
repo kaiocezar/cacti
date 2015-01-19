@@ -90,5 +90,6 @@
     <string name="msg_falha_conexao_com_internet">Falha ao tentar conectar com a Internet! Tente novamente.</string>
     <string name="msg_atualizar_jogador">Jogador atualizado com sucesso!</string>
     <string name="msg_deletar_jogador">Jogador deletado com sucesso!</string>
+    <string name="peladas">Peladas</string>
     
 </resources>

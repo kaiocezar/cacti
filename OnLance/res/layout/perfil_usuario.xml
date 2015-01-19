@@ -11,13 +11,14 @@
         android:layout_width="match_parent"
         android:layout_height="130dp"
         android:layout_alignParentRight="true"	
-        android:background="@color/green700" >
+        android:background="#4CAF50" >
 
         <ImageView
             android:id="@+id/imageView_usuario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:background="@drawable/imagem"
             android:src="@drawable/amigo" />
     </FrameLayout>
 
@@ -56,7 +57,8 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="@+id/textView_espaco"
             android:layout_gravity="left"
-            android:text="18 Amigos"/>
+            android:text="@string/amigos"
+            android:drawableTop="@drawable/ic_action_person"/>
          
          <TextView
             android:id="@+id/textView_peladas"
@@ -64,22 +66,25 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@+id/textView_espaco"
             android:layout_gravity="right"
-            android:text="5 Peladas"/>
+            android:text="@string/peladas"
+            android:drawableTop="@drawable/ic_action_group"/>
         
     </FrameLayout>
+	
+   
 
-    <Button
-        android:id="@+id/button_editar"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="14dp"
-        android:layout_marginRight="15dp"
-        android:background="@drawable/editar"
-        android:onClick="clickGol"
-        android:text="Editar"
-        android:textColor="@android:color/white"
-        android:textStyle="bold" />
+	<ImageButton
+	    android:id="@+id/button_editar"
+	    android:layout_width="80dp"
+	    android:layout_height="80dp"
+	    android:layout_alignParentBottom="true"
+	    android:layout_alignParentRight="true"
+	    android:layout_marginBottom="14dp"
+	    android:layout_marginRight="15dp"
+	    android:src="@drawable/ic_action_edit"
+	    android:background="@drawable/editar"
+	    android:onClick="clickGol"
+	    android:textColor="@android:color/white"
+	    android:textStyle="bold" />
 
 </RelativeLayout>
