@@ -83,8 +83,6 @@
 	    android:layout_marginRight="15dp"
 	    android:src="@drawable/ic_action_edit"
 	    android:background="@drawable/editar"
-	    android:onClick="clickGol"
-	    android:textColor="@android:color/white"
-	    android:textStyle="bold" />
+	    android:onClick="clickGol"/>
 
 </RelativeLayout>
