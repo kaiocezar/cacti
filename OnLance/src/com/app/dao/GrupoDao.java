@@ -8,7 +8,7 @@ import com.j256.ormlite.support.ConnectionSource;
 
 public class GrupoDao extends BaseDaoImpl<Grupo, Integer> {
 
-	protected GrupoDao(ConnectionSource cs) throws SQLException {
+	public GrupoDao(ConnectionSource cs) throws SQLException {
 		super(Grupo.class);
 		setConnectionSource(cs);
 		initialize();

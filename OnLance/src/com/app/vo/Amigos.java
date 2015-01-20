@@ -3,21 +3,21 @@ package com.app.vo;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
-@DatabaseTable(tableName = "jogador_evento")
-public class JogadorEvento {
+@DatabaseTable(tableName = "amigos")
+public class Amigos {
 
 	@DatabaseField(columnName = "jogador_id", foreign = true, uniqueCombo = true)
 	private Jogador jogador;
 
-	@DatabaseField(columnName = "evento_id", foreign = true, uniqueCombo = true)
-	private Evento evento;
+	@DatabaseField(columnName = "amigo_id", foreign = true, uniqueCombo = true)
+	private Jogador amigo;
 
-	public JogadorEvento() {
+	public Amigos() {
 	}
 
-	public JogadorEvento(Jogador jogador, Evento evento) {
+	public Amigos(Jogador jogador, Jogador amigo) {
 		this.jogador = jogador;
-		this.evento = evento;
+		this.amigo = amigo;
 	}
 
 	public Jogador getJogador() {
@@ -28,11 +28,11 @@ public class JogadorEvento {
 		this.jogador = jogador;
 	}
 
-	public Evento getEvento() {
-		return evento;
+	public Jogador getAmigo() {
+		return amigo;
 	}
 
-	public void setEvento(Evento evento) {
-		this.evento = evento;
+	public void setAmigo(Jogador amigo) {
+		this.amigo = amigo;
 	}
 }
