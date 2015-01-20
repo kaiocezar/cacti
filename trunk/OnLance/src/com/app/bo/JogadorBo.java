@@ -52,8 +52,6 @@ public class JogadorBo {
 						.persistOrMerge(jogadorF);
 				jogador.setId(jogadorF.getId());
 
-				jogador.setId(jogadorF.getId());
-				
 				dh = DatabaseHelper.getInstance(context);
 				jogadorDao = new JogadorDao(dh.getConnectionSource());
 
@@ -62,11 +60,11 @@ public class JogadorBo {
 
 					UtilsMetodos.getInscace().toast(context,
 							context.getString(R.string.msg_salvar_jogador));
-					
+
 				} else {
 					throw new SQLException();
 				}
-
+				
 			} else { // Valida campos Intacio um Jogador Facade Procuro no
 						// Bd se
 				// já existe aquele email Salvo facade Recebe o Id e //
@@ -107,10 +105,10 @@ public class JogadorBo {
 				jogadorDao = new JogadorDao(dh.getConnectionSource());
 				int result = jogadorDao.delete(jogador);
 				if (result == 1) {
-					
+
 					UtilsMetodos.getInscace().toast(context,
 							context.getString(R.string.msg_deletar_jogador));
-					
+
 				} else {
 					throw new SQLException();
 				}
@@ -125,15 +123,15 @@ public class JogadorBo {
 	public Jogador findByEmail(String email) throws SQLException {
 		Jogador jogador = null;
 		if (ConnectionDetector.getInstance(context).isConnectingToInternet()) {
-			
-			dh = DatabaseHelper.getInstance(context); 
+
+			dh = DatabaseHelper.getInstance(context);
 			jogadorDao = new JogadorDao(dh.getConnectionSource());
 			Map<String, Object> values = new HashMap<String, Object>();
 			values.put("email", email + " - ANDROID CLASS");
 			jogador = (Jogador) jogadorDao.queryForFieldValues(values);
-			
+
 		} else {
-			
+
 		}
 		return jogador;
 	}
@@ -167,7 +165,7 @@ public class JogadorBo {
 
 					UtilsMetodos.getInscace().toast(context,
 							context.getString(R.string.msg_atualizar_jogador));
-					
+
 				} else {
 					throw new SQLException();
 				}
@@ -182,9 +180,9 @@ public class JogadorBo {
 	public List<Jogador> getAll() throws SQLException {
 		List<Jogador> allJogador = null;
 		if (ConnectionDetector.getInstance(context).isConnectingToInternet()) {
-			
+
 			allJogador = jogadorDao.queryForAll();
-			
+
 		}
 		return allJogador;
 	}
@@ -200,6 +198,6 @@ public class JogadorBo {
 	}
 
 	public void closeDb() {
-		dh = null;
+		dh.close(); //Fecha a conexão
 	}
 }

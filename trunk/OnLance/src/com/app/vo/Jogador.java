@@ -15,13 +15,13 @@ public class Jogador {
 	@DatabaseField
 	private String senha;
 
-	@DatabaseField
+	@DatabaseField(uniqueIndex = true)
 	private String email;
 
-	//@DatabaseField(columnName = "foto", canBeNull = true)
-	//private byte[] foto;
+	// @DatabaseField
+	// private byte[] foto;
 
-	@DatabaseField
+	@DatabaseField(uniqueIndex = true)
 	private String numeroTelefone;
 
 	@DatabaseField
@@ -74,13 +74,11 @@ public class Jogador {
 		this.email = email;
 	}
 
-	/*public byte[] getFoto() {
-		return foto;
-	}
-
-	public void setFoto(byte[] foto) {
-		this.foto = foto;
-	}*/
+	/*
+	 * public byte[] getFoto() { return foto; }
+	 * 
+	 * public void setFoto(byte[] foto) { this.foto = foto; }
+	 */
 
 	public String getNumeroTelefone() {
 		return numeroTelefone;

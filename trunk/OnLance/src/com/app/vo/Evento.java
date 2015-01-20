@@ -1,23 +1,57 @@
 package com.app.vo;
 
+import java.util.Date;
+
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
-import android.provider.ContactsContract.Contacts.Data;
-
+@DatabaseTable(tableName = "evento")
 public class Evento {
 
-	@DatabaseField(id = true, generatedId = true, columnName = "id")
+	@DatabaseField(id = true)
 	private int id;
 
-	@DatabaseField(columnName = "localizacao", canBeNull = true)
+	@DatabaseField
 	private String localizacao;
 
-	@DatabaseField(columnName = "data", canBeNull = false)
-	private Data data;
+	@DatabaseField
+	private Date data;
 
-	@DatabaseField(columnName = "nome", canBeNull = false)
+	@DatabaseField
 	private String nome;
 
 	public Evento() {
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getLocalizacao() {
+		return localizacao;
+	}
+
+	public void setLocalizacao(String localizacao) {
+		this.localizacao = localizacao;
+	}
+
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 }

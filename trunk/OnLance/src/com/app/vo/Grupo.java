@@ -1,19 +1,21 @@
-package com.app.vo;
+ package com.app.vo;
 
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
+@DatabaseTable(tableName = "grupo")
 public class Grupo {
 
-	@DatabaseField(id = true, generatedId = true, columnName = "id")
+	@DatabaseField(id = true)
 	private int id;
 
-	@DatabaseField(columnName = "nome", canBeNull = false)
+	@DatabaseField
 	private String nome;
 
-	@DatabaseField(columnName = "descricao", canBeNull = true)
+	@DatabaseField
 	private String descricao;
 
-	@DatabaseField(columnName = "imagem", canBeNull = true)
+	@DatabaseField
 	private byte[] imagem;
 
 	public Grupo() {
