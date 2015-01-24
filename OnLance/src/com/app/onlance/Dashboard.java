@@ -15,8 +15,8 @@ public class Dashboard extends Activity {
 
 	}
 
-	public void onClickComunidade(View view) {
-		Intent intent = new Intent(this, AmigosGruposActivity.class);
+	public void onClickGrupos(View view) {
+		Intent intent = new Intent(this, GruposActivity.class);
 		startActivity(intent);
 	}
 
@@ -30,7 +30,7 @@ public class Dashboard extends Activity {
 	}
 
 	public void onClickPartida(View view) {
-		Intent intent = new Intent(this, ModoJogoActivity.class);
+		Intent intent = new Intent(this, DefinirTimesActivity.class);
 		startActivity(intent);
 	}
 }

@@ -14,10 +14,15 @@
     <string name="opcoes">Opções</string>
     <string name="salvar">Salvar</string>
     <string name="salvar_UPPER">SALVAR</string>
+    <string name="novo_grupo_UPPER">NOVO GRUPO</string>
     <string name="comunidade">Comunidade</string>
     <string name="comunidade_UPPER">COMUNIDADE</string>
+    <string name="add_new_group">Adicionar novo Grupo</string>
     <string name="gratuito">É gratuito e sempre será.</string>
+    <string name="add_member">Adicionar Membro</string>
     <string name="escolher_senha">Escolher senha</string>
+    <string name="grupos">Grupos</string>
+    <string name="grupos_UPPER">GRUPOS</string>
     <string name="confirmar_senha">Confirmar Senha</string>
     <string name="cartao_vermelho">Cartão Vermelho</string>
     <string name="criar_conta">Criar uma conta</string>
@@ -80,6 +85,7 @@
     <string name="times">Times</string>
     <string name="configuracao">Configurações</string>
     <string name="partida">Partidas</string>
+    <string name="partida_rapida">Partida Rápida</string>
     <string name="time">Times</string>
     <string name="estatistica">Estatísticas</string>
     <string name="termos_condicoes">Ao continuar, você também aceita as <u><b>Condições de serviço</b></u>, a <u><b>Política de privacidade</b></u> e as <u><b>Condições de serviço</b></u> para celular do Olho no Lance.</string>

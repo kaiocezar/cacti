@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@drawable/imagem"
-            android:src="@drawable/amigo" />
+            android:src="@drawable/grupos" />
     </FrameLayout>
 
     <TextView

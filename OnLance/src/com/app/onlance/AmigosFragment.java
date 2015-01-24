@@ -39,7 +39,7 @@ public class AmigosFragment extends Fragment {
 		kaio.getHistorico().setGol(10);
 		kaio.getHistorico().setJogos(10);
 		
-		geyson.setNome("Gesyon");
+		geyson.setNome("Geyson");
 		geyson.getHistorico().setGol(12);
 		geyson.getHistorico().setJogos(20);
 		
