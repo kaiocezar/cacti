@@ -91,7 +91,7 @@
                 android:background="#FF2B26"
                 android:onClick="onClickPartida"
                 android:paddingTop="110dp"
-                android:text="@string/partida"
+                android:text="@string/partida_rapida"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold" />
 
@@ -116,9 +116,9 @@
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
                 android:background="#E8AF0C"
-                android:onClick="onClickComunidade"
+                android:onClick="onClickGrupos"
                 android:paddingTop="110dp"
-                android:text="@string/comunidade"
+                android:text="@string/grupos"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold" />
 

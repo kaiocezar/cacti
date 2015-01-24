@@ -57,7 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textView3"
-        android:text="Criado em 2 dias de CodeCup!"
+        android:text="UFPE - CIn - SI 2014.2"
         android:textSize="14sp" />
 
     <TextView

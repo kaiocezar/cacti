@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_marginRight="10dp"
-        android:src="@drawable/amigo" />
+        android:src="@drawable/grupos" />
 
     <TextView
         android:id="@+id/nomeJogador"
