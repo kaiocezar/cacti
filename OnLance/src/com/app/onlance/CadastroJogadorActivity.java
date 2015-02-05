@@ -2,7 +2,9 @@ package com.app.onlance;
 
 import java.sql.SQLException;
 
+import Utils.UtilsMetodos;
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
@@ -43,7 +45,6 @@ public class CadastroJogadorActivity extends Activity {
 
 		// Listeners
 		OnClickListener oclBtnCriarConta = new OnClickListener() {
-			@Override
 			public void onClick(View v) {
 				try {
 
@@ -59,14 +60,22 @@ public class CadastroJogadorActivity extends Activity {
 						jogador.setNumeroTelefone(numTelefoneEditText.getText()
 								.toString());
 						bo = new JogadorBo(CadastroJogadorActivity.this);
-						bo.save(jogador);
+						int result = bo.save(jogador);
+						
+						if (result == 1) {
+							Context context = getApplicationContext();
+							UtilsMetodos.getInscace().toast(context,context.getString(R.string.msg_salvar_jogador));
+
+						} else {
+							throw new SQLException();
+						}
 					} else {
 						// Lancar exceção
 					}
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-				onDestroy();
+				bo.closeDb();
 			}
 		};
 

@@ -1,4 +1,4 @@
- package com.app.vo;
+package com.app.vo;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
@@ -15,10 +15,17 @@ public class Grupo {
 	@DatabaseField
 	private String descricao;
 
-	@DatabaseField
-	private byte[] imagem;
+	/*
+	 * @DatabaseField private byte[] imagem;
+	 */
 
 	public Grupo() {
+	}
+
+	public Grupo(String nome, String descricao, byte[] imagem) {
+		this.nome = nome;
+		this.descricao = descricao;
+		//this.imagem = imagem;
 	}
 
 	public int getId() {
@@ -45,11 +52,9 @@ public class Grupo {
 		this.descricao = descricao;
 	}
 
-	public byte[] getImagem() {
-		return imagem;
-	}
-
-	public void setImagem(byte[] imagem) {
-		this.imagem = imagem;
-	}
+	/*
+	 * public byte[] getImagem() { return imagem; }
+	 * 
+	 * public void setImagem(byte[] imagem) { this.imagem = imagem; }
+	 */
 }

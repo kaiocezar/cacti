@@ -21,7 +21,7 @@
             android:layout_weight="1" >
 
             <Button
-                android:id="@+id/posicao11"
+                android:id="@+id/estatisticas_dashboard"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
@@ -47,12 +47,11 @@
             android:layout_weight="1" >
 
             <Button
-                android:id="@+id/Posicao21"
+                android:id="@+id/configuracoes_dashboard"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
                 android:background="#A9FFC6"
-                android:onClick="onClickConfig"
                 android:paddingTop="110dp"
                 android:text="@string/configuracao"
                 android:textColor="#FFFFFF"
@@ -84,14 +83,13 @@
             android:layout_weight="1" >
 
             <Button
-                android:id="@+id/Posicao12"
+                android:id="@+id/partidas_dashboard"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
                 android:background="#FF2B26"
-                android:onClick="onClickPartida"
                 android:paddingTop="110dp"
-                android:text="@string/partida_rapida"
+                android:text="@string/partida"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold" />
 
@@ -111,14 +109,13 @@
             <!-- Posição [2,2] -->
 
             <Button
-                android:id="@+id/Posicao22"
+                android:id="@+id/comunidade_dashboard"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
                 android:background="#E8AF0C"
-                android:onClick="onClickGrupos"
                 android:paddingTop="110dp"
-                android:text="@string/grupos"
+                android:text="@string/comunidade"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold" />
 
