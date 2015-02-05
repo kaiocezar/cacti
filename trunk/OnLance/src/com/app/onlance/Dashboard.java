@@ -1,36 +1,79 @@
 package com.app.onlance;
 
+import java.sql.SQLException;
+
+import com.app.bo.JogadorBo;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
 public class Dashboard extends Activity {
 
-	/** Called when the activity is first created. */
+	private Button btnComunidade;
+	private Button btnEstatisticas;
+	private Button btnPartidas;
+	private Button btnConfiguracoes;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.dashboard);
 
-	}
+		btnComunidade = (Button) findViewById(R.id.comunidade_dashboard);
+		btnEstatisticas = (Button) findViewById(R.id.estatisticas_dashboard);
+		btnPartidas = (Button) findViewById(R.id.partidas_dashboard);
+		btnConfiguracoes = (Button) findViewById(R.id.configuracoes_dashboard);
 
-	public void onClickGrupos(View view) {
-		Intent intent = new Intent(this, GruposActivity.class);
-		startActivity(intent);
-	}
+		OnClickListener oclBtnComunidade = new OnClickListener() {
+			public void onClick(View v) {
+				Intent intent = new Intent(Dashboard.this,
+						CadastroJogadorActivity.class);
+				startActivity(intent);
+			}
+		};
 
-	public void onClickTime(View view) {
+		btnComunidade.setOnClickListener(oclBtnComunidade);
 
-	}
+		OnClickListener oclBtnEstatisticas = new OnClickListener() {
+			public void onClick(View v) {
+				// Intent intent = new Intent(Dashboard.this,
+				// AmigosGruposActivity.class); //Para passar o contexto utiliza
+				// o NomeDaClasse.this
+				// startActivity(intent);
+				JogadorBo jb= new JogadorBo(Dashboard.this);
+				try {
+					jb.teste();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		};
 
-	public void onClickConfig(View view) {
-		Intent intent = new Intent(this, ConfigGeralActivity.class);
-		startActivity(intent);
-	}
+		btnEstatisticas.setOnClickListener(oclBtnEstatisticas);
 
-	public void onClickPartida(View view) {
-		Intent intent = new Intent(this, DefinirTimesActivity.class);
-		startActivity(intent);
+		OnClickListener oclBtnConf = new OnClickListener() {
+			public void onClick(View v) {
+				Intent intent = new Intent(Dashboard.this,
+						ConfigGeralActivity.class);
+				startActivity(intent);
+			}
+		};
+
+		btnConfiguracoes.setOnClickListener(oclBtnConf);
+
+		OnClickListener oclBtnPartidas = new OnClickListener() {
+			public void onClick(View v) {
+				Intent intent = new Intent(Dashboard.this,
+						ModoJogoActivity.class);
+				startActivity(intent);
+			}
+		};
+
+		btnPartidas.setOnClickListener(oclBtnPartidas);
 	}
 }

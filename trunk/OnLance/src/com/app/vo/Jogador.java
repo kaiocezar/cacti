@@ -24,22 +24,17 @@ public class Jogador {
 	@DatabaseField(uniqueIndex = true)
 	private String numeroTelefone;
 
-	@DatabaseField
-	private int qtdGol;
-
-	@DatabaseField
-	private int qtdCartaoVermelho;
-
-	@DatabaseField
-	private int qtdCartaoAmarelo;
-
-	@DatabaseField
-	private int qtdVitoria;
-
-	@DatabaseField
-	private int qtdJogo;
-
 	public Jogador() {
+	}
+
+	public Jogador(Integer id, String nome, String senha, String email,
+			byte[] foto, String numeroTelefone) {
+		this.id = id;
+		this.nome = nome;
+		this.senha = senha;
+		this.email = email;
+		//this.foto = foto;
+		this.numeroTelefone = numeroTelefone;
 	}
 
 	public Integer getId() {
@@ -86,45 +81,5 @@ public class Jogador {
 
 	public void setNumeroTelefone(String numeroTelefone) {
 		this.numeroTelefone = numeroTelefone;
-	}
-
-	public int getQtdGol() {
-		return qtdGol;
-	}
-
-	public void setQtdGol(int gol) {
-		this.qtdGol = gol;
-	}
-
-	public int getQtdCartaoVermelho() {
-		return qtdCartaoVermelho;
-	}
-
-	public void setQtdCartaoVermelho(int cartaoVermelho) {
-		this.qtdCartaoVermelho = cartaoVermelho;
-	}
-
-	public int getQtdCartaoAmarelo() {
-		return qtdCartaoAmarelo;
-	}
-
-	public void setQtdCartaoAmarelo(int cartaoAmarelo) {
-		this.qtdCartaoAmarelo = cartaoAmarelo;
-	}
-
-	public int getQtdVitoria() {
-		return qtdVitoria;
-	}
-
-	public void setQtdVitoria(int vitoria) {
-		this.qtdVitoria = vitoria;
-	}
-
-	public int getQtdJogos() {
-		return qtdJogo;
-	}
-
-	public void setQtdJogos(int jogos) {
-		this.qtdJogo = jogos;
 	}
 }

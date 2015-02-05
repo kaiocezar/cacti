@@ -23,6 +23,12 @@ public class Evento {
 	public Evento() {
 	}
 
+	public Evento(String localizacao, Date data, String nome) {
+		this.localizacao = localizacao;
+		this.data = data;
+		this.nome = nome;
+	}
+
 	public int getId() {
 		return id;
 	}
