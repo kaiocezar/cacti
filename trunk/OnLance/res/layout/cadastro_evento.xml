@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="#FFFFFF"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/nome_evento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/nome_evento_hint"
+        android:inputType="text" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/local_evento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/local_hint"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/data_evento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/data_evento_hint"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/horario_envento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/horario_evento_hint"
+        android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/mais_informacoes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/recado_para_galera_hint"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/criar_evento_evento"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:background="#4CAF50"
+        android:layout_marginTop="5dp"
+        android:text="@string/criar_evento_UPPER"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

@@ -97,5 +97,11 @@
     <string name="msg_atualizar_jogador">Jogador atualizado com sucesso!</string>
     <string name="msg_deletar_jogador">Jogador deletado com sucesso!</string>
     <string name="peladas">Peladas</string>
+    <string name="nome_evento_hint">Qual o nome?</string>
+    <string name="local_hint">Onde?</string>
+    <string name="data_evento_hint">Quando?</string>
+    <string name="horario_evento_hint">Que horas?</string>
+    <string name="recado_para_galera_hint">Algum recado para galera?</string>
+    <string name="criar_evento_UPPER">CRIAR EVENTO</string>
     
 </resources>
