@@ -8,6 +8,7 @@ import com.app.adapter.BaseAdapterEventos;
 import com.app.facade.EventoFacade;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -38,16 +39,22 @@ public class EventosActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				
-				listViewEvento.setOnItemClickListener(new OnItemClickListener() {
+				Intent intent = new Intent(EventosActivity.this, CriarEventoActivity.class);
+				
+				startActivity(intent);
+				
+				
+			}
+		});
+		
+		listViewEvento.setOnItemClickListener(new OnItemClickListener() {
 
-					@Override
-					public void onItemClick(AdapterView<?> parent, View view,
-							int position, long id) {
-						
-						
-						
-					}
-				});
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				
+				
+				
 			}
 		});
 		
