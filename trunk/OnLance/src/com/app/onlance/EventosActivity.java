@@ -9,11 +9,17 @@ import com.app.facade.EventoFacade;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.ListView;
 
 public class EventosActivity extends Activity {
 
 	private ListView listViewEvento;
+	private Button  criarEvento;
 	private BaseAdapterEventos adapter;
 
 	@Override
@@ -21,13 +27,41 @@ public class EventosActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.eventos);
 
+		init();
+		bind();
+
+	}
+
+	private void bind() {
+		criarEvento.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				listViewEvento.setOnItemClickListener(new OnItemClickListener() {
+
+					@Override
+					public void onItemClick(AdapterView<?> parent, View view,
+							int position, long id) {
+						
+						
+						
+					}
+				});
+			}
+		});
+		
+		
+	}
+
+	private void init() {
 		listViewEvento = (ListView) findViewById(R.id.listViewEvento);
+		criarEvento = (Button) findViewById(R.id.criarEvento);
 
 		List<EventoFacade> list = getEventoList();
 		adapter = new BaseAdapterEventos(this, list);
 		
 		listViewEvento.setAdapter(adapter);
-
 	}
 
 	private List<EventoFacade> getEventoList() {
