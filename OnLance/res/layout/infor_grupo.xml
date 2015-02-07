@@ -33,6 +33,7 @@
             android:layout_toRightOf="@+id/imageGrupo"
             android:text="Descrição"
             android:textAppearance="?android:attr/textAppearanceSmall" />
+        
     </RelativeLayout>
 
     <RelativeLayout

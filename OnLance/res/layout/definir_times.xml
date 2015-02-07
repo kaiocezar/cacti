@@ -22,7 +22,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_margin="15dp"
-            android:background="@drawable/circle"
+            android:background="@drawable/circle_verde"
             android:gravity="center"
             android:text="@string/plus"
             android:textColor="#FFFFFF"
