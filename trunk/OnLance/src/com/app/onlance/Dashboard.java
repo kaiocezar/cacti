@@ -31,7 +31,7 @@ public class Dashboard extends Activity {
 		OnClickListener oclBtnComunidade = new OnClickListener() {
 			public void onClick(View v) {
 				Intent intent = new Intent(Dashboard.this,
-						CadastroJogadorActivity.class);
+						GruposActivity.class);
 				startActivity(intent);
 			}
 		};
