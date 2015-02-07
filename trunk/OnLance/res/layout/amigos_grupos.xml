@@ -16,7 +16,7 @@
 		android:layout_margin="15dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:background="@drawable/circle"
+        android:background="@drawable/circle_amarelo"
         android:gravity="center"
         android:text="@string/plus"
         android:textColor="#FFFFFF"
