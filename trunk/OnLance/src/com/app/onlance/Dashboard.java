@@ -40,17 +40,10 @@ public class Dashboard extends Activity {
 
 		OnClickListener oclBtnEstatisticas = new OnClickListener() {
 			public void onClick(View v) {
-				// Intent intent = new Intent(Dashboard.this,
-				// AmigosGruposActivity.class); //Para passar o contexto utiliza
-				// o NomeDaClasse.this
-				// startActivity(intent);
-				JogadorBo jb= new JogadorBo(Dashboard.this);
-				try {
-					jb.teste();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				
+				Intent intent = new Intent(Dashboard.this,
+						EventosActivity.class);
+				startActivity(intent);
 			}
 		};
 
