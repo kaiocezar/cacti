@@ -6,9 +6,11 @@
     <color name="amarelo">#FFFF00</color>
     <color name="vermelho">#F44336</color>
     <color name="azul">#03A9F4</color>
+    <color name="azul_dash">#445FFF</color>
     <color name="lime">#CDDC39</color>
     <color name="orange">#FF9800</color>
     <color name="yellow">#FFEB3B</color>
+    <color name="yellow_dash">#E8AF0C</color>
     <color name="green">#4CAF50</color>
 	<color name="green700">#388E3C</color>
 	<color name="gray">#9E9E9E</color>

@@ -3,31 +3,26 @@ package com.app.onlance;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.ListView;
+
 import com.app.adapter.BaseAdapterAmigos;
 import com.app.facade.JogadorFacade;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.ListView;
+public class InfoGrupoActivity extends Activity{
 
-public class GrupoPerfilActivity extends Activity {
-
-	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.grupo_perfil);
+		setContentView(R.layout.infor_grupo);
 		init();
 	}
 	
 	
 	private void init() {
-		ListView list = (ListView) findViewById(R.id.listPerfilGrupo);
+		ListView list = (ListView) findViewById(R.id.listInfGrupo);
 
 		List<JogadorFacade> amigos = new ArrayList<JogadorFacade>();
 		JogadorFacade kaio = new JogadorFacade();
@@ -67,28 +62,5 @@ public class GrupoPerfilActivity extends Activity {
 		list.setAdapter(adpter);
 
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu items for use in the action bar
-		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.grupos_actions, menu);
-		return super.onCreateOptionsMenu(menu);
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-
-		switch (item.getItemId()) {
-		case R.id.action_add_member:
-			
-			Intent in =  new Intent(GrupoPerfilActivity.this,InfoGrupoActivity.class);
-			startActivity(in);
-			return true;
-		}
-
-		return super.onOptionsItemSelected(item);
-	}
-
-
+	
 }
