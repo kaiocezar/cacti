@@ -5,12 +5,15 @@ import java.util.List;
 import Utils.UtilsConstants;
 import Utils.UtilsMetodos;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.app.bo.JogadorBo;
 import com.facebook.HttpMethod;
 import com.facebook.Request;
 import com.facebook.Response;
@@ -24,7 +27,7 @@ import com.facebook.widget.LoginButton;
 public class MainActivity extends Activity {
 
 	UiLifecycleHelper uiHelper;
-
+	SharedPreferences sharedpreferences;
 	private Session.StatusCallback callback = new StatusCallback() {
 
 		@Override
@@ -42,7 +45,8 @@ public class MainActivity extends Activity {
 
 		LoginButton lb = (LoginButton) findViewById(R.id.login_face);
 		lb.setPublishPermissions(UtilsConstants.permissions_app);
-
+		sharedpreferences = getSharedPreferences(JogadorBo.MyPREFERENCES,
+				Context.MODE_PRIVATE);
 		uiHelper = new UiLifecycleHelper(this, callback);
 		uiHelper.onCreate(savedInstanceState);
 
@@ -51,8 +55,10 @@ public class MainActivity extends Activity {
 	}
 
 	private void validarEntrada() {
-		if (UtilsMetodos.getInscace().isConectadoFacebook()
-				&& UtilsMetodos.getInscace().validarUsuario(this)) {
+
+		if (sharedpreferences.getInt(JogadorBo.UserId, 0) != 0
+				|| (UtilsMetodos.getInscace().isConectadoFacebook() && UtilsMetodos
+						.getInscace().validarUsuario(this))) {
 			proximaTelaEvent();
 		}
 	}

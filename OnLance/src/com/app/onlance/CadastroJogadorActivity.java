@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import Utils.UtilsMetodos;
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
@@ -27,6 +28,7 @@ public class CadastroJogadorActivity extends Activity {
 	private JogadorBo bo;
 	private Jogador jogador;
 
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -39,9 +41,7 @@ public class CadastroJogadorActivity extends Activity {
 		confirmarSenhaEditText = (EditText) findViewById(R.id.confirmar_senha_cadastro);
 		numTelefoneEditText = (EditText) findViewById(R.id.number_phone_cadastro);
 		termo_uso = (TextView) findViewById(R.id.termos_uso);
-		termo_uso
-				.setText(Html
-						.fromHtml("Ao continuar, você também aceita as <u><b>Condições de serviço</b></u>, a <u><b>Política de privacidade</b></u> e as <u><b>Condições de serviço</b></u> para celular do Olho no Lance."));
+
 
 		// Listeners
 		OnClickListener oclBtnCriarConta = new OnClickListener() {
@@ -61,10 +61,13 @@ public class CadastroJogadorActivity extends Activity {
 								.toString());
 						bo = new JogadorBo(CadastroJogadorActivity.this);
 						int result = bo.save(jogador);
-						
+
 						if (result == 1) {
 							Context context = getApplicationContext();
-							UtilsMetodos.getInscace().toast(context,context.getString(R.string.msg_salvar_jogador));
+							UtilsMetodos
+									.getInscace()
+									.toast(context,
+											context.getString(R.string.msg_salvar_jogador));
 
 						} else {
 							throw new SQLException();
