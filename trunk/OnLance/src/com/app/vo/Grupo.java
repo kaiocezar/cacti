@@ -22,12 +22,6 @@ public class Grupo {
 	public Grupo() {
 	}
 
-	public Grupo(String nome, String descricao, byte[] imagem) {
-		this.nome = nome;
-		this.descricao = descricao;
-		//this.imagem = imagem;
-	}
-
 	public int getId() {
 		return id;
 	}

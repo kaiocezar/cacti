@@ -1,6 +1,7 @@
 package com.app.bo;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -10,30 +11,43 @@ import Utils.ConnectionDetector;
 import Utils.UtilsMetodos;
 import Utils.UtilsServidor;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.widget.Toast;
 
 import com.app.dao.AdministraDao;
 import com.app.dao.DatabaseHelper;
+import com.app.dao.GrupoDao;
 import com.app.dao.JogadorDao;
+import com.app.dao.MembroDao;
 import com.app.dao.ParticipaDao;
 import com.app.facade.JogadorFacade;
 import com.app.onlance.R;
 import com.app.vo.Evento;
 import com.app.vo.Grupo;
 import com.app.vo.Jogador;
+import com.app.vo.Membro;
 import com.app.vo.Participa;
 
 public class JogadorBo {
 
+	public static final String MyPREFERENCES = "MyPrefs";
+	public static final String UserId = "UserId";
+	private MembroDao menbroDao;
+	private GrupoDao grupoDao;
 	private Context context;
 	private DatabaseHelper dh;
 	private JogadorDao jogadorDao;
+	private SharedPreferences sharedpreferences;
 
 	public JogadorBo(Context context) {
 		this.context = context;
 	}
 
 	public int save(Jogador jogador) throws SQLException {
+		
+		sharedpreferences = context.getSharedPreferences(MyPREFERENCES,
+				Context.MODE_PRIVATE);
 
 		// if (ConnectionDetector.getInstance(context).isConnectingToInternet())
 		// {
@@ -84,7 +98,84 @@ public class JogadorBo {
 		// UtilsMetodos.getInscace().toast(context,
 		// context.getString(R.string.msg_falha_conexao_com_internet));
 		// }
+		 dh = DatabaseHelper.getInstance(context); 
+		 jogadorDao = new JogadorDao(dh.getConnectionSource());
+		 
+		jogador.setId(10);
+		jogadorDao.createOrUpdate(jogador);
+		 Editor editor = sharedpreferences.edit();
+		 editor.putInt(UserId, jogador.getId());
+		 editor.commit();
+		 
+		 
+		
 		return 1;
+	}
+	
+	public Jogador findById(int id){
+		Jogador j = null;
+		
+		 try {
+			 dh = DatabaseHelper.getInstance(context); 
+			jogadorDao = new JogadorDao(dh.getConnectionSource());
+			j = jogadorDao.queryForId(id);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return j;
+		
+	}
+	
+	public Jogador findByIdPreferences(){
+		Jogador j = null;
+		
+		sharedpreferences = context.getSharedPreferences(JogadorBo.MyPREFERENCES,
+				Context.MODE_PRIVATE);
+		
+		int id = sharedpreferences.getInt(JogadorBo.UserId, 0);
+		
+		try {
+			dh = DatabaseHelper.getInstance(context); 
+			jogadorDao = new JogadorDao(dh.getConnectionSource());
+			j = jogadorDao.queryForId(id);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return j;
+		
+	}
+	
+	public List<Grupo> getGrupoByJogador(Jogador jogador){
+		List<Grupo> lisGrupo = new ArrayList<Grupo>();
+		
+		 try {
+			 dh = DatabaseHelper.getInstance(context); 
+			menbroDao = new MembroDao(dh.getConnectionSource());
+			grupoDao = new GrupoDao(dh.getConnectionSource());
+			List<Membro> listMebro = menbroDao.queryBuilder().where().eq("jogador_id", jogador).query();
+			if(listMebro != null && listMebro.size() > 0){
+				for (Membro membro : listMebro) {
+					
+					lisGrupo.add(grupoDao.queryForId(membro.getGrupo().getId()));
+					
+				}
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return lisGrupo;
 	}
 
 	public void remove(Jogador jogador) throws SQLException {

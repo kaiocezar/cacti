@@ -5,7 +5,10 @@ import java.sql.SQLException;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.app.vo.Evento;
+import com.app.vo.Grupo;
 import com.app.vo.Jogador;
+import com.app.vo.Membro;
 import com.app.vo.Participa;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.support.ConnectionSource;
@@ -22,12 +25,14 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 		context = contextParameter;
 		if (dh == null) {
 			dh = new DatabaseHelper(context);
+			dh.getWritableDatabase();
 		}
 		return dh;
 	}
 	
 	private DatabaseHelper(Context ctx) {
 		super(ctx, NOME_BD, null, VERSAO_BD);
+		
 	}
 
 	@Override
@@ -36,8 +41,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 		try {
 			TableUtils.createTable(cs, Jogador.class);
 			TableUtils.createTable(cs, Participa.class);
-			//TableUtils.createTable(cs, Grupo.class);
-			//TableUtils.createTable(cs, Evento.class);
+			TableUtils.createTable(cs, Grupo.class);
+			TableUtils.createTable(cs, Evento.class);
+			TableUtils.createTable(cs, Membro.class);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -51,8 +57,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 		try {
 			TableUtils.dropTable(cs, Jogador.class, true);
 			TableUtils.dropTable(cs, Participa.class, true);
-			//TableUtils.dropTable(cs, Grupo.class, true);
-			//TableUtils.dropTable(cs, Evento.class, true);
+			TableUtils.dropTable(cs, Grupo.class, true);
+			TableUtils.dropTable(cs, Evento.class, true);
+			TableUtils.dropTable(cs, Membro.class, true);
 			onCreate(db, cs);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
