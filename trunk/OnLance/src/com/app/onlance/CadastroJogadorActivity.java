@@ -78,17 +78,10 @@ public class CadastroJogadorActivity extends Activity {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-				bo.closeDb();
 			}
 		};
 
 		btnCriarConta.setOnClickListener(oclBtnCriarConta);
-	}
-
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
-		bo.closeDb(); // Destroy o BD
 	}
 
 }

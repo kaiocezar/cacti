@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
+import java.util.Random;
 
 import android.app.Activity;
 import android.content.Context;
@@ -27,6 +28,15 @@ public class UtilsMetodos {
 		}
 
 		return utils;
+	}
+	
+	public int getId(){
+		
+		Random gerador = new Random();
+		 
+        int numero = gerador.nextInt(1000) + 1;
+ 
+       return numero;
 	}
 
 	public boolean isConectadoFacebook() {

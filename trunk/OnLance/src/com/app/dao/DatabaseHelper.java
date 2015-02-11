@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.app.vo.Cria;
 import com.app.vo.Evento;
 import com.app.vo.Grupo;
 import com.app.vo.Jogador;
@@ -25,7 +26,6 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 		context = contextParameter;
 		if (dh == null) {
 			dh = new DatabaseHelper(context);
-			dh.getWritableDatabase();
 		}
 		return dh;
 	}
@@ -44,6 +44,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 			TableUtils.createTable(cs, Grupo.class);
 			TableUtils.createTable(cs, Evento.class);
 			TableUtils.createTable(cs, Membro.class);
+			TableUtils.createTable(cs, Cria.class);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -60,6 +61,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 			TableUtils.dropTable(cs, Grupo.class, true);
 			TableUtils.dropTable(cs, Evento.class, true);
 			TableUtils.dropTable(cs, Membro.class, true);
+			TableUtils.dropTable(cs, Cria.class, true);
 			onCreate(db, cs);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

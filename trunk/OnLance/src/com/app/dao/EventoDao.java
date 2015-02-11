@@ -8,7 +8,7 @@ import com.j256.ormlite.support.ConnectionSource;
 
 public class EventoDao extends BaseDaoImpl<Evento, Integer> {
 
-	protected EventoDao(ConnectionSource cs) throws SQLException {
+	public EventoDao(ConnectionSource cs) throws SQLException {
 		super(Evento.class);
 		setConnectionSource(cs);
 		initialize();

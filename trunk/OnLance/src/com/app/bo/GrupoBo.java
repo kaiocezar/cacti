@@ -32,7 +32,7 @@ public class GrupoBo {
 		dh = DatabaseHelper.getInstance(context);
 		try {
 			grupoDao = new GrupoDao(dh.getConnectionSource());
-			grupo.setId(14);
+			grupo.setId(UtilsMetodos.getInscace().getId());
 			 int result = grupoDao.create(grupo);
 
 			Membro m = new Membro(); 

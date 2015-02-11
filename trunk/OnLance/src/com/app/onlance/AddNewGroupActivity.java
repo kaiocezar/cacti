@@ -42,12 +42,12 @@ public class AddNewGroupActivity extends Activity {
 			bo.saveInMembro(grupo, boJoogador.findByIdPreferences());
 			
 			
-			onDestroy();
+			finish();
 			// openAddGroupDialog();
 			return true;
 		}
 
-		return super.onOptionsItemSelected(item);
+		return true;
 	}
 
 	@Override
@@ -65,6 +65,12 @@ public class AddNewGroupActivity extends Activity {
 		
 		ActionBar actionBar = getActionBar();
 		actionBar.setTitle(R.string.novo_grupo_UPPER);
+	}
+	
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
 	}
 
 }
