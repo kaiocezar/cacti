@@ -84,7 +84,6 @@
     <string name="amigos">Amigos</string>
     <string name="times">Times</string>
     <string name="configuracao">Configurações</string>
-    <string name="partida">Partidas</string>
     <string name="partida_rapida">Partida Rápida</string>
     <string name="time">Times</string>
     <string name="estatistica">Estatísticas</string>
@@ -97,6 +96,7 @@
     <string name="msg_atualizar_jogador">Jogador atualizado com sucesso!</string>
     <string name="msg_deletar_jogador">Jogador deletado com sucesso!</string>
     <string name="peladas">Peladas</string>
+    <string name="eventos">Eventos</string>
     <string name="nome_evento_hint">Qual o nome?</string>
     <string name="local_hint">Onde?</string>
     <string name="data_evento_hint">Quando?</string>

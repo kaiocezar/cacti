@@ -27,7 +27,7 @@
                 android:layout_centerInParent="true"
                 android:background="@color/azul_dash"
                 android:paddingTop="110dp"
-                android:text="@string/estatistica"
+                android:text="@string/eventos"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold" />
 
@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:src="@drawable/estatistica" />
+                android:src="@drawable/ic_event" />
         </RelativeLayout>
 
         <!-- Posição [2,1] -->
@@ -89,7 +89,7 @@
                 android:layout_centerInParent="true"
                 android:background="#FF2B26"
                 android:paddingTop="110dp"
-                android:text="@string/partida"
+                android:text="@string/partida_rapida"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold" />
 
