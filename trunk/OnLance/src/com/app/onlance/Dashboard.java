@@ -14,8 +14,8 @@ import android.widget.Button;
 public class Dashboard extends Activity {
 
 	private Button btnComunidade;
-	private Button btnEstatisticas;
-	private Button btnPartidas;
+	private Button btnEvento;
+	private Button btnPartidaRapida;
 	private Button btnConfiguracoes;
 
 	@Override
@@ -24,8 +24,8 @@ public class Dashboard extends Activity {
 		setContentView(R.layout.dashboard);
 
 		btnComunidade = (Button) findViewById(R.id.comunidade_dashboard);
-		btnEstatisticas = (Button) findViewById(R.id.estatisticas_dashboard);
-		btnPartidas = (Button) findViewById(R.id.partidas_dashboard);
+		btnEvento = (Button) findViewById(R.id.estatisticas_dashboard);
+		btnPartidaRapida = (Button) findViewById(R.id.partidas_dashboard);
 		btnConfiguracoes = (Button) findViewById(R.id.configuracoes_dashboard);
 
 		OnClickListener oclBtnComunidade = new OnClickListener() {
@@ -47,7 +47,7 @@ public class Dashboard extends Activity {
 			}
 		};
 
-		btnEstatisticas.setOnClickListener(oclBtnEstatisticas);
+		btnEvento.setOnClickListener(oclBtnEstatisticas);
 
 		OnClickListener oclBtnConf = new OnClickListener() {
 			public void onClick(View v) {
@@ -62,11 +62,11 @@ public class Dashboard extends Activity {
 		OnClickListener oclBtnPartidas = new OnClickListener() {
 			public void onClick(View v) {
 				Intent intent = new Intent(Dashboard.this,
-						ModoJogoActivity.class);
+						DefinirTimesActivity.class);
 				startActivity(intent);
 			}
 		};
 
-		btnPartidas.setOnClickListener(oclBtnPartidas);
+		btnPartidaRapida.setOnClickListener(oclBtnPartidas);
 	}
 }
