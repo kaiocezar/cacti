@@ -2,8 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
-    android:paddingLeft="@dimen/activity_horizontal_margin" >
+    android:layout_margin="15dp"
+    android:orientation="horizontal" >
 
     <ImageView
         android:id="@+id/imageView1"
@@ -11,49 +11,49 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_marginRight="10dp"
-        android:src="@drawable/grupos" />
+        android:src="@drawable/ic_user" />
 
     <TextView
         android:id="@+id/nomeJogador"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
         android:layout_toRightOf="@+id/imageView1"
-        android:paddingTop="@dimen/activity_vertical_margin"
         android:text="Nome"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/quantJogos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="10"
-        android:layout_toRightOf="@+id/imageView1"
         android:layout_below="@+id/nomeJogador"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-    
-     <TextView
+        android:layout_toRightOf="@+id/imageView1"
+        android:text="10"
+        android:textSize="15sp" />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" Jogos"
-        android:layout_toRightOf="@+id/quantJogos"
         android:layout_below="@+id/nomeJogador"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:layout_toRightOf="@+id/quantJogos"
+        android:text=" Jogos"
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/quantGols"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="12"
-        android:layout_toRightOf="@+id/imageView1"
         android:layout_below="@+id/quantJogos"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-    
+        android:layout_toRightOf="@+id/imageView1"
+        android:text="12"
+        android:textSize="15sp" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" Gols"
-        android:layout_toRightOf="@+id/quantGols"
         android:layout_below="@+id/quantJogos"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:layout_toRightOf="@+id/quantGols"
+        android:text=" Gols"
+        android:textSize="15sp" />
 
 </RelativeLayout>
