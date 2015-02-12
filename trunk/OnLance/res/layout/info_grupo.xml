@@ -15,14 +15,15 @@
             android:id="@+id/imageGrupo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/grupos" />
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_team" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:orientation="vertical"
-            android:paddingTop="20dp" >
+            android:paddingTop="15dp" >
 
             <TextView
                 android:id="@+id/nomeGrupo"
@@ -53,9 +54,9 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_marginTop="10dp"
-        android:textColor="@color/branco"
         android:background="@color/green"
-        android:textStyle="bold"
-        android:text="CONVOCAR JOGADOR" />
+        android:text="CONVOCAR JOGADOR"
+        android:textColor="@color/branco"
+        android:textStyle="bold" />
 
 </LinearLayout>
