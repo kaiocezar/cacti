@@ -70,7 +70,21 @@ public class GruposActivity extends Activity {
 		List<Grupo> grupoList = bo.getGrupoByJogador(jogador);
 		
 		List<GrupoFacade> grupos = new ArrayList<GrupoFacade>();
+		GrupoFacade g1 = new GrupoFacade();
+		g1.setNome("SIFC");
+		g1.setDescricao("Galera de SI");
+		grupos.add(g1);
 
+		GrupoFacade g2 = new GrupoFacade();
+		g2.setNome("CCFC");
+		g2.setDescricao("Galera de CC");
+		grupos.add(g2);
+		
+		GrupoFacade g3 = new GrupoFacade();
+		g3.setNome("ECFC");
+		g3.setDescricao("Galera de EC");
+		grupos.add(g3);
+		
 		if (grupoList != null && grupoList.size() > 0) {
 
 			for (Grupo grupo : grupoList) {

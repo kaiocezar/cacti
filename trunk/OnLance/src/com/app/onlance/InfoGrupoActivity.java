@@ -16,7 +16,7 @@ public class InfoGrupoActivity extends Activity{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.infor_grupo);
+		setContentView(R.layout.info_grupo);
 		init();
 	}
 	
@@ -39,15 +39,15 @@ public class InfoGrupoActivity extends Activity{
 		geyson.getHistorico().setGol(12);
 		geyson.getHistorico().setJogos(20);
 
-		helton.setNome("helton");
+		helton.setNome("Helton");
 		helton.getHistorico().setGol(1);
 		helton.getHistorico().setJogos(50);
 
-		joao.setNome("joao");
+		joao.setNome("João Vitor");
 		joao.getHistorico().setGol(1);
 		joao.getHistorico().setJogos(10);
 
-		ze.setNome("ze");
+		ze.setNome("Zé Carlos");
 		ze.getHistorico().setGol(1000);
 		ze.getHistorico().setJogos(1);
 

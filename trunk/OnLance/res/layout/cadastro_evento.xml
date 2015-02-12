@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
+    android:layout_marginTop="15dp"
     android:background="#FFFFFF"
     android:orientation="vertical" >
 
@@ -39,8 +40,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/data_evento_hint"
-        android:inputType="text"
         android:paddingBottom="5dp"
+        android:text="Quando?"
         android:paddingLeft="10dp"
         android:paddingTop="5dp"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -48,11 +49,11 @@
     <TextView
         android:id="@+id/horario_envento"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:ems="10"
+        android:text="Que horas?"
         android:hint="@string/horario_evento_hint"
-        android:inputType="text"
-        android:paddingBottom="5dp"
         android:paddingLeft="10dp"
         android:paddingTop="5dp"
         android:textAppearance="?android:attr/textAppearanceMedium" />
