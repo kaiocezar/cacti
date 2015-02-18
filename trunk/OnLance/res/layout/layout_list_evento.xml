@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:paddingBottom="10dp"
     android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:descendantFocusability="blocksDescendants"
     android:paddingTop="10dp" >
 
     <TextView
@@ -57,5 +58,20 @@
         android:layout_toRightOf="@+id/quanti"
         android:text="10"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/dentroEvento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/quantValue"
+        android:layout_alignParentRight="true"
+        android:text="To dentro" />
+    <Button
+        android:id="@+id/foraEvento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dentroEvento"
+        android:layout_alignParentRight="true"
+        android:text="To fora" />
 
 </RelativeLayout>
