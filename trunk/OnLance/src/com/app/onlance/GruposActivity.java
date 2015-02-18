@@ -3,6 +3,8 @@ package com.app.onlance;
 import java.util.ArrayList;
 import java.util.List;
 
+import Utils.UtilsConstants;
+import Utils.UtilsMetodos;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
@@ -26,6 +28,7 @@ public class GruposActivity extends Activity {
 	SharedPreferences sharedpreferences;
 	private JogadorBo bo;
 	private Jogador jogador;
+	private List<GrupoFacade> gruposFacade; 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +60,12 @@ public class GruposActivity extends Activity {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 
+				GrupoFacade facade = gruposFacade.get(position);
+				
 				Intent intent = new Intent(GruposActivity.this,
 						GrupoPerfilActivity.class);
+				
+				intent.putExtra(UtilsConstants.ID_GRUPO, facade.getId());
 				startActivity(intent);
 
 			}
@@ -69,32 +76,18 @@ public class GruposActivity extends Activity {
 
 		List<Grupo> grupoList = bo.getGrupoByJogador(jogador);
 		
-		List<GrupoFacade> grupos = new ArrayList<GrupoFacade>();
-		GrupoFacade g1 = new GrupoFacade();
-		g1.setNome("SIFC");
-		g1.setDescricao("Galera de SI");
-		grupos.add(g1);
-
-		GrupoFacade g2 = new GrupoFacade();
-		g2.setNome("CCFC");
-		g2.setDescricao("Galera de CC");
-		grupos.add(g2);
-		
-		GrupoFacade g3 = new GrupoFacade();
-		g3.setNome("ECFC");
-		g3.setDescricao("Galera de EC");
-		grupos.add(g3);
+		gruposFacade = new ArrayList<GrupoFacade>();
 		
 		if (grupoList != null && grupoList.size() > 0) {
 
 			for (Grupo grupo : grupoList) {
-				parseEntityInFacade(grupos, grupo);
+				parseEntityInFacade(gruposFacade, grupo);
 			}
 
 		}
 
 
-		BaseAdapterGrupos adapter = new BaseAdapterGrupos(this, grupos);
+		BaseAdapterGrupos adapter = new BaseAdapterGrupos(this, gruposFacade);
 		listGrupos = (ListView) findViewById(R.id.listViewGrupos);
 		listGrupos.setAdapter(adapter);
 	}

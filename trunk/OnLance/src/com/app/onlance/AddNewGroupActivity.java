@@ -39,7 +39,7 @@ public class AddNewGroupActivity extends Activity {
 			grupo.setDescricao(descricao.getText().toString());
 			grupo.setNome(nome.getText().toString());
 			
-			bo.saveInMembro(grupo, boJoogador.findByIdPreferences());
+			bo.saveInMembroAndAdministra(grupo, boJoogador.findByIdPreferences());
 			
 			
 			finish();
@@ -67,10 +67,4 @@ public class AddNewGroupActivity extends Activity {
 		actionBar.setTitle(R.string.novo_grupo_UPPER);
 	}
 	
-	@Override
-	protected void onDestroy() {
-		// TODO Auto-generated method stub
-		super.onDestroy();
-	}
-
 }
