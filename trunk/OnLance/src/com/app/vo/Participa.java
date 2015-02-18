@@ -14,6 +14,8 @@ public class Participa {
 
 	@DatabaseField(columnName = "grupo_id", foreign = true, uniqueCombo = true)
 	private Grupo grupo;
+	
+	private boolean confirma;
 
 	@DatabaseField
 	private int qtdGol;
@@ -101,5 +103,13 @@ public class Participa {
 
 	public void setQtdJogo(int qtdJogo) {
 		this.qtdJogo = qtdJogo;
+	}
+	
+	public boolean isConfirma() {
+		return confirma;
+	}
+
+	public void setConfirma(boolean confirma) {
+		this.confirma = confirma;
 	}
 }
