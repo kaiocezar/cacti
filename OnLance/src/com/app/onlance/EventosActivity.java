@@ -5,8 +5,11 @@ import java.util.Date;
 import java.util.List;
 
 import com.app.adapter.BaseAdapterEventos;
+import com.app.bo.JogadorBo;
 import com.app.facade.EventoFacade;
+import com.app.vo.Evento;
 
+import Utils.UtilsConstants;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,12 +25,13 @@ public class EventosActivity extends Activity {
 	private ListView listViewEvento;
 	private Button  criarEvento;
 	private BaseAdapterEventos adapter;
+	private JogadorBo bo;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.eventos);
-
+		bo  = new JogadorBo(this);
 		init();
 		bind();
 
@@ -53,13 +57,27 @@ public class EventosActivity extends Activity {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				
+				EventoFacade evento = adapter.getItem(position);
+				
+				Intent itent = new Intent(EventosActivity.this,EventoPerfilActivity.class);
+				itent.putExtra(UtilsConstants.ID_EVENTO, evento.getId());
+				
+				startActivity(itent);
 				
 				
 			}
 		});
 		
-		
 	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		init();
+	}
+
+	
+	
 
 	private void init() {
 		listViewEvento = (ListView) findViewById(R.id.listViewEvento);
@@ -75,48 +93,26 @@ public class EventosActivity extends Activity {
 
 		List<EventoFacade> retorno = new ArrayList<EventoFacade>();
 
-
-		EventoFacade facade1 = new EventoFacade();
-		EventoFacade facade2 = new EventoFacade();
-		EventoFacade facade3 = new EventoFacade();
-		EventoFacade facade4 = new EventoFacade();
+		List<Evento> evento = bo.getEventoByJogador();
 		
-		
-		facade1.setData(new Date());
-		facade2.setData(new Date());
-		facade3.setData(new Date());
-		facade4.setData(new Date());
-
-		
-		List<Integer>intList1 = new ArrayList<Integer>();
-		List<Integer>intList2 = new ArrayList<Integer>();
-		List<Integer>intList3 = new ArrayList<Integer>();
-		List<Integer>intList4 = new ArrayList<Integer>();
-		
-		intList1.add(1);
-		intList2.add(1);
-		intList2.add(1);
-		intList3.add(1);
-		intList3.add(1);
-		intList3.add(1);
-		intList4.add(1);
-		intList4.add(1);
-		intList4.add(1);
-		intList4.add(1);
-		
-		facade1.setJogador(intList1);
-		facade2.setJogador(intList2);
-		facade3.setJogador(intList3);
-		facade4.setJogador(intList4);
-	
-		retorno.add(facade1);
-		retorno.add(facade2);
-		retorno.add(facade3);
-		retorno.add(facade4);
-		
+		if(evento != null && evento.size() > 0){
+			for(Evento e: evento){
+				eventoParseFacade(retorno, e);
+			}
+			
+		}
 		
 		return retorno;
+	}
+	
+	public void eventoParseFacade(List<EventoFacade> retorno, Evento evento){
 		
+		EventoFacade facade = new EventoFacade();
+		facade.setData(evento.getData());
+		facade.setId(evento.getId());
+		facade.setLocal(evento.getLocalizacao());
+		facade.setNome(evento.getNome());
+		retorno.add(facade);
 	}
 
 }

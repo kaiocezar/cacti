@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.app.adapter.BaseAdapterAmigos;
+import com.app.bo.GrupoBo;
 import com.app.facade.JogadorFacade;
+import com.app.vo.Jogador;
 
+import Utils.UtilsConstants;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,56 +19,49 @@ import android.widget.ListView;
 
 public class GrupoPerfilActivity extends Activity {
 
+	private GrupoBo grupoBo;
+	private int idGrupo;
+	private List<JogadorFacade> amigos;
 	
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.grupo_perfil);
+		grupoBo = new GrupoBo(this);
+		idGrupo = getIntent().getIntExtra(UtilsConstants.ID_GRUPO, 0);
+		
 		init();
 	}
 	
-	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		init();
+	}
 	private void init() {
 		ListView list = (ListView) findViewById(R.id.listPerfilGrupo);
-
-		List<JogadorFacade> amigos = new ArrayList<JogadorFacade>();
-		JogadorFacade kaio = new JogadorFacade();
-		JogadorFacade geyson = new JogadorFacade();
-		JogadorFacade helton = new JogadorFacade();
-		JogadorFacade joao = new JogadorFacade();
-		JogadorFacade ze = new JogadorFacade();
-
-		kaio.setNome("Kaio");
-		kaio.getHistorico().setGol(10);
-		kaio.getHistorico().setJogos(10);
-
-		geyson.setNome("Geyson");
-		geyson.getHistorico().setGol(12);
-		geyson.getHistorico().setJogos(20);
-
-		helton.setNome("helton");
-		helton.getHistorico().setGol(1);
-		helton.getHistorico().setJogos(50);
-
-		joao.setNome("joao");
-		joao.getHistorico().setGol(1);
-		joao.getHistorico().setJogos(10);
-
-		ze.setNome("ze");
-		ze.getHistorico().setGol(1000);
-		ze.getHistorico().setJogos(1);
-
-		amigos.add(kaio);
-		amigos.add(geyson);
-		amigos.add(helton);
-		amigos.add(joao);
-		amigos.add(ze);
+		amigos = new ArrayList<JogadorFacade>();
+		
+		List<Jogador> jogadorList = grupoBo.getJogadorListByGrupo(idGrupo);
+		for (Jogador jogador : jogadorList) {
+			jogadorParseFacade(amigos, jogador);
+		}
 
 		BaseAdapterAmigos adpter = new BaseAdapterAmigos(this, amigos);
-
 		list.setAdapter(adpter);
 
+	}
+	
+	public void jogadorParseFacade(List<JogadorFacade> facadeList, Jogador jogador){
+		JogadorFacade facade = new JogadorFacade();
+		facade.setEmail(jogador.getEmail());
+		facade.setFone(jogador.getNumeroTelefone());
+		facade.setId(jogador.getId());
+		facade.setLogin(jogador.getEmail());
+		facade.setNome(jogador.getNome());
+		
+		facadeList.add(facade);
+		
 	}
 
 	@Override
@@ -78,17 +74,16 @@ public class GrupoPerfilActivity extends Activity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-
 		switch (item.getItemId()) {
 		case R.id.action_add_member:
 			
-			Intent in =  new Intent(GrupoPerfilActivity.this,InfoGrupoActivity.class);
+			Intent in =  new Intent(GrupoPerfilActivity.this,AddJogadorInGruposActivity.class);
+			in.putExtra(UtilsConstants.ID_GRUPO, idGrupo);
 			startActivity(in);
 			return true;
 		}
 
 		return super.onOptionsItemSelected(item);
 	}
-
 
 }

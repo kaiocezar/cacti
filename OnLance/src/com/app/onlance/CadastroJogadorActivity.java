@@ -60,7 +60,7 @@ public class CadastroJogadorActivity extends Activity {
 						jogador.setNumeroTelefone(numTelefoneEditText.getText()
 								.toString());
 						bo = new JogadorBo(CadastroJogadorActivity.this);
-						int result = bo.save(jogador);
+						int result = bo.saveAndCreateAmigosFake(jogador);
 
 						if (result == 1) {
 							Context context = getApplicationContext();

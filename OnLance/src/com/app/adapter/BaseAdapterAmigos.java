@@ -32,7 +32,7 @@ public class BaseAdapterAmigos extends BaseAdapter {
 	}
 
 	@Override
-	public Object getItem(int arg0) {
+	public JogadorFacade getItem(int arg0) {
 		return jogadores.get(arg0);
 	}
 
