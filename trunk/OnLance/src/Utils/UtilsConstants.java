@@ -7,6 +7,7 @@ public class UtilsConstants {
 
 	public final static String ID_GRUPO = "id_grupo";
 	public final static String ID_EVENTO = "id_evento";
+	public final static String ID_PARTICIPA = "id_participa";
 	public final static String QUANT_GOLS = "quantidadeGols";
 	public final static String QUANT_JOGADORES = "quantidadeJogadores";
 	public final static String TEMPO_PARTIDA = "tempoPartida";

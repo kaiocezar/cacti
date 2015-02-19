@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <TextView
+        android:id="@+id/textViewId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="DESEJA EXCLUIR ESSE JOGADOR"
+        android:textSize="20sp" />
+
+    <View
+        android:id="@+id/strut"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_below="@+id/textViewId"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/confirmarDialog"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@id/strut"
+        android:layout_below="@+id/textViewId"
+        android:text="Confirmar" />
+
+    <Button
+        android:id="@+id/cancelarDialog"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/strut"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textViewId"
+        android:text="Cancelar" />
+
+</RelativeLayout>

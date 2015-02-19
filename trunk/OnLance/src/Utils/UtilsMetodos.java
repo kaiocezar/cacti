@@ -38,6 +38,15 @@ public class UtilsMetodos {
  
        return numero;
 	}
+	
+	public int gerarJogadorAleatorio(int tamanho){
+		
+		Random gerador = new Random();
+		 
+        int numero = gerador.nextInt(tamanho);
+ 
+       return numero;
+	}
 
 	public boolean isConectadoFacebook() {
 		boolean retorno = false;

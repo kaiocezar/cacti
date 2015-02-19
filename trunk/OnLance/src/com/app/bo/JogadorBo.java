@@ -55,9 +55,6 @@ public class JogadorBo {
 
 	public int save(Jogador jogador) throws SQLException {
 
-		sharedpreferences = context.getSharedPreferences(MyPREFERENCES,
-				Context.MODE_PRIVATE);
-
 		// if (ConnectionDetector.getInstance(context).isConnectingToInternet())
 		// {
 		/*
@@ -112,11 +109,18 @@ public class JogadorBo {
 
 		jogador.setId(UtilsMetodos.getInscace().getId());
 		jogadorDao.createOrUpdate(jogador);
-		Editor editor = sharedpreferences.edit();
-		editor.putInt(UserId, jogador.getId());
-		editor.commit();
 
+		setIdJogadorSharePreference(jogador.getId());
 		return 1;
+	}
+
+	public void setIdJogadorSharePreference(int id) {
+		sharedpreferences = context.getSharedPreferences(MyPREFERENCES,
+				Context.MODE_PRIVATE);
+
+		Editor editor = sharedpreferences.edit();
+		editor.putInt(UserId, id);
+		editor.commit();
 	}
 
 	public int saveAndCreateAmigosFake(Jogador jogador) throws SQLException {
@@ -137,20 +141,20 @@ public class JogadorBo {
 
 		a.setJogador(jogador);
 		a.setAmigo(createJogadorFake());
-		
+
 		amigosDao.create(a);
-		
+
 		a = new Amigos();
-		
+
 		a.setJogador(jogador);
 		a.setAmigo(createJogadorFake());
-		
+
 		amigosDao.create(a);
 		a = new Amigos();
-		
+
 		a.setJogador(jogador);
 		a.setAmigo(createJogadorFake());
-		
+
 		amigosDao.create(a);
 
 		return retorno;
@@ -176,9 +180,8 @@ public class JogadorBo {
 		return j;
 	}
 
-	
-	public void participarGrupo(int idGrupo,int IdJogador){
-		
+	public void participarGrupo(int idGrupo, int IdJogador) {
+
 		Jogador jogador = findById(IdJogador);
 		Membro membro = new Membro();
 		dh = DatabaseHelper.getInstance(context);
@@ -188,14 +191,14 @@ public class JogadorBo {
 			membro.setJogador(jogador);
 			membro.setGrupo(grupoDao.queryForId(idGrupo));
 			menbroDao.create(membro);
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
+
 	}
+
 	public Jogador findById(int id) {
 		Jogador j = null;
 
@@ -336,10 +339,13 @@ public class JogadorBo {
 
 			dh = DatabaseHelper.getInstance(context);
 			jogadorDao = new JogadorDao(dh.getConnectionSource());
-			Map<String, Object> values = new HashMap<String, Object>();
-			values.put("email", email + " - ANDROID CLASS");
-			jogador = (Jogador) jogadorDao.queryForFieldValues(values);
-
+			List<Jogador> list = jogadorDao.queryBuilder().where().eq("email", email).query();;
+			
+			if(list != null && list.size() > 0){
+				jogador = list.get(0);
+			}
+			
+			
 		} else {
 
 		}
@@ -441,7 +447,7 @@ public class JogadorBo {
 	public List<Jogador> getAmigos() {
 		List<Jogador> retorno = new ArrayList<Jogador>();
 		dh = DatabaseHelper.getInstance(context);
-
+		
 		try {
 			amigosDao = new AmigosDao(dh.getConnectionSource());
 			jogadorDao = new JogadorDao(dh.getConnectionSource());

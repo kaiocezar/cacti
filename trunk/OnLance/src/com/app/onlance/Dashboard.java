@@ -3,7 +3,9 @@ package com.app.onlance;
 import java.sql.SQLException;
 
 import com.app.bo.JogadorBo;
+import com.app.vo.Jogador;
 
+import Utils.UtilsMetodos;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +19,7 @@ public class Dashboard extends Activity {
 	private Button btnEvento;
 	private Button btnPartidaRapida;
 	private Button btnConfiguracoes;
+	private JogadorBo jogadorBo;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -28,10 +31,17 @@ public class Dashboard extends Activity {
 		btnPartidaRapida = (Button) findViewById(R.id.partidas_dashboard);
 		btnConfiguracoes = (Button) findViewById(R.id.configuracoes_dashboard);
 
+		jogadorBo = new JogadorBo(this);
+		Jogador joga = jogadorBo.findByIdPreferences();
+		if(joga !=null){
+			UtilsMetodos.getInscace().toast(this,
+					joga.getEmail() + " - " + joga.getSenha());
+			
+		}
+
 		OnClickListener oclBtnComunidade = new OnClickListener() {
 			public void onClick(View v) {
-				Intent intent = new Intent(Dashboard.this,
-						GruposActivity.class);
+				Intent intent = new Intent(Dashboard.this, GruposActivity.class);
 				startActivity(intent);
 			}
 		};
@@ -40,7 +50,7 @@ public class Dashboard extends Activity {
 
 		OnClickListener oclBtnEstatisticas = new OnClickListener() {
 			public void onClick(View v) {
-				
+
 				Intent intent = new Intent(Dashboard.this,
 						EventosActivity.class);
 				startActivity(intent);

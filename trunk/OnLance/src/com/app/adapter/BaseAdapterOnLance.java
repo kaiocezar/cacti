@@ -73,7 +73,6 @@ public class BaseAdapterOnLance extends BaseAdapter {
 			public void onClick(View v) {
 				lay.setBackgroundColor(Color.parseColor("#90CAF9")); // blue
 				jogador.setTipoTela("2");
-				UtilsMetodos.getInscace().toast(contexto, "clico na 2");
 			}
 		});
 		

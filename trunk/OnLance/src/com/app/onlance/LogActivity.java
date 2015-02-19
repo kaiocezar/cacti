@@ -80,5 +80,9 @@ public class LogActivity extends Activity {
 		Intent intent = new Intent(this, Dashboard.class);
 		startActivity(intent);
 	}
+	public void irParaOutraPartida(View view) {
+		Intent intent = new Intent(this, DefinirTimesActivity.class);
+		startActivity(intent);
+	}
 
 }

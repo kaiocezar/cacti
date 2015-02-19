@@ -10,18 +10,25 @@ import com.app.vo.Jogador;
 
 import Utils.UtilsConstants;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.Button;
 import android.widget.ListView;
 
 public class GrupoPerfilActivity extends Activity {
 
 	private GrupoBo grupoBo;
 	private int idGrupo;
-	private List<JogadorFacade> amigos;
+	private ListView list;
+	private BaseAdapterAmigos adpter;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,23 +38,64 @@ public class GrupoPerfilActivity extends Activity {
 		idGrupo = getIntent().getIntExtra(UtilsConstants.ID_GRUPO, 0);
 		
 		init();
+		bind();
+	
 	}
 	
+	private void bind() {
+		list.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+			@Override
+			public boolean onItemLongClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				
+				final Dialog dialog = new Dialog(GrupoPerfilActivity.this);
+				dialog.setContentView(R.layout.layout_dialog);
+				dialog.setTitle("Confirmação...");
+	 
+				Button simButon = (Button) dialog.findViewById(R.id.confirmarDialog);
+				Button naoButon = (Button) dialog.findViewById(R.id.cancelarDialog);
+				// if button is clicked, close the custom dialog
+				simButon.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						
+						
+					}
+				});
+
+				naoButon.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						dialog.hide();
+						
+					}
+				});
+	 
+				dialog.show();
+				
+				return false;
+			}
+		});
+		// TODO Auto-generated method stub
+		
+	}
+
 	@Override
 	protected void onResume() {
 		super.onResume();
 		init();
 	}
 	private void init() {
-		ListView list = (ListView) findViewById(R.id.listPerfilGrupo);
-		amigos = new ArrayList<JogadorFacade>();
+		 list = (ListView) findViewById(R.id.listPerfilGrupo);
+		List<JogadorFacade> amigos = new ArrayList<JogadorFacade>();
 		
 		List<Jogador> jogadorList = grupoBo.getJogadorListByGrupo(idGrupo);
 		for (Jogador jogador : jogadorList) {
 			jogadorParseFacade(amigos, jogador);
 		}
 
-		BaseAdapterAmigos adpter = new BaseAdapterAmigos(this, amigos);
+		 adpter = new BaseAdapterAmigos(this, amigos,grupoBo,idGrupo);
 		list.setAdapter(adpter);
 
 	}
