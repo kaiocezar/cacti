@@ -22,9 +22,14 @@ public class UtilsInformation {
 
 		if(utils == null){
 			utils = new UtilsInformation();
+			
 		}
 
 		return utils;
+	}
+	
+	private UtilsInformation(){
+		setGol("2");
 	}
 
 	public String getTime() {

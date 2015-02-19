@@ -9,22 +9,37 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.app.bo.GrupoBo;
 import com.app.facade.JogadorFacade;
+import com.app.facade.ParticipaFacadeAndroid;
 import com.app.onlance.JogadorForList;
 import com.app.onlance.R;
+import com.app.vo.Participa;
 
 public class BaseAdapterAmigos extends BaseAdapter {
 
 	private List<JogadorFacade> jogadores;
 	private Context context;
 	private LayoutInflater mInflater;
+	private GrupoBo grupoBo;
+	private int idGrupo;
 
-	public BaseAdapterAmigos(Context contexto, List<JogadorFacade> jogadores) {
+	public BaseAdapterAmigos(Context contexto,
+			List<JogadorFacade> jogadores) {
+		this(contexto,jogadores,null,0);
+	}
+	
+	public BaseAdapterAmigos(Context contexto,
+			List<JogadorFacade> jogadores,GrupoBo bo,int idGrupo) {
 		super();
 		this.context = contexto;
 		this.jogadores = jogadores;
 		mInflater = LayoutInflater.from(context);
+		grupoBo = bo;
+		this.idGrupo  = idGrupo;
+		
 	}
+
 
 	@Override
 	public int getCount() {
@@ -53,10 +68,22 @@ public class BaseAdapterAmigos extends BaseAdapter {
 		TextView quantJogos = (TextView) view.findViewById(R.id.quantJogos);
 
 		nome.setText(item.getNome());
-		quantJogos.setText(String.valueOf(item.getHistorico().getJogos()));
-		quantGols.setText(String.valueOf(item.getHistorico().getGol()));
+		Participa p = null;
+		if(grupoBo != null && idGrupo > 0){
+			 p = grupoBo.getParticipaByJogadorAndGrupo(item.getId(),idGrupo);
+		}
 		
+		if(p != null){
+			quantJogos.setText(String.valueOf(p.getQtdJogo()));
+			quantGols.setText(String.valueOf(p.getQtdGol()));
+		}
+		else{
+			quantJogos.setText(String.valueOf(item.getHistorico().getJogos()));
+			quantGols.setText(String.valueOf(item.getHistorico().getGol()));
+			
+		}
 		
+
 		return view;
 	}
 

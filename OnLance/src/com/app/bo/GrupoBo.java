@@ -45,7 +45,7 @@ public class GrupoBo {
 
 		try {
 
-			menbroDao= new MembroDao(dh.getConnectionSource());
+			menbroDao = new MembroDao(dh.getConnectionSource());
 			jogadorDao = new JogadorDao(dh.getConnectionSource());
 			grupoDao = new GrupoDao(dh.getConnectionSource());
 
@@ -64,6 +64,35 @@ public class GrupoBo {
 		}
 
 		return jogadorList;
+	}
+
+	public Participa getParticipaByJogadorAndGrupo(int idJogador, int idGrupo) {
+
+		Participa p = null;
+		dh = DatabaseHelper.getInstance(context);
+		try {
+			jogadorDao = new JogadorDao(dh.getConnectionSource());
+			grupoDao = new GrupoDao(dh.getConnectionSource());
+			participaDao = new ParticipaDao(dh.getConnectionSource());
+
+			List<Participa> participaList = participaDao.queryBuilder().where()
+					.eq("jogador_id", jogadorDao.queryForId(idJogador)).and()
+				
+					.eq("grupo_id", grupoDao.queryForId(idGrupo)).query();
+		
+			if(participaList != null && participaList.size() > 0){
+				p = participaList.get(0);
+				
+			}
+			
+			
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return p;
 	}
 
 	public void saveInMembroAndAdministra(Grupo grupo, Jogador jogador) {
@@ -91,29 +120,31 @@ public class GrupoBo {
 		}
 
 	}
+
 	public void deleteJogadorInMembro(int idGrupo, int idJogador) {
-		
+
 		dh = DatabaseHelper.getInstance(context);
 		try {
 			grupoDao = new GrupoDao(dh.getConnectionSource());
 			menbroDao = new MembroDao(dh.getConnectionSource());
 			jogadorDao = new JogadorDao(dh.getConnectionSource());
-			
+
 			Jogador jogador = jogadorDao.queryForId(idJogador);
 			Grupo grupo = grupoDao.queryForId(idGrupo);
-			
-			List<Membro> listMembro = menbroDao.queryBuilder().where().eq("jogador_id", jogador).and().eq("grupo_id", grupo).query();
-			
-			if(listMembro != null && listMembro.size() > 0){
+
+			List<Membro> listMembro = menbroDao.queryBuilder().where()
+					.eq("jogador_id", jogador).and().eq("grupo_id", grupo)
+					.query();
+
+			if (listMembro != null && listMembro.size() > 0) {
 				menbroDao.delete(listMembro.get(0));
 			}
-			
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	public void save(Grupo grupo) throws SQLException {
@@ -164,4 +195,5 @@ public class GrupoBo {
 					context.getString(R.string.msg_falha_conexao_com_internet));
 		}
 	}
+
 }

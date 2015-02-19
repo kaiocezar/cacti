@@ -1,5 +1,6 @@
 package com.app.onlance;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import Utils.UtilsConstants;
@@ -11,9 +12,13 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.app.bo.JogadorBo;
+import com.app.vo.Jogador;
 import com.facebook.HttpMethod;
 import com.facebook.Request;
 import com.facebook.Response;
@@ -26,6 +31,12 @@ import com.facebook.widget.LoginButton;
 
 public class MainActivity extends Activity {
 
+	
+	private EditText login;
+	private EditText senha;
+	private Button entrar;
+	private JogadorBo jogadorBo;
+	
 	UiLifecycleHelper uiHelper;
 	SharedPreferences sharedpreferences;
 	private Session.StatusCallback callback = new StatusCallback() {
@@ -49,10 +60,43 @@ public class MainActivity extends Activity {
 				Context.MODE_PRIVATE);
 		uiHelper = new UiLifecycleHelper(this, callback);
 		uiHelper.onCreate(savedInstanceState);
+		
+		jogadorBo = new JogadorBo(this);
+		
+		login = (EditText) findViewById(R.id.login);
+		senha =  (EditText)  findViewById(R.id.senha);
+		entrar = (Button ) findViewById(R.id.entrar);
 
 		validarEntrada();
-
+		bind();
 	}
+	
+
+	private void bind() {
+		entrar.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				try {
+				Jogador jog = jogadorBo.findByEmail(login.getText().toString());
+				
+				if(jog.getSenha().equals(senha.getText().toString())){
+					jogadorBo.setIdJogadorSharePreference(jog.getId());
+					validarEntrada();
+				}else{
+					UtilsMetodos.getInscace().toast(MainActivity.this, "Jogador não esta no clube");
+				}
+				
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+		});
+	}
+
 
 	private void validarEntrada() {
 
